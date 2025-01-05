@@ -1,5 +1,8 @@
 -- WaypointAdder.lua
 
+-- Import localization
+local localize = Localize
+
 -- Import the waypoint data
 local waypointData = WaypointData
 local activeWaypoints = {}
@@ -86,7 +89,7 @@ function AddWaypointsForZone(continentName, zoneName)
             currentZone = zoneName  -- Set the current zone to the one with active waypoints
             return true  -- Indicate that waypoints were added
         else
-            print("|cFFFF0000No undiscovered waypoints found for " .. zoneName .. ".|r")
+            print("|cFFFF0000" .. localize("NO_UNDISCOVERED_WAYPOINTS", zoneName) .. "|r")
         end
     end
 
@@ -134,23 +137,22 @@ end
 
 function GetContinentMapID(continentName)
     local continentMapIDs = {
-        ["Eastern Kingdoms"] = 13,
-        ["Kalimdor"] = 12,
-        ["Outland"] = 101,
-        ["Northrend"] = 113,
-        ["Pandaria"] = 424,
-        ["Draenor"] = 572,
-        ["Broken Isles"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiras"] = 876,
-        ["Argus"] = 905,
-        ["The Maelstrom"] = 948,
-        ["Vashj'ir"] = 203,
+        [localize("CONTINENT_EASTERN_KINGDOMS")] = 13,
+        [localize("CONTINENT_KALIMDOR")] = 12,
+        [localize("CONTINENT_OUTLAND")] = 101,
+        [localize("CONTINENT_NORTHREND")] = 113,
+        [localize("CONTINENT_PANDARIA")] = 424,
+        [localize("CONTINENT_DRAENOR")] = 572,
+        [localize("CONTINENT_BROKEN_ISLES")] = 619,
+        [localize("CONTINENT_ZANDALAR")] = 875,
+        [localize("CONTINENT_KUL_TIRAS")] = 876,
+        [localize("CONTINENT_ARGUS")] = 905,
+        [localize("CONTINENT_MAELSTROM")] = 948,
+        [localize("CONTINENT_VASHJIR")] = 203,
     }
 
     local mapID = continentMapIDs[continentName]
     return mapID
-    
 end
 
 function HandleZoneSelection(continentName, zoneName)
@@ -250,7 +252,7 @@ function OnZoneChange(event)
 
     -- If we've entered the queued zone, add waypoints
     if queuedZone and queuedZone == newZone then
-        print("|cFF00FF00Zone reached: " .. newZone .. ". Setting waypoints.|r")
+        print("|cFF00FF00" .. localize("ZONE_REACHED", zoneName) .. "|r")
         local waypointsAdded = AddWaypointsForZone(selectedContinent, newZone)
         queuedZone = nil
 
@@ -268,7 +270,7 @@ function OnZoneChange(event)
         -- Start a 15-second timer to remove the zone waypoints only if they exist
         if next(activeWaypoints) ~= nil then
             removeWaypointsTimer = C_Timer.NewTimer(15, function()
-                print("|cFF00FF00Zone change detected after 15 seconds. Clearing zone waypoints.|r")
+                print("|cFF00FF00" .. localize("CLEARING_WAYPOINTS") .. "|r")
                 RemoveZoneWaypoints()
             end)
         end
