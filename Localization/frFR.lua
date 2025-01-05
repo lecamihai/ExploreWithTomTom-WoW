@@ -36,6 +36,24 @@ Localization["frFR"] = {
                 {62, 80, "Zeb'Watha"}
             }
         },
+        ["Bois de la Pénombre"] = {
+            achievementID = 778,
+            proxyLocation = { 46, 80, "Bois de la Pénombre" },
+            waypoints = {
+                { 21, 69, "Ferme d'Addle" },
+                { 19, 56, "Colline-aux-Corbeaux" },
+                { 19, 41, "Cimetière de la Colline-aux-Corbeaux" },
+                { 35, 73, "Monticule des Ogres de Vul'Gol" },
+                { 47, 40, "Bosquet du Crépuscule" },
+                { 49, 73, "Ferme des Yorgen" },
+                { 65, 38, "Bosquet Boisbrillant" },
+                { 64, 71, "Vergers Pourrissants" },
+                { 79, 69, "Cimetière des Jardins Tranquilles" },
+                { 74, 47, "Sombre-Comté" },
+                { 77, 36, "Manoir Mistmantle" },
+                { 56, 16, "Rivage Assombri" },
+            },
+        },
         ["Les Terres Fantômes"] = { -- "Ghostlands" in French
             achievementID = 858,
             proxyLocation = {56, 24, "Les Terres Fantômes"},

@@ -12,7 +12,6 @@ function LoadWaypointData()
     end
 end
 
-
 -- Load the waypoint data
 WaypointData = LoadWaypointData()
 
@@ -120,7 +119,6 @@ function AddWaypointsForZone(continentName, zoneName)
         return false
     end
 end
-
 
 -- Function to remove waypoints when leaving a zone
 function RemoveAllWaypoints()
@@ -414,7 +412,6 @@ function AddProxyWaypoint(continentName, zoneName)
     end
 end
 
-
 local removeWaypointsTimer = nil
 
 function OnZoneChange(event)
@@ -443,8 +440,6 @@ function OnZoneChange(event)
 
     currentZone = newZone
 end
-
-
 
 -- Function to remove only zone waypoints
 function RemoveZoneWaypoints()

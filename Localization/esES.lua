@@ -95,6 +95,25 @@ Localization["esES"] = {
                 {74, 52, "Lago del Cairn de Piedra"},
             },
         },
+        ["Bosque del Ocaso"] = {
+            achievementID = 778,
+            proxyLocation = { 46, 80, "Bosque del Ocaso" },
+            waypoints = {
+                { 21, 69, "La Granja de Addle" },
+                { 19, 56, "Cerro del Cuervo" },
+                { 19, 41, "Cementerio del Cerro del Cuervo" },
+                { 35, 73, "Túmulo de Vul'Gol" },
+                { 47, 40, "Arboleda del Crepúsculo" },
+                { 49, 73, "La Hacienda Yorgen" },
+                { 65, 38, "Arboleda del Destello" },
+                { 64, 71, "El Vergel Podrido" },
+                { 79, 69, "Cementerio del Jardín Sereno" },
+                { 74, 47, "Villa Oscura" },
+                { 77, 36, "Mansión Mantoneblina" },
+                { 56, 16, "La Ribera Lóbrega" },
+            },
+        },
+
         -- Continúe de forma similar con las demás zonas...
     },
     ["Kalimdor"] = {
