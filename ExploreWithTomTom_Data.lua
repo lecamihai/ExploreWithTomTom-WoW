@@ -1,11 +1,14 @@
+-- Import localization
+local localize = Localize
+
 local waypointData = {
     -- Classic continents --
 
     -- World of Warcraft (Vanilla)
-    ["Eastern Kingdoms"] = {
-        ["Eversong Woods"] = {
+    [localize("CONTINENT_EASTERN_KINGDOMS")] = {
+        [localize("ZONE_EVERSONG_WOODS")] = {
             achievementID = 859, 
-            proxyLocation = {56, 17, "Eversong Woods"},
+            proxyLocation = {56, 17, localize("ZONE_EVERSONG_WOODS")},
             waypoints = {
                 {34, 23, "Sunstrider Isle"},
                 {44, 41, "Ruins of Silvermoon"},
@@ -34,9 +37,9 @@ local waypointData = {
                 {62, 80, "Zeb'Watha"}
             }
         },
-        ["Ghostlands"] = {
+        [localize("ZONE_GHOSTLAND")] = {
             achievementID = 858,
-            proxyLocation = { 56, 24, "Ghostlands" },
+            proxyLocation = { 56, 24, localize("ZONE_GHOSTLAND") },
             waypoints = {
                 { 46, 33, "Tranquillien" },
                 { 61, 12, "Suncrown Village" },
@@ -56,9 +59,9 @@ local waypointData = {
                 { 47, 78, "Thalassian Pass" },
             },
         },
-        ["Elwynn Forest"] = {
+        [localize("ZONE_ELWYNN_FOREST")] = {
             achievementID = 776,
-            proxyLocation = { 45, 74, "Elwynn Forest" },
+            proxyLocation = { 45, 74, localize("ZONE_ELWYNN_FOREST") },
             waypoints = {
                 { 48, 41, "Northshire Valley" },
                 { 24, 76, "Westbrook Garrison" },
@@ -73,9 +76,9 @@ local waypointData = {
                 { 74, 52, "Stone Cairn Lake" },
             },
         },
-        ["Westfall"] = {
+        [localize("ZONE_WESTFALL")] = {
             achievementID = 802,
-            proxyLocation = { 41, 80, "Westfall" },
+            proxyLocation = { 41, 80, localize("ZONE_WESTFALL") },
             waypoints = {
                 { 56, 50, "Sentinel Hill" },
                 { 54, 31, "Saldean's Farm" },

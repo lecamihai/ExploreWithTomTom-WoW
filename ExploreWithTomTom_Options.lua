@@ -1,3 +1,6 @@
+-- Import localization
+local localize = Localize
+
 -- Create a new frame with a thin white border and black background
 local exploreFrame = CreateFrame("Frame", "ExploreWithTomTomFrame", UIParent, "ThinBorderTemplate")
 exploreFrame:SetSize(600, 450)  -- Set size of the frame
@@ -34,12 +37,12 @@ headerContainer:SetPoint("TOP", -50, -50)
 
 local headerText = headerContainer:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 headerText:SetPoint("TOP", headerContainer, "TOP", 100, 15)
-headerText:SetText("Select a Zone")
+headerText:SetText(localize("SELECT_A_ZONE"))
 
 -- Continent Dropdown
 local continentLabel = exploreFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 continentLabel:SetPoint("TOPLEFT", headerContainer, "TOPLEFT", 5, 0)
-continentLabel:SetText("Select Continent")
+continentLabel:SetText(localize("SELECT_CONTINENT"))
 
 continentDropdown = CreateFrame("Frame", "WaypointContinentDropdown", headerContainer, "UIDropDownMenuTemplate")
 continentDropdown:SetPoint("TOPLEFT", continentLabel, "BOTTOMLEFT", -16, -8)
@@ -54,7 +57,7 @@ UIDropDownMenu_Initialize(continentDropdown, function(self, level)
             selectedContinent = continent
             selectedZone = nil  -- Reset selected zone
             UIDropDownMenu_SetText(continentDropdown, continent)
-            UIDropDownMenu_SetText(zoneDropdown, "Select Zone")
+            UIDropDownMenu_SetText(zoneDropdown, localize("SELECT_ZONE"))
             UpdateZoneStatusContainer(continent)
             headerText:SetText(continent)
             ScheduleNextUpdate()
@@ -66,7 +69,7 @@ end)
 -- Zone Dropdown
 local zoneLabel = exploreFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 zoneLabel:SetPoint("TOPLEFT", continentDropdown, "BOTTOMLEFT", 16, -20)
-zoneLabel:SetText("Select Zone")
+zoneLabel:SetText(localize("SELECT_ZONE"))
 
 zoneDropdown = CreateFrame("Frame", "WaypointZoneDropdown", headerContainer, "UIDropDownMenuTemplate")
 zoneDropdown:SetPoint("TOPLEFT", zoneLabel, "BOTTOMLEFT", -16, -8)
@@ -104,12 +107,12 @@ end)
 local addButton = CreateFrame("Button", nil, exploreFrame, "UIPanelButtonTemplate")
 addButton:SetPoint("TOPLEFT", zoneDropdown, "BOTTOMLEFT", 25, -20)
 addButton:SetSize(140, 22)
-addButton:SetText("Add Waypoints")
+addButton:SetText(localize("ADD_WAYPOINTS"))
 addButton:SetScript("OnClick", function()
     if selectedContinent and selectedZone then
         HandleZoneSelection(selectedContinent, selectedZone)
     else
-        print("Please select a continent and zone.")
+        print(localize("SELECT_CONTINENT_AND_ZONE"))
     end
 end)
 
@@ -273,9 +276,9 @@ local continentStatusTexts = CreateContinentStatusTexts(continentStatusContainer
 
 function UpdateContinentStatus()
     local continentOrder = {
-        "Outland", "Pandaria", "Northrend", "Kalimdor", "Draenor",
-        "Zandalar", "Kul Tiras", "Shadowlands", "The Maelstrom",
-        "Dragon Isles", "Broken Isles", "Eastern Kingdoms", "Vashj'ir"
+        localize("CONTINENT_OUTLAND"), localize("CONTINENT_PANDARIA"), localize("CONTINENT_NORTHREND"), localize("CONTINENT_KALIMDOR"), localize("CONTINENT_DRAENOR"),
+        localize("CONTINENT_ZANDALAR"), localize("CONTINENT_KUL_TIRAS"), localize("CONTINENT_SHADOWLANDS"), localize("CONTINENT_MAELSTROM"),
+        localize("CONTINENT_DRAGON_ISLES"), localize("CONTINENT_BROKEN_ISLES"), localize("CONTINENT_EASTERN_KINGDOMS"), localize("CONTINENT_VASHJIR")
     }
 
     for index, continent in ipairs(continentOrder) do

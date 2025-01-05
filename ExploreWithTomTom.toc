@@ -6,6 +6,7 @@
 ## Version: 1.0
 ## IconTexture: Interface\AddOns\ExploreWithTomTom\Icons\ewtt_addon_icon
 
+Localization.lua
 ExploreWithTomTom_Data.lua
 ExploreWithTomTom.lua
 ExploreWithTomTom_Options.lua
