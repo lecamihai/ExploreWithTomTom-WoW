@@ -1,4 +1,7 @@
 local waypointData = {
+    -- Classic continents --
+
+    -- World of Warcraft (Vanilla)
     ["Eastern Kingdoms"] = {
         ["Eversong Woods"] = {
             achievementID = 859, 
@@ -792,10 +795,10 @@ local waypointData = {
                 { 20, 56, "Gallywix Pleasure Palace" },
                 { 45, 50, "The Shattered Strand" },
                 { 58, 51, "Bilgewater Harbor" },
-                { 57, 12, "Bitter Reaches" },  -- *Bitter Reaches* is in the correct spot, but it is not marked in the image, indicating it may not be necessary for the achievement.
+                { 57, 12, "Bitter Reaches" },
                 { 80, 31, "Tower of Eldara" },
-                { 71, 33, "Ruins of Arkkoran" }, -- *Arokkoran* in your list is correct, but *Arkkoran* is shown in the image.
-                { 50, 27, "Darnassian Base Camp" }, -- Corrected spelling: "Darnassain" to "Darnassian"
+                { 71, 33, "Ruins of Arkkoran" },
+                { 50, 27, "Darnassian Base Camp" },
                 { 43, 75, "The Secret Lab" },
                 { 25, 38, "Bear's Head" },
                 { 38, 30, "Blackmaw Hold" },
@@ -982,6 +985,8 @@ local waypointData = {
             },
         },
     },
+
+    -- The Burning Crusade
     ["Outland"] = {
         ["Hellfire Peninsula"] = {
             achievementID = 862,
@@ -1163,6 +1168,8 @@ local waypointData = {
             },
         },
     },
+
+    -- Wrath of the Lich King
     ["Northrend"] = {
         ["Dragonblight"] = {
             achievementID = 1265,
@@ -1351,6 +1358,8 @@ local waypointData = {
             },
         },
     },
+
+    -- Cataclysm
     ["The Maelstrom"] = {
         ["Deepholm"] = {
             achievementID = 4864,
@@ -1412,7 +1421,10 @@ local waypointData = {
             },
         },
     },
-    -- Retail continents...
+
+    -- Retail continents
+
+    -- Mists of Pandaria
     ["Pandaria"] = {
         ["The Jade Forest"] = {
             achievementID = 6351,
@@ -1556,6 +1568,8 @@ local waypointData = {
             },
         },
     },
+
+    -- Warlords of Draenor
     ["Draenor"] = {
         ["Frostfire Ridge"] = {
             achievementID = 8937,
@@ -1681,9 +1695,11 @@ local waypointData = {
             },
         },
     },
+
+    -- Legion
     ["Broken Isles"] = {
         ["Azsuna"] = {
-            achievementID = 10665,  -- This is the actual achievement ID for exploring Azsuna
+            achievementID = 10665,
             proxyLocation = { 33, 56, "Azsuna" },
             waypoints = {
                 { 39.6, 50.2, "Faronaar" },
@@ -1782,6 +1798,8 @@ local waypointData = {
             },
         },
     },
+
+    -- Battle for Azeroth
     ["Zandalar"] = {
         ["Zuldazar"] = {
             achievementID = 12559,
@@ -1871,7 +1889,7 @@ local waypointData = {
             },
         },
         ["Tiragarde Sound"] = {
-            achievementID = 12556,  -- This is the achievement ID for exploring Tiragarde Sound
+            achievementID = 12556,
             proxyLocation = { 58, 56, "Tiragarde Sound" },  -- Using Boralus as a central point
             waypoints = {
                 { 41.14, 26.80, "Anglepoint Wharf" },

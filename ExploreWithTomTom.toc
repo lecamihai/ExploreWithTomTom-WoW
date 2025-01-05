@@ -4,6 +4,7 @@
 ## Author: L3ca
 ## Dependencies: TomTom
 ## Version: 1.0
+## IconTexture: Interface\AddOns\ExploreWithTomTom\Icons\638618407558556813
 
 ExploreWithTomTom_Data.lua
 ExploreWithTomTom.lua

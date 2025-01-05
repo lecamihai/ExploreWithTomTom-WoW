@@ -302,6 +302,5 @@ loginFrame:SetScript("OnEvent", function(self, event)
 
         -- Set initial current zone
         currentZone = GetZoneText()
-        currentSubZone = GetSubZoneText()
     end)
 end)

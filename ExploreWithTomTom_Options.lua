@@ -43,7 +43,6 @@ continentLabel:SetText("Select Continent")
 
 continentDropdown = CreateFrame("Frame", "WaypointContinentDropdown", headerContainer, "UIDropDownMenuTemplate")
 continentDropdown:SetPoint("TOPLEFT", continentLabel, "BOTTOMLEFT", -16, -8)
-
 UIDropDownMenu_SetWidth(continentDropdown, 150)
 
 UIDropDownMenu_Initialize(continentDropdown, function(self, level)
@@ -57,8 +56,8 @@ UIDropDownMenu_Initialize(continentDropdown, function(self, level)
             UIDropDownMenu_SetText(continentDropdown, continent)
             UIDropDownMenu_SetText(zoneDropdown, "Select Zone")
             UpdateZoneStatusContainer(continent)
-            headerText:SetText(continent)  -- Update the header with the selected continent name
-            ScheduleNextUpdate()  -- Schedule the next update
+            headerText:SetText(continent)
+            ScheduleNextUpdate()
         end
         UIDropDownMenu_AddButton(info, level)
     end
@@ -71,7 +70,6 @@ zoneLabel:SetText("Select Zone")
 
 zoneDropdown = CreateFrame("Frame", "WaypointZoneDropdown", headerContainer, "UIDropDownMenuTemplate")
 zoneDropdown:SetPoint("TOPLEFT", zoneLabel, "BOTTOMLEFT", -16, -8)
-
 UIDropDownMenu_SetWidth(zoneDropdown, 150)
 
 UIDropDownMenu_Initialize(zoneDropdown, function(self, level)
@@ -95,8 +93,8 @@ UIDropDownMenu_Initialize(zoneDropdown, function(self, level)
             selectedZone = zone
             UIDropDownMenu_SetText(zoneDropdown, zone)
             UpdateZoneStatusContainer(selectedContinent, zone)
-            headerText:SetText(zone)  -- Update the header with the selected zone name
-            ScheduleNextUpdate()  -- Schedule the next update
+            headerText:SetText(zone)
+            ScheduleNextUpdate()
         end
         UIDropDownMenu_AddButton(info, level)
     end
@@ -109,7 +107,7 @@ addButton:SetSize(140, 22)
 addButton:SetText("Add Waypoints")
 addButton:SetScript("OnClick", function()
     if selectedContinent and selectedZone then
-        HandleZoneSelection(selectedContinent, selectedZone)  -- Pass both the continent and the zone
+        HandleZoneSelection(selectedContinent, selectedZone)
     else
         print("Please select a continent and zone.")
     end
@@ -326,5 +324,5 @@ local function OnFrameHide()
     end
 end
 
--- Add this line after creating exploreFrame
+-- Set the OnHide script so that updates stop when the frame is closed
 exploreFrame:SetScript("OnHide", OnFrameHide)
