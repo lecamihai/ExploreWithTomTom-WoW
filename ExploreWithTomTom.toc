@@ -8,6 +8,8 @@
 
 Localization\enUS.lua
 Localization\frFR.lua
+Localization\ruRU.lua
+Localization\esES.lua
 
 ExploreWithTomTom.lua
 ExploreWithTomTom_Options.lua

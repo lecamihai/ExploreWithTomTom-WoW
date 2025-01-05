@@ -122,8 +122,6 @@ function AddWaypointsForZone(continentName, zoneName)
 end
 
 
-
-
 -- Function to remove waypoints when leaving a zone
 function RemoveAllWaypoints()
     for desc, uid in pairs(activeWaypoints) do
@@ -132,12 +130,10 @@ function RemoveAllWaypoints()
     activeWaypoints = {}  -- Clear the active waypoints table
 end
 
-
-
 function GetContinentMapID(continentName)
     local continentMapIDs = {
+        -- EN
         ["Eastern Kingdoms"] = 13,
-        ["Royaumes de l’Est"] = 13,
         ["Kalimdor"] = 12,
         ["Outland"] = 101,
         ["Northrend"] = 113,
@@ -149,13 +145,152 @@ function GetContinentMapID(continentName)
         ["Argus"] = 905,
         ["The Maelstrom"] = 948,
         ["Vashj'ir"] = 203,
+    
+        -- FR
+        ["Royaumes de l’Est"] = 13,
+        ["Kalimdor"] = 12,
+        ["Outreterre"] = 101,
+        ["Norfendre"] = 113,
+        ["Pandarie"] = 424,
+        ["Draenor"] = 572,
+        ["Îles Brisées"] = 619,
+        ["Zandalar"] = 875,
+        ["Kul Tiras"] = 876,
+        ["Argus"] = 905,
+        ["Le Maelström"] = 948,
+        ["Vashj'ir"] = 203,
+    
+        -- RU
+        ["Восточные королевства"] = 13,
+        ["Калимдор"] = 12,
+        ["Запределье"] = 101,
+        ["Нордскол"] = 113,
+        ["Пандария"] = 424,
+        ["Дренор"] = 572,
+        ["Расколотые острова"] = 619,
+        ["Зандалар"] = 875,
+        ["Кул Тирас"] = 876,
+        ["Аргус"] = 905,
+        ["Водоворот"] = 948,
+        ["Вайш'ир"] = 203,
+    
+        -- DE (German)
+        ["Östliche Königreiche"] = 13,
+        ["Kalimdor"] = 12,
+        ["Scherbenwelt"] = 101,
+        ["Nordend"] = 113,
+        ["Pandaria"] = 424,
+        ["Draenor"] = 572,
+        ["Die Verheerten Inseln"] = 619,
+        ["Zandalar"] = 875,
+        ["Kul Tiras"] = 876,
+        ["Argus"] = 905,
+        ["Der Mahlstrom"] = 948,
+        ["Vashj'ir"] = 203,
+    
+        -- ES (EU) (European Spanish)
+        ["Reinos del Este"] = 13,
+        ["Kalimdor"] = 12,
+        ["Terrallende"] = 101,
+        ["Rasganorte"] = 113,
+        ["Pandaria"] = 424,
+        ["Draenor"] = 572,
+        ["Islas Quebradas"] = 619,
+        ["Zandalar"] = 875,
+        ["Kul Tiras"] = 876,
+        ["Argus"] = 905,
+        ["La Vorágine"] = 948,
+        ["Vashj'ir"] = 203,
+    
+        -- ES (AL) (Latin American Spanish)
+        ["Reinos del Este"] = 13,
+        ["Kalimdor"] = 12,
+        ["Terrallende"] = 101,
+        ["Rasganorte"] = 113,
+        ["Pandaria"] = 424,
+        ["Draenor"] = 572,
+        ["Islas Quebradas"] = 619,
+        ["Zandalar"] = 875,
+        ["Kul Tiras"] = 876,
+        ["Argus"] = 905,
+        ["La Vorágine"] = 948,
+        ["Vashj'ir"] = 203,
+    
+        -- IT (Italian)
+        ["Regni Orientali"] = 13,
+        ["Kalimdor"] = 12,
+        ["Terre Esterne"] = 101,
+        ["Nordania"] = 113,
+        ["Pandaria"] = 424,
+        ["Draenor"] = 572,
+        ["Isole Disperse"] = 619,
+        ["Zandalar"] = 875,
+        ["Kul Tiras"] = 876,
+        ["Argus"] = 905,
+        ["Maelstrom"] = 948,
+        ["Vashj'ir"] = 203,
+    
+        -- PT (Portuguese)
+        ["Reinos do Leste"] = 13,
+        ["Kalimdor"] = 12,
+        ["Terralém"] = 101,
+        ["Nortúndria"] = 113,
+        ["Pandária"] = 424,
+        ["Draenor"] = 572,
+        ["Ilhas Partidas"] = 619,
+        ["Zandalar"] = 875,
+        ["Kul Tiraz"] = 876,
+        ["Argus"] = 905,
+        ["Voragem"] = 948,
+        ["Vashj'ir"] = 203,
+    
+        -- KO (Korean)
+        ["동부 왕국"] = 13,
+        ["칼림도어"] = 12,
+        ["아웃랜드"] = 101,
+        ["노스렌드"] = 113,
+        ["판다리아"] = 424,
+        ["드레노어"] = 572,
+        ["부서진 섬"] = 619,
+        ["잔달라"] = 875,
+        ["쿨 티라스"] = 876,
+        ["아르거스"] = 905,
+        ["혼돈의 소용돌이"] = 948,
+        ["바쉬르"] = 203,
+    
+        -- ZH-CN (Simplified Chinese)
+        ["东部王国"] = 13,
+        ["卡利姆多"] = 12,
+        ["外域"] = 101,
+        ["诺森德"] = 113,
+        ["潘达利亚"] = 424,
+        ["德拉诺"] = 572,
+        ["破碎群岛"] = 619,
+        ["赞达拉"] = 875,
+        ["库尔提拉斯"] = 876,
+        ["阿古斯"] = 905,
+        ["大漩涡"] = 948,
+        ["瓦丝琪尔"] = 203,
+    
+        -- ZH-TW (Traditional Chinese)
+        ["東部王國"] = 13,
+        ["卡林多"] = 12,
+        ["外域"] = 101,
+        ["北裂境"] = 113,
+        ["潘達利亞"] = 424,
+        ["德拉諾"] = 572,
+        ["破碎群島"] = 619,
+        ["贊達拉"] = 875,
+        ["庫爾提拉斯"] = 876,
+        ["阿古斯"] = 905,
+        ["大漩渦"] = 948,
+        ["瓦許伊爾"] = 203,
     }
-
+    
     local mapID = continentMapIDs[continentName]
     return mapID
     
 end
-
 
 function HandleZoneSelection(continentName, zoneName)
     -- Clear all waypoints to start fresh
@@ -224,8 +359,6 @@ function HandleZoneSelection(continentName, zoneName)
         currentProxy = proxyUid
     end
 end
-
-
 
 -- Function to add a proxy waypoint on the world map near the zone
 function AddProxyWaypoint(continentName, zoneName)
