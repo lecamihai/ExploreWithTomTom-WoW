@@ -1,14 +1,13 @@
--- Import localization
-local localize = Localize
+Localization = Localization or {}
 
-local waypointData = {
+Localization["enUS"] = {
     -- Classic continents --
 
     -- World of Warcraft (Vanilla)
-    [localize("CONTINENT_EASTERN_KINGDOMS")] = {
-        [localize("ZONE_EVERSONG_WOODS")] = {
+    ["Eastern Kingdoms"] = {
+        ["Eversong Woods"] = {
             achievementID = 859, 
-            proxyLocation = {56, 17, localize("ZONE_EVERSONG_WOODS")},
+            proxyLocation = {56, 17, "Eversong Woods"},
             waypoints = {
                 {34, 23, "Sunstrider Isle"},
                 {44, 41, "Ruins of Silvermoon"},
@@ -37,9 +36,9 @@ local waypointData = {
                 {62, 80, "Zeb'Watha"}
             }
         },
-        [localize("ZONE_GHOSTLAND")] = {
+        ["Ghostlands"] = {
             achievementID = 858,
-            proxyLocation = { 56, 24, localize("ZONE_GHOSTLAND") },
+            proxyLocation = { 56, 24, "Ghostlands" },
             waypoints = {
                 { 46, 33, "Tranquillien" },
                 { 61, 12, "Suncrown Village" },
@@ -59,9 +58,9 @@ local waypointData = {
                 { 47, 78, "Thalassian Pass" },
             },
         },
-        [localize("ZONE_ELWYNN_FOREST")] = {
+        ["Elwynn Forest"] = {
             achievementID = 776,
-            proxyLocation = { 45, 74, localize("ZONE_ELWYNN_FOREST") },
+            proxyLocation = { 45, 74, "Elwynn Forest" },
             waypoints = {
                 { 48, 41, "Northshire Valley" },
                 { 24, 76, "Westbrook Garrison" },
@@ -76,9 +75,9 @@ local waypointData = {
                 { 74, 52, "Stone Cairn Lake" },
             },
         },
-        [localize("ZONE_WESTFALL")] = {
+        ["Westfall"] = {
             achievementID = 802,
-            proxyLocation = { 41, 80, localize("ZONE_WESTFALL") },
+            proxyLocation = { 41, 80, "Westfall" },
             waypoints = {
                 { 56, 50, "Sentinel Hill" },
                 { 54, 31, "Saldean's Farm" },
@@ -1909,6 +1908,5 @@ local waypointData = {
             },
         },
     },
-}
 
-WaypointData = waypointData
+}
