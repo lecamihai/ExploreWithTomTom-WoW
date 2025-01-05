@@ -50,20 +50,24 @@ UIDropDownMenu_SetWidth(continentDropdown, 150)
 UIDropDownMenu_Initialize(continentDropdown, function(self, level)
     local info = UIDropDownMenu_CreateInfo()
     for continent in pairs(WaypointData) do
-        info.text = continent
-        info.checked = (continent == selectedContinent)
-        info.func = function()
-            selectedContinent = continent
-            selectedZone = nil  -- Reset selected zone
-            UIDropDownMenu_SetText(continentDropdown, continent)
-            UIDropDownMenu_SetText(zoneDropdown, "Select Zone")
-            UpdateZoneStatusContainer(continent)
-            headerText:SetText(continent)
-            ScheduleNextUpdate()
+        -- Only process valid continents (keys that aren’t "Continents" or any other special key)
+        if continent ~= "Continents" then
+            info.text = continent
+            info.checked = (continent == selectedContinent)
+            info.func = function()
+                selectedContinent = continent
+                selectedZone = nil
+                UIDropDownMenu_SetText(continentDropdown, continent)
+                UIDropDownMenu_SetText(zoneDropdown, "Select Zone")
+                UpdateZoneStatusContainer(continent)
+                headerText:SetText(continent)
+                ScheduleNextUpdate()
+            end
+            UIDropDownMenu_AddButton(info, level)
         end
-        UIDropDownMenu_AddButton(info, level)
     end
 end)
+
 
 -- Zone Dropdown
 local zoneLabel = exploreFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
@@ -273,15 +277,38 @@ end
 
 local continentStatusTexts = CreateContinentStatusTexts(continentStatusContainer)
 
+local continentOrder = {
+    "Outland", "Pandaria", "Northrend", "Kalimdor", 
+    "Draenor", "Zandalar", "Kul Tiras", "Shadowlands", 
+    "The Maelstrom", "Dragon Isles", "Broken Isles", 
+    "Eastern Kingdoms", "Vashj'ir"
+}
+
+for index, continent in ipairs(continentOrder) do
+    local zones = WaypointData[continent]
+    -- ...
+    local color = ...
+    continentStatusTexts[index]:SetText(
+        color .. string.format("%s: %d/%d", continent, completedZones, totalZones) .. "|r"
+    )
+end
+
+
 function UpdateContinentStatus()
     local continentOrder = {
-        "Outland", "Pandaria", "Northrend", "Kalimdor", "Draenor",
-        "Zandalar", "Kul Tiras", "Shadowlands", "The Maelstrom",
-        "Dragon Isles", "Broken Isles", "Eastern Kingdoms", "Vashj'ir"
+        "Outland", "Pandaria", "Northrend", "Kalimdor", 
+        "Draenor", "Zandalar", "Kul Tiras", "Shadowlands", 
+        "The Maelstrom", "Dragon Isles", "Broken Isles", 
+        "Eastern Kingdoms", "Vashj'ir"
     }
 
-    for index, continent in ipairs(continentOrder) do
-        local zones = WaypointData[continent]
+    for index, englishContinentKey in ipairs(continentOrder) do
+        -- 1) Get the localized name of the continent (for display and for indexing WaypointData).
+        local localizedContinentKey = LocalizeContinent(englishContinentKey)
+        
+        -- 2) Lookup zone data using that localized key
+        local zones = WaypointData[localizedContinentKey]
+        
         if zones then
             local totalZones = 0
             local completedZones = 0
@@ -302,9 +329,12 @@ function UpdateContinentStatus()
             end
             
             local color = (completedZones == totalZones) and "|cFF00FF00" or "|cFFFFFF00"
-            continentStatusTexts[index]:SetText(color .. string.format("%s: %d/%d", continent, completedZones, totalZones) .. "|r")
+            continentStatusTexts[index]:SetText(
+                color .. string.format("%s: %d/%d", localizedContinentKey, completedZones, totalZones) .. "|r"
+            )
             continentStatusTexts[index]:Show()
         else
+            -- Hide if we have no data for that continent (possibly not in that locale yet)
             continentStatusTexts[index]:Hide()
         end
     end

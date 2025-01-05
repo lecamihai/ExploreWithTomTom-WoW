@@ -12,6 +12,7 @@ function LoadWaypointData()
     end
 end
 
+
 -- Load the waypoint data
 WaypointData = LoadWaypointData()
 
@@ -290,6 +291,19 @@ function GetContinentMapID(continentName)
     
 end
 
+function LocalizeContinent(continentKey)
+    local locale = GetLocale()
+    if Localization 
+       and Localization[locale] 
+       and Localization[locale]["Continents"]
+       and Localization[locale]["Continents"][continentKey] then
+
+        return Localization[locale]["Continents"][continentKey]
+    end
+    -- Fallback to English key if no translation
+    return continentKey
+end
+
 function HandleZoneSelection(continentName, zoneName)
     -- Clear all waypoints to start fresh
     TomTom:ClearAllWaypoints()
@@ -440,6 +454,7 @@ function OnZoneChange(event)
 
     currentZone = newZone
 end
+
 
 -- Function to remove only zone waypoints
 function RemoveZoneWaypoints()

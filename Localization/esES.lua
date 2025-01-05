@@ -106,7 +106,7 @@ Localization["esES"] = {
                 { 47, 40, "Arboleda del Crepúsculo" },
                 { 49, 73, "La Hacienda Yorgen" },
                 { 65, 38, "Arboleda del Destello" },
-                { 64, 71, "El Vergel Podrido" },
+                { 64, 71, "El Vergel Pútrido" },
                 { 79, 69, "Cementerio del Jardín Sereno" },
                 { 74, 47, "Villa Oscura" },
                 { 77, 36, "Mansión Mantoneblina" },
@@ -130,4 +130,5 @@ Localization["esES"] = {
         -- Añada otras zonas de Kalimdor...
     },
     -- Añada otros continentes...
+    
 }

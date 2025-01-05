@@ -1,3 +1,5 @@
+-- frFR.lua
+
 Localization = Localization or {}
 
 Localization["frFR"] = {
@@ -129,4 +131,20 @@ Localization["frFR"] = {
         -- Add other Kalimdor zones...
     },
     -- Add other continents...
+    ["Continents"] = {
+        ["Eastern Kingdoms"] = "Royaumes de l’Est",
+        ["Kalimdor"]         = "Kalimdor",
+        ["Outland"]          = "Outreterre",
+        ["Northrend"]        = "Norfendre",
+        ["Pandaria"]         = "Pandarie",
+        ["Draenor"]          = "Draenor",
+        ["Broken Isles"]     = "Îles Brisées",
+        ["Zandalar"]         = "Zandalar",
+        ["Kul Tiras"]        = "Kul Tiras",
+        ["Shadowlands"]      = "Shadowlands", -- If Blizzard doesn't localize name
+        ["Dragon Isles"]     = "Îles aux Dragons",
+        ["The Maelstrom"]    = "Le Maelström",
+        ["Vashj'ir"]         = "Vashj'ir",
+        -- etc. if you need more...
+    },
 }
