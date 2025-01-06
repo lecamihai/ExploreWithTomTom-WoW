@@ -11,6 +11,8 @@ Localization\frFR.lua
 Localization\ruRU.lua
 Localization\esES.lua
 Localization\deDE.lua
+Localization\itIT.lua
+Localization\ptBR.lua
 
 ExploreWithTomTom.lua
 ExploreWithTomTom_Options.lua

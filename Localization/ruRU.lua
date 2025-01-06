@@ -1029,7 +1029,7 @@ Localization["ruRU"] = {
                 {0, 0, "Убежище племени Тортака"},
             },
         },
-    }, -- Warlords of Draenor
+    }, -- Battle for Azeroth
     ["Калимдор"] = {
         ["Дуротар"] = {
             achievementID = 728,
@@ -1876,7 +1876,7 @@ Localization["ruRU"] = {
     ["Continents"] = {
         ["Eastern Kingdoms"] = "Восточные королевства",
         ["Outland"] = "Запределье",
-        ["Cataclysm"] = "Катаклизм",
+        ["Cataclysm"] = "Катаклизм", -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = "Дренор",
         ["Battle for Azeroth"] = "Битва за Азерот", -- Zandalar and Kul Tiras
         ["Kalimdor"] = "Калимдор",
