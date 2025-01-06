@@ -53,9 +53,9 @@ Localization["frFR"] = {
                 {0, 0, "Mont Rochenoire"},
             },
         },
-        ["Exploration du bois de la Pénombre"] = {
+        ["bois de la Pénombre"] = {
             achievementID = 778,
-            proxyLocation = {0, 0, "Exploration du bois de la Pénombre"},
+            proxyLocation = {0, 0, "bois de la Pénombre"},
             waypoints = {
                 {0, 0, "La rive Silencieuse"},
                 {0, 0, "Colline-aux-Corbeaux"},
@@ -72,9 +72,9 @@ Localization["frFR"] = {
                 {0, 0, "Manoir Mantebrume"},
             },
         },
-        ["Exploration du Loch Modan"] = {
+        ["Loch Modan"] = {
             achievementID = 779,
-            proxyLocation = {0, 0, "Exploration du Loch Modan"},
+            proxyLocation = {0, 0, "Loch Modan"},
             waypoints = {
                 {0, 0, "Le Loch"},
                 {0, 0, "Bastion des Mo’grosh"},
@@ -147,9 +147,9 @@ Localization["frFR"] = {
                 {0, 0, "Passe Thalassienne"},
             },
         },
-        ["Exploration du cap Strangleronce"] = {
+        ["cap Strangleronce"] = {
             achievementID = 4995,
-            proxyLocation = {0, 0, "Exploration du cap Strangleronce"},
+            proxyLocation = {0, 0, "cap Strangleronce"},
             waypoints = {
                 {0, 0, "Baie-du-Butin"},
                 {0, 0, "Arène des Gurubashi"},
@@ -345,9 +345,9 @@ Localization["frFR"] = {
                 {0, 0, "Canyon Vent-de-schiste"},
             },
         },
-        ["Exploration du bois des Chants éternels"] = {
+        ["bois des Chants éternels"] = {
             achievementID = 859,
-            proxyLocation = {0, 0, "Exploration du bois des Chants éternels"},
+            proxyLocation = {0, 0, "bois des Chants éternels"},
             waypoints = {
                 {0, 0, "Île de Haut-Soleil"},
                 {0, 0, "Sanctum Occidental"},
@@ -419,9 +419,9 @@ Localization["frFR"] = {
                 {0, 0, "Zul’Gurub"},
             },
         },
-        ["Exploration du marais des Chagrins"] = {
+        ["marais des Chagrins"] = {
             achievementID = 782,
-            proxyLocation = {0, 0, "Exploration du marais des Chagrins"},
+            proxyLocation = {0, 0, "marais des Chagrins"},
             waypoints = {
                 {0, 0, "Vallée des Brumes"},
                 {0, 0, "Croisement de Lance-brisée"},
@@ -456,9 +456,9 @@ Localization["frFR"] = {
                 {0, 0, "Le gouffre Déchaîné"},
             },
         },
-        ["Exploration du défilé de Deuillevent"] = {
+        ["défilé de Deuillevent"] = {
             achievementID = 777,
-            proxyLocation = {0, 0, "Exploration du défilé de Deuillevent"},
+            proxyLocation = {0, 0, "défilé de Deuillevent"},
             waypoints = {
                 {0, 0, "Croisée de l’Homme mort"},
                 {0, 0, "Karazhan"},
@@ -494,7 +494,7 @@ Localization["frFR"] = {
                 {0, 0, "Stratholme"},
             },
         },
-    },
+    }, -- World of Warcraft (Vanilla)
     ["L’Outreterre"] = {
         ["la péninsule des Flammes infernales"] = {
             achievementID = 862,
@@ -598,9 +598,9 @@ Localization["frFR"] = {
                 {0, 0, "Halte Illidari"},
             },
         },
-        ["Exploration du marécage de Zangar"] = {
+        ["marécage de Zangar"] = {
             achievementID = 863,
-            proxyLocation = {0, 0, "Exploration du marécage de Zangar"},
+            proxyLocation = {0, 0, "marécage de Zangar"},
             waypoints = {
                 {0, 0, "Refuge Cénarien"},
                 {0, 0, "Tourbe-Farouche"},
@@ -675,11 +675,11 @@ Localization["frFR"] = {
                 {0, 0, "Écodôme Terres-Médianes"},
             },
         },
-    },
-    ["Exploration du Cataclysme"] = {
-        ["Exploration d'Hyjal"] = {
+    }, -- The Burning Crusade
+    ["Cataclysme"] = {
+        ["d'Hyjal"] = {
             achievementID = 4863,
-            proxyLocation = {0, 0, "Exploration d'Hyjal"},
+            proxyLocation = {0, 0, "d'Hyjal"},
             waypoints = {
                 {0, 0, "Bord-du-Monde"},
                 {0, 0, "Lac des Cendres"},
@@ -694,9 +694,9 @@ Localization["frFR"] = {
                 {0, 0, "La plaine Incendiée"},
             },
         },
-        ["Exploration du Tréfonds"] = {
+        ["Tréfonds"] = {
             achievementID = 4864,
-            proxyLocation = {0, 0, "Exploration du Tréfonds"},
+            proxyLocation = {0, 0, "Tréfonds"},
             waypoints = {
                 {0, 0, "La Chute d’Aile de mort"},
                 {0, 0, "Scories-de-Rochepointe"},
@@ -772,9 +772,9 @@ Localization["frFR"] = {
                 {0, 0, "Grotte Chatoyante"},
             },
         },
-        ["Exploration d'Uldum"] = {
+        ["d'Uldum"] = {
             achievementID = 4865,
-            proxyLocation = {0, 0, "Exploration d'Uldum"},
+            proxyLocation = {0, 0, "d'Uldum"},
             waypoints = {
                 {0, 0, "Champs d’Akhenet"},
                 {0, 0, "Tombe de Khartut"},
@@ -800,7 +800,7 @@ Localization["frFR"] = {
                 {0, 0, "Barrage de la Vir’naal"},
             },
         },
-    },
+    }, -- Cataclysm
     ["Draenor"] = {
         ["la crête de Givrefeu"] = {
             achievementID = 8937,
@@ -927,7 +927,7 @@ Localization["frFR"] = {
                 {0, 0, "Trône des éléments"},
             },
         },
-    },
+    }, -- Warlords of Draenor
     ["Battle for Azeroth"] = {
         ["la rade de Tiragarde"] = {
             achievementID = 12556,
@@ -1031,7 +1031,7 @@ Localization["frFR"] = {
                 {0, 0, "Refuge Tortaka"},
             },
         },
-    },
+    }, -- Battle for Azeroth
     ["Kalimdor"] = {
         ["Durotar"] = {
             achievementID = 728,
@@ -1199,9 +1199,9 @@ Localization["frFR"] = {
                 {0, 0, "Ruines de Sombrebrume"},
             },
         },
-        ["Exploration d'Azshara"] = {
+        ["d'Azshara"] = {
             achievementID = 852,
-            proxyLocation = {0, 0, "Exploration d'Azshara"},
+            proxyLocation = {0, 0, "d'Azshara"},
             waypoints = {
                 {0, 0, "Palais des Plaisirs de Gallywix"},
                 {0, 0, "Havre Baille-Fonds"},
@@ -1222,9 +1222,9 @@ Localization["frFR"] = {
                 {0, 0, "Les confins Dévastés"},
             },
         },
-        ["Exploration du cratère d'Un'Goro"] = {
+        ["cratère d'Un'Goro"] = {
             achievementID = 854,
-            proxyLocation = {0, 0, "Exploration du cratère d'Un'Goro"},
+            proxyLocation = {0, 0, "cratère d'Un'Goro"},
             waypoints = {
                 {0, 0, "Crête de la Fournaise"},
                 {0, 0, "Camp retranché des Marshal"},
@@ -1296,9 +1296,9 @@ Localization["frFR"] = {
                 {0, 0, "Amarrage de Valaar"},
             },
         },
-        ["Exploration du Berceau-de-l'Hiver"] = {
+        ["Berceau-de-l'Hiver"] = {
             achievementID = 857,
-            proxyLocation = {0, 0, "Exploration du Berceau-de-l'Hiver"},
+            proxyLocation = {0, 0, "Berceau-de-l'Hiver"},
             waypoints = {
                 {0, 0, "Sources de Givrefeu"},
                 {0, 0, "Lac Kel’Theril"},
@@ -1331,9 +1331,9 @@ Localization["frFR"] = {
                 {0, 0, "Nazj’vel"},
             },
         },
-        ["Exploration d'Orneval"] = {
+        ["d'Orneval"] = {
             achievementID = 845,
-            proxyLocation = {0, 0, "Exploration d'Orneval"},
+            proxyLocation = {0, 0, "d'Orneval"},
             waypoints = {
                 {0, 0, "La grève de Zoram"},
                 {0, 0, "Refuge de Vent-d’Argent"},
@@ -1378,9 +1378,9 @@ Localization["frFR"] = {
                 {0, 0, "Lac Mirkfallon"},
             },
         },
-        ["Exploration du marécage d'Âprefange"] = {
+        ["marécage d'Âprefange"] = {
             achievementID = 850,
-            proxyLocation = {0, 0, "Exploration du marécage d'Âprefange"},
+            proxyLocation = {0, 0, "marécage d'Âprefange"},
             waypoints = {
                 {0, 0, "Île de Theramore"},
                 {0, 0, "Poste de Navrecorne"},
@@ -1443,8 +1443,8 @@ Localization["frFR"] = {
                 {0, 0, "Refuge des saisons de Malfurion"},
             },
         },
-    },
-    ["Exploration du Norfendre"] = {
+    }, -- World of Warcraft (Vanilla)
+    ["Norfendre"] = {
         ["la toundra Boréenne"] = {
             achievementID = 1264,
             proxyLocation = {0, 0, "la toundra Boréenne"},
@@ -1542,9 +1542,9 @@ Localization["frFR"] = {
                 {0, 0, "Fléaulme"},
             },
         },
-        ["Exploration du fjord Hurlant"] = {
+        ["fjord Hurlant"] = {
             achievementID = 1263,
-            proxyLocation = {0, 0, "Exploration du fjord Hurlant"},
+            proxyLocation = {0, 0, "fjord Hurlant"},
             waypoints = {
                 {0, 0, "Kamagua"},
                 {0, 0, "Camp Sabot-d’Hiver"},
@@ -1589,9 +1589,9 @@ Localization["frFR"] = {
                 {0, 0, "Campement de la brigade de la marche de l’Ouest"},
             },
         },
-        ["Exploration du bassin de Sholazar"] = {
+        ["bassin de Sholazar"] = {
             achievementID = 1268,
-            proxyLocation = {0, 0, "Exploration du bassin de Sholazar"},
+            proxyLocation = {0, 0, "bassin de Sholazar"},
             waypoints = {
                 {0, 0, "Le Cœur du fleuve"},
                 {0, 0, "Le pilier Mousselume"},
@@ -1629,7 +1629,7 @@ Localization["frFR"] = {
                 {0, 0, "Nidavelir"},
             },
         },
-    },
+    }, -- Wrath of the Lich King
     ["Pandarie"] = {
         ["la forêt de Jade"] = {
             achievementID = 6351,
@@ -1693,9 +1693,9 @@ Localization["frFR"] = {
                 {0, 0, "Sra’vess"},
             },
         },
-        ["Exploration du val de l’Éternel printemps"] = {
+        ["val de l’Éternel printemps"] = {
             achievementID = 6979,
-            proxyLocation = {0, 0, "Exploration du val de l’Éternel printemps"},
+            proxyLocation = {0, 0, "val de l’Éternel printemps"},
             waypoints = {
                 {0, 0, "Ruines de Guo-Lai"},
                 {0, 0, "Palais Mogu’shan"},
@@ -1734,9 +1734,9 @@ Localization["frFR"] = {
                 {0, 0, "Descente de Zhu"},
             },
         },
-        ["Exploration du sommet de Kun-Lai"] = {
+        ["sommet de Kun-Lai"] = {
             achievementID = 6976,
-            proxyLocation = {0, 0, "Exploration du sommet de Kun-Lai"},
+            proxyLocation = {0, 0, "sommet de Kun-Lai"},
             waypoints = {
                 {0, 0, "Binan"},
                 {0, 0, "Porte des Astres vénérables"},
@@ -1772,11 +1772,11 @@ Localization["frFR"] = {
                 {0, 0, "Zan’vess"},
             },
         },
-    },
+    }, -- Mists of Pandaria
     ["îles Brisées"] = {
-        ["Exploration d’Azsuna"] = {
+        ["Azsuna"] = {
             achievementID = 10665,
-            proxyLocation = {0, 0, "Exploration d’Azsuna"},
+            proxyLocation = {0, 0, "d’Azsuna"},
             waypoints = {
                 {0, 0, "Faronaar"},
                 {0, 0, "Voie Verte"},
@@ -1873,20 +1873,17 @@ Localization["frFR"] = {
                 {0, 0, "Les pitons Larmoyants"},
             },
         },
-    },
-    -- Add other continents...
+    }, -- Legion
+    -- Continents dictionary ...
     ["Continents"] = {
         ["Eastern Kingdoms"] = "Royaumes de l’Est",
-        ["Kalimdor"]         = "Kalimdor",
-        ["Outland"]          = "Outreterre",
-        ["Northrend"]        = "Norfendre",
-        ["Pandaria"]         = "Pandarie",
-        ["Draenor"]          = "Draenor",
-        ["Broken Isles"]     = "Îles Brisées",
-        ["Zandalar"]         = "Zandalar",
-        ["Kul Tiras"]        = "Kul Tiras",
-        ["The Maelstrom"]    = "Le Maelström",
-        ["Vashj'ir"]         = "Vashj'ir",
-        -- etc. if you need more...
-    },
+        ["Outland"] = "Outreterre",
+        ["Cataclysm"] = "Cataclysme",
+        ["Draenor"] = "Draenor",
+        ["Battle for Azeroth"] = "Bataille pour Azeroth", -- Zandalar and Kul Tiras
+        ["Kalimdor"] = "Kalimdor",
+        ["Northrend"] = "Norfendre",
+        ["Pandaria"] = "Pandaria",
+        ["Broken Isles"] = "Îles Brisées",
+    }
 }

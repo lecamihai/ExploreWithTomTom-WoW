@@ -492,7 +492,7 @@ Localization["ruRU"] = {
                 {0, 0, "Стратхольм"},
             },
         },
-    },
+    }, -- World of Warcraft (Vanilla)
     ["Запределье"] = {
         ["Полуостров Адского Пламени"] = {
             achievementID = 862,
@@ -673,7 +673,7 @@ Localization["ruRU"] = {
                 {0, 0, "Заповедник Срединные земли"},
             },
         },
-    },
+    }, -- The Burning Crusade
     ["Катаклизм"] = {
         ["Хиджал"] = {
             achievementID = 4863,
@@ -798,7 +798,7 @@ Localization["ruRU"] = {
                 {0, 0, "Запруда Вир'наал"},
             },
         },
-    },
+    }, -- Cataclysm
     ["Дренор"] = {
         ["Хребет Ледяного Огня"] = {
             achievementID = 8937,
@@ -925,8 +925,8 @@ Localization["ruRU"] = {
                 {0, 0, "Трон Стихий"},
             },
         },
-    },
-    ["Battle for Azeroth"] = {
+    }, -- Warlords of Draenor
+    ["Битва за Азерот"] = {
         ["Тирагардское поморье"] = {
             achievementID = 12556,
             proxyLocation = {0, 0, "Тирагардское поморье"},
@@ -1029,7 +1029,7 @@ Localization["ruRU"] = {
                 {0, 0, "Убежище племени Тортака"},
             },
         },
-    },
+    }, -- Warlords of Draenor
     ["Калимдор"] = {
         ["Дуротар"] = {
             achievementID = 728,
@@ -1441,7 +1441,7 @@ Localization["ruRU"] = {
                 {0, 0, "Кельи Малфуриона"},
             },
         },
-    },
+    }, -- World of Warcraft (Vanilla)
     ["Нордскол"] = {
         ["Борейская тундра"] = {
             achievementID = 1264,
@@ -1627,7 +1627,7 @@ Localization["ruRU"] = {
                 {0, 0, "Нидавелир"},
             },
         },
-    },
+    }, -- Wrath of the Lich King
     ["Пандария"] = {
         ["Нефритовый лес"] = {
             achievementID = 6351,
@@ -1770,7 +1770,7 @@ Localization["ruRU"] = {
                 {0, 0, "Зан'весс"},
             },
         },
-    },
+    }, -- Mists of Pandaria
     ["Расколотые острова"] = {
         ["Азсуна"] = {
             achievementID = 10665,
@@ -1871,19 +1871,17 @@ Localization["ruRU"] = {
                 {0, 0, "Плачущие утесы"},
             },
         },
-    },
-    -- Добавьте другие континенты...
+    }, -- Legion
+    -- Continents dictionary ...
     ["Continents"] = {
         ["Eastern Kingdoms"] = "Восточные королевства",
-        ["Kalimdor"]         = "Калимдор",
-        ["Outland"]          = "Запределье",
-        ["Northrend"]        = "Нордскол",
-        ["Pandaria"]         = "Пандария",
-        ["Draenor"]          = "Дренор",
-        ["Broken Isles"]     = "Расколотые острова",
-        ["Zandalar"]         = "Зандалар",
-        ["Kul Tiras"]        = "Кул Тирас",
-        ["The Maelstrom"]    = "Водоворот",
-        ["Vashj'ir"]         = "Вайш'ир",
+        ["Outland"] = "Запределье",
+        ["Cataclysm"] = "Катаклизм",
+        ["Draenor"] = "Дренор",
+        ["Battle for Azeroth"] = "Битва за Азерот", -- Zandalar and Kul Tiras
+        ["Kalimdor"] = "Калимдор",
+        ["Northrend"] = "Нордскол",
+        ["Pandaria"] = "Пандария",
+        ["Broken Isles"] = "Расколотые острова",
     }    
 }

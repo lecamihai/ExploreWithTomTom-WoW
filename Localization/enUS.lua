@@ -492,7 +492,7 @@ Localization["enUS"] = {
                 {0, 0, "Stratholme"},
             },
         },
-    },
+    }, -- World of Warcraft (Vanilla)
     ["Outland"] = {
         ["Hellfire Peninsula"] = {
             achievementID = 862,
@@ -673,7 +673,7 @@ Localization["enUS"] = {
                 {0, 0, "Eco-Dome Midrealm"},
             },
         },
-    },
+    }, -- The Burning Crusade
     ["Cataclysm"] = {
         ["Hyjal"] = {
             achievementID = 4863,
@@ -798,7 +798,7 @@ Localization["enUS"] = {
                 {0, 0, "Vir'naal Dam"},
             },
         },
-    },
+    }, -- Cataclysm
     ["Draenor"] = {
         ["Frostfire Ridge"] = {
             achievementID = 8937,
@@ -925,7 +925,7 @@ Localization["enUS"] = {
                 {0, 0, "Throne of the Elements"},
             },
         },
-    },
+    }, -- Warlords of Draenor
     ["Battle for Azeroth"] = {
         ["Tiragarde Sound"] = {
             achievementID = 12556,
@@ -1029,7 +1029,7 @@ Localization["enUS"] = {
                 {0, 0, "Tortaka Refuge"},
             },
         },
-    },
+    }, -- Battle for Azeroth
     ["Kalimdor"] = {
         ["Durotar"] = {
             achievementID = 728,
@@ -1441,7 +1441,7 @@ Localization["enUS"] = {
                 {0, 0, "Stormrage Barrow Dens"},
             },
         },
-    },
+    }, -- World of Warcraft (Vanilla)
     ["Northrend"] = {
         ["Borean Tundra"] = {
             achievementID = 1264,
@@ -1627,7 +1627,7 @@ Localization["enUS"] = {
                 {0, 0, "Nidavelir"},
             },
         },
-    },
+    }, -- Wrath of the Lich King
     ["Pandaria"] = {
         ["Jade Forest"] = {
             achievementID = 6351,
@@ -1770,7 +1770,7 @@ Localization["enUS"] = {
                 {0, 0, "Zan'vess"},
             },
         },
-    },
+    }, -- Mists of Pandaria
     ["Broken Isles"] = {
         ["Azsuna"] = {
             achievementID = 10665,
@@ -1871,5 +1871,5 @@ Localization["enUS"] = {
                 {0, 0, "Weeping Bluffs"},
             },
         },
-    },
+    }, -- Legion
 }

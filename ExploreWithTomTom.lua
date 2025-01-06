@@ -133,156 +133,104 @@ function GetContinentMapID(continentName)
     local continentMapIDs = {
         -- EN
         ["Eastern Kingdoms"] = 13,
-        ["Kalimdor"] = 12,
         ["Outland"] = 101,
+        ["Cataclysm"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["Draenor"] = 572,
+        ["Battle for Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kalimdor"] = 12,
         ["Northrend"] = 113,
         ["Pandaria"] = 424,
-        ["Draenor"] = 572,
         ["Broken Isles"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiras"] = 876,
-        ["Shadowlands"] = 905,
-        ["Dragon Isles"] = 1978,
-
+    
         -- FR
         ["Royaumes de l’Est"] = 13,
-        ["Kalimdor"] = 12,
         ["Outreterre"] = 101,
+        ["Cataclysme"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["Draenor"] = 572,
+        ["Bataille pour Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kalimdor"] = 12,
         ["Norfendre"] = 113,
         ["Pandarie"] = 424,
-        ["Draenor"] = 572,
         ["Îles Brisées"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiras"] = 876,
-        ["Argus"] = 905,
-        ["Le Maelström"] = 948,
-        ["Vashj'ir"] = 203,
     
         -- RU
         ["Восточные королевства"] = 13,
-        ["Калимдор"] = 12,
         ["Запределье"] = 101,
+        ["Катаклизм"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["Дренор"] = 572,
+        ["Битва за Азерот"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Калимдор"] = 12,
         ["Нордскол"] = 113,
         ["Пандария"] = 424,
-        ["Дренор"] = 572,
         ["Расколотые острова"] = 619,
-        ["Зандалар"] = 875,
-        ["Кул Тирас"] = 876,
-        ["Водоворот"] = 948,
-        ["Вайш'ир"] = 203,
     
-        -- DE (German)
-        ["Östliche Königreiche"] = 13,
-        ["Kalimdor"] = 12,
+        -- DE
+        ["Östlichen Königreiche"] = 13,
         ["Scherbenwelt"] = 101,
-        ["Nordend"] = 113,
-        ["Pandaria"] = 424,
+        ["Kataklysmus"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = 572,
-        ["Die Verheerten Inseln"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiras"] = 876,
-        ["Argus"] = 905,
-        ["Der Mahlstrom"] = 948,
-        ["Vashj'ir"] = 203,
-    
-        -- ES (EU) (European Spanish)
-        ["Reinos del Este"] = 13,
+        ["Schlacht um Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
         ["Kalimdor"] = 12,
+        ["Nordends"] = 113,
+        ["Pandaria"] = 424,
+        ["Verheerten Inseln"] = 619,
+    
+        -- ES (EU)
+        ["Reinos del Este"] = 13,
         ["Terrallende"] = 101,
+        ["Cataclismo"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["Draenor"] = 572,
+        ["Batalla por Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kalimdor"] = 12,
         ["Rasganorte"] = 113,
         ["Pandaria"] = 424,
-        ["Draenor"] = 572,
         ["Islas Quebradas"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiras"] = 876,
-        ["Argus"] = 905,
-        ["La Vorágine"] = 948,
-        ["Vashj'ir"] = 203,
     
-        -- ES (AL) (Latin American Spanish)
-        ["Reinos del Este"] = 13,
-        ["Kalimdor"] = 12,
-        ["Terrallende"] = 101,
-        ["Rasganorte"] = 113,
-        ["Pandaria"] = 424,
-        ["Draenor"] = 572,
-        ["Islas Quebradas"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiras"] = 876,
-        ["Argus"] = 905,
-        ["La Vorágine"] = 948,
-        ["Vashj'ir"] = 203,
-    
-        -- IT (Italian)
+        -- IT
         ["Regni Orientali"] = 13,
-        ["Kalimdor"] = 12,
         ["Terre Esterne"] = 101,
+        ["Cataclisma"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["Draenor"] = 572,
+        ["Battaglia per Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kalimdor"] = 12,
         ["Nordania"] = 113,
         ["Pandaria"] = 424,
-        ["Draenor"] = 572,
         ["Isole Disperse"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiras"] = 876,
-        ["Argus"] = 905,
-        ["Maelstrom"] = 948,
-        ["Vashj'ir"] = 203,
     
-        -- PT (Portuguese)
+        -- PT
         ["Reinos do Leste"] = 13,
-        ["Kalimdor"] = 12,
         ["Terralém"] = 101,
+        ["Cataclismo"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["Draenor"] = 572,
+        ["Batalha por Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kalimdor"] = 12,
         ["Nortúndria"] = 113,
         ["Pandária"] = 424,
-        ["Draenor"] = 572,
         ["Ilhas Partidas"] = 619,
-        ["Zandalar"] = 875,
-        ["Kul Tiraz"] = 876,
-        ["Argus"] = 905,
-        ["Voragem"] = 948,
-        ["Vashj'ir"] = 203,
     
-        -- KO (Korean)
+        -- KO
         ["동부 왕국"] = 13,
-        ["칼림도어"] = 12,
         ["아웃랜드"] = 101,
+        ["대격변"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["드레노어"] = 572,
+        ["격전의 아제로스"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["칼림도어"] = 12,
         ["노스렌드"] = 113,
         ["판다리아"] = 424,
-        ["드레노어"] = 572,
         ["부서진 섬"] = 619,
-        ["잔달라"] = 875,
-        ["쿨 티라스"] = 876,
-        ["아르거스"] = 905,
-        ["혼돈의 소용돌이"] = 948,
-        ["바쉬르"] = 203,
     
-        -- ZH-CN (Simplified Chinese)
+        -- ZH-CN
         ["东部王国"] = 13,
-        ["卡利姆多"] = 12,
         ["外域"] = 101,
+        ["大灾变"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["德拉诺"] = 572,
+        ["艾泽拉斯之战"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["卡利姆多"] = 12,
         ["诺森德"] = 113,
         ["潘达利亚"] = 424,
-        ["德拉诺"] = 572,
         ["破碎群岛"] = 619,
-        ["赞达拉"] = 875,
-        ["库尔提拉斯"] = 876,
-        ["阿古斯"] = 905,
-        ["大漩涡"] = 948,
-        ["瓦丝琪尔"] = 203,
-    
-        -- ZH-TW (Traditional Chinese)
-        ["東部王國"] = 13,
-        ["卡林多"] = 12,
-        ["外域"] = 101,
-        ["北裂境"] = 113,
-        ["潘達利亞"] = 424,
-        ["德拉諾"] = 572,
-        ["破碎群島"] = 619,
-        ["贊達拉"] = 875,
-        ["庫爾提拉斯"] = 876,
-        ["阿古斯"] = 905,
-        ["大漩渦"] = 948,
-        ["瓦許伊爾"] = 203,
     }
+    
     
     local mapID = continentMapIDs[continentName]
     return mapID

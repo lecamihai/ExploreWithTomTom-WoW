@@ -74,7 +74,6 @@ local continentOrder = {
     "Northrend", "Pandaria", "Broken Isles"
 }
 
-
 -- Zone Dropdown
 local zoneLabel = exploreFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 zoneLabel:SetPoint("TOPLEFT", continentDropdown, "BOTTOMLEFT", 16, -20)
@@ -289,10 +288,7 @@ local function CreateContinentStatusTexts(parent, totalContinents)
     return texts
 end
 
-
 local continentStatusTexts = CreateContinentStatusTexts(continentStatusContainer, #continentOrder)
-
-
 
 for index, continent in ipairs(continentOrder) do
     local zones = WaypointData[continent]

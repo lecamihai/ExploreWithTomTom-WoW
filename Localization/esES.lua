@@ -492,7 +492,7 @@ Localization["esES"] = {
                 {0, 0, "Stratholme"},
             },
         },
-    },
+    }, -- World of Warcraft (Vanilla)
     ["Terrallende"] = {
         ["Península del Fuego Infernal"] = {
             achievementID = 862,
@@ -673,8 +673,8 @@ Localization["esES"] = {
                 {0, 0, "Ecodomo de la Tierra Media"},
             },
         },
-    },
-    ["Cataclysm"] = {
+    }, -- The Burning Crusade
+    ["Cataclismo"] = {
         ["Hyjal"] = {
             achievementID = 4863,
             proxyLocation = {0, 0, "Hyjal"},
@@ -798,7 +798,7 @@ Localization["esES"] = {
                 {0, 0, "Presa Vir'naal"},
             },
         },
-    },
+    }, -- Cataclysm
     ["Draenor"] = {
         ["Cresta Fuego Glacial"] = {
             achievementID = 8937,
@@ -925,7 +925,7 @@ Localization["esES"] = {
                 {0, 0, "El Trono de los Elementos"},
             },
         },
-    },
+    }, -- Warlords of Draenor
     ["Battle for Azeroth"] = {
         ["Estrecho de Tiragarde"] = {
             achievementID = 12556,
@@ -1029,7 +1029,7 @@ Localization["esES"] = {
                 {0, 0, "Refugio Tortuka"},
             },
         },
-    },
+    }, -- Battle for Azeroth
     ["Kalimdor"] = {
         ["Durotar"] = {
             achievementID = 728,
@@ -1441,7 +1441,7 @@ Localization["esES"] = {
                 {0, 0, "Túmulo de Tempestira"},
             },
         },
-    },
+    }, -- World of Warcraft (Vanilla)
     ["Rasganorte"] = {
         ["Tundra Boreal"] = {
             achievementID = 1264,
@@ -1627,7 +1627,7 @@ Localization["esES"] = {
                 {0, 0, "Nidavelir"},
             },
         },
-    },
+    }, -- Wrath of the Lich King
     ["Pandaria"] = {
         ["El Bosque de Jade"] = {
             achievementID = 6351,
@@ -1770,7 +1770,7 @@ Localization["esES"] = {
                 {0, 0, "Zan'vess"},
             },
         },
-    },
+    }, -- Mists of Pandaria
     ["Islas Abruptas"] = {
         ["Azsuna"] = {
             achievementID = 10665,
@@ -1871,19 +1871,17 @@ Localization["esES"] = {
                 {0, 0, "Cimas Anegadas"},
             },
         },
-    },
-    -- Añada otros continentes...
+    }, -- Legion
+    -- Continents dictionary ...
     ["Continents"] = {
         ["Eastern Kingdoms"] = "Reinos del Este",
-        ["Kalimdor"]         = "Kalimdor",
-        ["Outland"]          = "Terrallende",
-        ["Northrend"]        = "Rasganorte",
-        ["Pandaria"]         = "Pandaria",
-        ["Draenor"]          = "Draenor",
-        ["Broken Isles"]     = "Islas Quebradas",
-        ["Zandalar"]         = "Zandalar",
-        ["Kul Tiras"]        = "Kul Tiras",
-        ["The Maelstrom"]    = "La Vorágine",
-        ["Vashj'ir"]         = "Vashj'ir",
+        ["Outland"] = "Terrallende",
+        ["Cataclysm"] = "Cataclismo",
+        ["Draenor"] = "Draenor",
+        ["Battle for Azeroth"] = "Batalla por Azeroth", -- Zandalar and Kul Tiras
+        ["Kalimdor"] = "Kalimdor",
+        ["Northrend"] = "Rasganorte",
+        ["Pandaria"] = "Pandaria",
+        ["Broken Isles"] = "Islas Quebradas",
     }
 }
