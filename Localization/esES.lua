@@ -926,7 +926,7 @@ Localization["esES"] = {
             },
         },
     }, -- Warlords of Draenor
-    ["Battle for Azeroth"] = {
+    ["Batalla por Azeroth"] = {
         ["Estrecho de Tiragarde"] = {
             achievementID = 12556,
             proxyLocation = {0, 0, "Estrecho de Tiragarde"},
@@ -1771,7 +1771,7 @@ Localization["esES"] = {
             },
         },
     }, -- Mists of Pandaria
-    ["Islas Abruptas"] = {
+    ["Islas Quebradas"] = {
         ["Azsuna"] = {
             achievementID = 10665,
             proxyLocation = {0, 0, "Azsuna"},
