@@ -139,8 +139,8 @@ local updateTimer = nil
 
 -- Modify the UpdateZoneStatusContainer function
 function UpdateZoneStatusContainer(continent, zone)
-    -- Store the current scroll position
-    local currentScroll = scrollFrame:GetVerticalScroll()
+    -- Reset scroll position
+    scrollFrame:SetVerticalScroll(0)
 
     -- Remove old scrollChild and create a new one
     if scrollChild then
@@ -215,17 +215,16 @@ function UpdateZoneStatusContainer(continent, zone)
         scrollChild:SetHeight(scrollChild:GetHeight() + 20)
     end
 
-    scrollChild:SetHeight(math.abs(yOffset) + 10)  -- Adjust scroll child height to fit content
+    -- Ensure only the required number of FontStrings are visible
+    for i = #zoneStatus + 1, #fontStringPool do
+        fontStringPool[i]:Hide()
+    end
+
+    -- Adjust scroll child height to fit content
+    scrollChild:SetHeight(math.abs(yOffset) + 10)
     scrollChild:Show()
-
-    -- Restore the previous scroll position
-    C_Timer.After(0, function()
-        scrollFrame:SetVerticalScroll(currentScroll)
-    end)
-
-    -- After updating the content, schedule the next update
-    ScheduleNextUpdate()
 end
+
 
 -- Add this new function
 function ScheduleNextUpdate()

@@ -12,7 +12,6 @@ function LoadWaypointData()
     end
 end
 
-
 -- Load the waypoint data
 WaypointData = LoadWaypointData()
 
@@ -141,10 +140,9 @@ function GetContinentMapID(continentName)
         ["Broken Isles"] = 619,
         ["Zandalar"] = 875,
         ["Kul Tiras"] = 876,
-        ["Argus"] = 905,
-        ["The Maelstrom"] = 948,
-        ["Vashj'ir"] = 203,
-    
+        ["Shadowlands"] = 905,
+        ["Dragon Isles"] = 1978,
+
         -- FR
         ["Royaumes de l’Est"] = 13,
         ["Kalimdor"] = 12,
@@ -454,7 +452,6 @@ function OnZoneChange(event)
 
     currentZone = newZone
 end
-
 
 -- Function to remove only zone waypoints
 function RemoveZoneWaypoints()
