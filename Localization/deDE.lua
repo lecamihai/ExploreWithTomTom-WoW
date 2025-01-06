@@ -19,9 +19,9 @@ Localization["deDE"] = {
                 {0, 0, "Kristallsee"},
             },
         },
-        ["das Ödland"] = {
+        ["Das Ödland"] = {
             achievementID = 765,
-            proxyLocation = {0, 0, "das Ödland"},
+            proxyLocation = {0, 0, "Das Ödland"},
             waypoints = {
                 {0, 0, "Die Lethlorklamm"},
                 {0, 0, "Uldaman"},
@@ -145,9 +145,9 @@ Localization["deDE"] = {
                 {0, 0, "Thalassischer Pass"},
             },
         },
-        ["das Schlingendornkap"] = {
+        ["Das Schlingendornkap"] = {
             achievementID = 4995,
-            proxyLocation = {0, 0, "das Schlingendornkap"},
+            proxyLocation = {0, 0, "Das Schlingendornkap"},
             waypoints = {
                 {0, 0, "Beutebucht"},
                 {0, 0, "Arena der Gurubashi"},
@@ -161,9 +161,9 @@ Localization["deDE"] = {
                 {0, 0, "Die Wilde Küste"},
             },
         },
-        ["das Hinterland"] = {
+        ["Das Hinterland"] = {
             achievementID = 773,
-            proxyLocation = {0, 0, "das Hinterland"},
+            proxyLocation = {0, 0, "Das Hinterland"},
             waypoints = {
                 {0, 0, "Nistgipfel"},
                 {0, 0, "Zun'watha"},
@@ -181,9 +181,9 @@ Localization["deDE"] = {
                 {0, 0, "Die Aussichtsklippen"},
             },
         },
-        ["das Sumpfland"] = {
+        ["Das Sumpfland"] = {
             achievementID = 841,
-            proxyLocation = {0, 0, "das Sumpfland"},
+            proxyLocation = {0, 0, "Das Sumpfland"},
             waypoints = {
                 {0, 0, "Hafen von Menethil"},
                 {0, 0, "Blaukiemenmarschen"},
@@ -229,9 +229,9 @@ Localization["deDE"] = {
             waypoints = {
             },
         },
-        ["das Arathihochland"] = {
+        ["Das Arathihochland"] = {
             achievementID = 761,
-            proxyLocation = {0, 0, "das Arathihochland"},
+            proxyLocation = {0, 0, "Das Arathihochland"},
             waypoints = {
                 {0, 0, "Kreis der Westlichen Bindung"},
                 {0, 0, "Fels'gor"},
@@ -292,9 +292,9 @@ Localization["deDE"] = {
                 {0, 0, "Eiswellensee"},
             },
         },
-        ["das Vorgebirge des Hügellands"] = {
+        ["Das Vorgebirge des Hügellands"] = {
             achievementID = 772,
-            proxyLocation = {0, 0, "das Vorgebirge des Hügellands"},
+            proxyLocation = {0, 0, "Das Vorgebirge des Hügellands"},
             waypoints = {
                 {0, 0, "Der Azurschacht"},
                 {0, 0, "Corrahns Dolch"},
@@ -324,9 +324,9 @@ Localization["deDE"] = {
                 {0, 0, "Das Oberland"},
             },
         },
-        ["das Rotkammgebirge"] = {
+        ["Das Rotkammgebirge"] = {
             achievementID = 780,
-            proxyLocation = {0, 0, "das Rotkammgebirge"},
+            proxyLocation = {0, 0, "Das Rotkammgebirge"},
             waypoints = {
                 {0, 0, "Seenhain"},
                 {0, 0, "Drei Ecken"},
@@ -395,9 +395,9 @@ Localization["deDE"] = {
                 {0, 0, "Nördlicher Gezeitenstrom"},
             },
         },
-        ["das Nördliche Schlingendorntal"] = {
+        ["Das Nördliche Schlingendorntal"] = {
             achievementID = 781,
-            proxyLocation = {0, 0, "das Nördliche Schlingendorntal"},
+            proxyLocation = {0, 0, "Das Nördliche Schlingendorntal"},
             waypoints = {
                 {0, 0, "Basislager Grom'gol"},
                 {0, 0, "Bambala"},
@@ -577,9 +577,9 @@ Localization["deDE"] = {
                 {0, 0, "Vortexgipfel"},
             },
         },
-        ["das Schattenmondtal"] = {
+        ["Das Schattenmondtal"] = {
             achievementID = 864,
-            proxyLocation = {0, 0, "das Schattenmondtal"},
+            proxyLocation = {0, 0, "Das Schattenmondtal"},
             waypoints = {
                 {0, 0, "Echsennarbe"},
                 {0, 0, "Feste der Legion"},
@@ -710,9 +710,9 @@ Localization["deDE"] = {
                 {0, 0, "Rubinspanne"},
             },
         },
-        ["das Schattenhochland"] = {
+        ["Das Schattenhochland"] = {
             achievementID = 4866,
-            proxyLocation = {0, 0, "das Schattenhochland"},
+            proxyLocation = {0, 0, "Das Schattenhochland"},
             waypoints = {
                 {0, 0, "Blutschlucht"},
                 {0, 0, "Schmetterschlagposten"},
@@ -866,9 +866,9 @@ Localization["deDE"] = {
                 {0, 0, "Blutmähnental"},
             },
         },
-        ["das Schattenmondtal"] = {
+        ["Das Schattenmondtal"] = {
             achievementID = 8938,
-            proxyLocation = {0, 0, "das Schattenmondtal"},
+            proxyLocation = {0, 0, "Das Schattenmondtal"},
             waypoints = {
                 {0, 0, "Festung der Pein"},
                 {0, 0, "Elodor"},
@@ -944,9 +944,9 @@ Localization["deDE"] = {
                 {0, 0, "Wachkuppe"},
             },
         },
-        ["das Sturmsangtal"] = {
+        ["Das Sturmsangtal"] = {
             achievementID = 12558,
-            proxyLocation = {0, 0, "das Sturmsangtal"},
+            proxyLocation = {0, 0, "Das Sturmsangtal"},
             waypoints = {
                 {0, 0, "Brennadam"},
                 {0, 0, "Seemannsrinne"},
@@ -1067,9 +1067,9 @@ Localization["deDE"] = {
                 {0, 0, "Rut'theran"},
             },
         },
-        ["das Nördliche Brachland"] = {
+        ["Das Nördliche Brachland"] = {
             achievementID = 750,
-            proxyLocation = {0, 0, "das Nördliche Brachland"},
+            proxyLocation = {0, 0, "Das Nördliche Brachland"},
             waypoints = {
                 {0, 0, "Felsadermine"},
                 {0, 0, "Schutzwall von Mor'shan"},
@@ -1087,9 +1087,9 @@ Localization["deDE"] = {
                 {0, 0, "Die Händlerküste"},
             },
         },
-        ["das Südliche Brachland"] = {
+        ["Das Südliche Brachland"] = {
             achievementID = 4996,
-            proxyLocation = {0, 0, "das Südliche Brachland"},
+            proxyLocation = {0, 0, "Das Südliche Brachland"},
             waypoints = {
                 {0, 0, "Bael Modan"},
                 {0, 0, "Gefechtsstand"},
@@ -1329,9 +1329,9 @@ Localization["deDE"] = {
                 {0, 0, "Nazj'vel"},
             },
         },
-        ["das Eschental"] = {
+        ["Das Eschental"] = {
             achievementID = 845,
-            proxyLocation = {0, 0, "das Eschental"},
+            proxyLocation = {0, 0, "Das Eschental"},
             waypoints = {
                 {0, 0, "Der Zoramstrand"},
                 {0, 0, "Silberwindzuflucht"},
@@ -1353,9 +1353,9 @@ Localization["deDE"] = {
                 {0, 0, "Dämonenhügel"},
             },
         },
-        ["das Steinkrallengebirge"] = {
+        ["Das Steinkrallengebirge"] = {
             achievementID = 847,
-            proxyLocation = {0, 0, "das Steinkrallengebirge"},
+            proxyLocation = {0, 0, "Das Steinkrallengebirge"},
             waypoints = {
                 {0, 0, "Kriegsnarbental"},
                 {0, 0, "Ruinen von Eldre'thar"},
@@ -1587,9 +1587,9 @@ Localization["deDE"] = {
                 {0, 0, "Lager der Westfallbrigade"},
             },
         },
-        ["das Sholazarbecken"] = {
+        ["Das Sholazarbecken"] = {
             achievementID = 1268,
-            proxyLocation = {0, 0, "das Sholazarbecken"},
+            proxyLocation = {0, 0, "Das Sholazarbecken"},
             waypoints = {
                 {0, 0, "Flussnabel"},
                 {0, 0, "Die Mooslichtsäule"},
@@ -1691,9 +1691,9 @@ Localization["deDE"] = {
                 {0, 0, "Sra'vess"},
             },
         },
-        ["das Tal der Ewigen Blüten"] = {
+        ["Das Tal der Ewigen Blüten"] = {
             achievementID = 6979,
-            proxyLocation = {0, 0, "das Tal der Ewigen Blüten"},
+            proxyLocation = {0, 0, "Das Tal der Ewigen Blüten"},
             waypoints = {
                 {0, 0, "Guo-Lai-Ruinen"},
                 {0, 0, "Mogu'shanpalast"},
@@ -1708,9 +1708,9 @@ Localization["deDE"] = {
                 {0, 0, "Weißblütensee"},
             },
         },
-        ["das Tal der Vier Winde"] = {
+        ["Das Tal der Vier Winde"] = {
             achievementID = 6969,
-            proxyLocation = {0, 0, "das Tal der Vier Winde"},
+            proxyLocation = {0, 0, "Das Tal der Vier Winde"},
             waypoints = {
                 {0, 0, "Die Windschneide"},
                 {0, 0, "Der Goldfächer"},
