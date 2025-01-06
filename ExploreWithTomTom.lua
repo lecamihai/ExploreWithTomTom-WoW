@@ -12,6 +12,7 @@ function LoadWaypointData()
     end
 end
 
+
 -- Load the waypoint data
 WaypointData = LoadWaypointData()
 
@@ -167,7 +168,6 @@ function GetContinentMapID(continentName)
         ["Расколотые острова"] = 619,
         ["Зандалар"] = 875,
         ["Кул Тирас"] = 876,
-        ["Аргус"] = 905,
         ["Водоворот"] = 948,
         ["Вайш'ир"] = 203,
     
@@ -452,6 +452,7 @@ function OnZoneChange(event)
 
     currentZone = newZone
 end
+
 
 -- Function to remove only zone waypoints
 function RemoveZoneWaypoints()

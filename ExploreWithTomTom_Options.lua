@@ -2,7 +2,7 @@
 
 -- Create a new frame with a thin white border and black background
 local exploreFrame = CreateFrame("Frame", "ExploreWithTomTomFrame", UIParent, "ThinBorderTemplate")
-exploreFrame:SetSize(600, 450)  -- Set size of the frame
+exploreFrame:SetSize(600, 480)  -- Set size of the frame
 exploreFrame:SetPoint("CENTER", UIParent, "CENTER")  -- Center the frame
 exploreFrame:SetMovable(true)  -- Make the frame movable
 exploreFrame:EnableMouse(true)
@@ -67,6 +67,12 @@ UIDropDownMenu_Initialize(continentDropdown, function(self, level)
         end
     end
 end)
+
+local continentOrder = {
+    "Eastern Kingdoms", "Outland", "Cataclysm",
+    "Draenor", "Battle for Azeroth", "Kalimdor",
+    "Northrend", "Pandaria", "Broken Isles"
+}
 
 
 -- Zone Dropdown
@@ -245,43 +251,48 @@ end
 
 -- Container for Continent Status at the bottom of the frame with expanded layout
 local continentStatusContainer = CreateFrame("Frame", nil, exploreFrame, "ThinBorderTemplate")
-continentStatusContainer:SetSize(560, 80)  -- Increased height to accommodate three rows
+continentStatusContainer:SetSize(580, 120)  -- Increased height to accommodate three rows
 continentStatusContainer:SetPoint("BOTTOM", exploreFrame, "BOTTOM", 0, 10)
 
-local function CreateContinentStatusTexts(parent)
-    local texts = {}
-    local positions = {
-        {10, -10},    -- Outland
-        {150, -10},   -- Pandaria
-        {270, -10},   -- Northrend
-        {390, -10},   -- Kalimdor
-        {10, -35},    -- Draenor
-        {150, -35},   -- Zandalar
-        {270, -35},   -- Kul Tiras
-        {430, -35},   -- Shadowlands
-        {10, -60},    -- The Maelstrom
-        {150, -60},   -- Dragon Isles
-        {270, -60},   -- Broken Isles
-        {390, -60},   -- Eastern Kingdoms
-        {150, -60},   -- Vashj'ir
-    }
+local function CreateContinentStatusTexts(parent, totalContinents)
+    -- Ensure totalContinents is a valid number
+    totalContinents = tonumber(totalContinents) or 0
 
-    for i = 1, 13 do
+    local texts = {}
+    local numColumns = 3  -- Number of columns per row (adjust for better layout with 9 items)
+    local containerPadding = 10  -- Padding inside the container
+    local cellSpacing = 10  -- Spacing between cells
+    local containerWidth = parent:GetWidth() - 2 * containerPadding
+    local cellWidth = (containerWidth - (numColumns - 1) * cellSpacing) / numColumns
+    local cellHeight = 25  -- Fixed height for each text element
+
+    for i = 1, totalContinents do
+        -- Calculate the current row and column based on the continent index
+        local col = (i - 1) % numColumns  -- Current column (0-based)
+        local row = math.floor((i - 1) / numColumns)  -- Current row (0-based)
+
+        -- Create and position the text
         texts[i] = parent:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-        texts[i]:SetPoint("TOPLEFT", parent, "TOPLEFT", positions[i][1], positions[i][2])
+        texts[i]:SetWidth(cellWidth)
+        texts[i]:SetHeight(cellHeight)
+        texts[i]:SetJustifyH("CENTER")  -- Center-align horizontally
+        texts[i]:SetJustifyV("MIDDLE")  -- Center-align vertically
+        texts[i]:SetPoint(
+            "TOPLEFT",
+            parent,
+            "TOPLEFT",
+            containerPadding + col * (cellWidth + cellSpacing),
+            -(containerPadding + row * (cellHeight + cellSpacing))
+        )
     end
 
     return texts
 end
 
-local continentStatusTexts = CreateContinentStatusTexts(continentStatusContainer)
 
-local continentOrder = {
-    "Outland", "Pandaria", "Northrend", "Kalimdor", 
-    "Draenor", "Zandalar", "Kul Tiras", "Shadowlands", 
-    "The Maelstrom", "Dragon Isles", "Broken Isles", 
-    "Eastern Kingdoms", "Vashj'ir"
-}
+local continentStatusTexts = CreateContinentStatusTexts(continentStatusContainer, #continentOrder)
+
+
 
 for index, continent in ipairs(continentOrder) do
     local zones = WaypointData[continent]
@@ -295,10 +306,9 @@ end
 
 function UpdateContinentStatus()
     local continentOrder = {
-        "Outland", "Pandaria", "Northrend", "Kalimdor", 
-        "Draenor", "Zandalar", "Kul Tiras", "Shadowlands", 
-        "The Maelstrom", "Dragon Isles", "Broken Isles", 
-        "Eastern Kingdoms", "Vashj'ir"
+        "Eastern Kingdoms", "Outland", "Cataclysm",
+        "Draenor", "Battle for Azeroth", "Kalimdor",
+        "Northrend", "Pandaria", "Broken Isles"
     }
 
     for index, englishContinentKey in ipairs(continentOrder) do

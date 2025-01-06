@@ -1883,8 +1883,6 @@ Localization["esES"] = {
         ["Broken Isles"]     = "Islas Quebradas",
         ["Zandalar"]         = "Zandalar",
         ["Kul Tiras"]        = "Kul Tiras",
-        ["Shadowlands"]      = "Tierras Sombrías",
-        ["Dragon Isles"]     = "Islas Dragón",
         ["The Maelstrom"]    = "La Vorágine",
         ["Vashj'ir"]         = "Vashj'ir",
     }
