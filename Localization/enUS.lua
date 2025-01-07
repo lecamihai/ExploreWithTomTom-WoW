@@ -55,6 +55,7 @@ Localization["enUS"] = {
             achievementID = 778,
             proxyLocation = {46, 80, "Duskwood"},
             waypoints = {
+                --{0, 0, "The Hushed Bank"},
                 {19, 56, "Raven Hill"},
                 {35, 73, "Vul'Gol Ogre Mound"},
                 {49, 73, "The Yorgen Farmstead"},
@@ -685,6 +686,7 @@ Localization["enUS"] = {
                 {31, 84, "Sethria's Roost"},
                 {33, 53, "The Flamewake"},
                 {49, 79, "The Throne of Flame"},
+                --{0, 0, "The Circle of Cinders"},
                 {84, 53, "Darkwhisper Gorge"},
                 {62, 21, "Nordrassil"},
                 {29, 32, "Shrine of Goldrinn"},
@@ -783,6 +785,7 @@ Localization["enUS"] = {
                 {22, 61, "Schnottz's Landing"},
                 {33, 31, "Temple of Uldum"},
                 {71, 21, "The Gate of Unending Cycles"},
+                --{0, 0, "The Trail of Devastation"},
                 {42, 71, "Cradle of the Ancients"},
                 {62, 73, "Lost City of the Tol'vir"},
                 {67, 41, "Nahom"},
@@ -1265,6 +1268,7 @@ Localization["enUS"] = {
                 {53, 66, "Winterhoof Water Well"},
                 {62, 48, "The Venture Co. Mine"},
                 {49, 35, "The Golden Plains"},
+                --{0, 0, "Bael'dun Digsite"},
                 {52, 11, "Windfury Ridge"},
             },
         },
@@ -1363,6 +1367,7 @@ Localization["enUS"] = {
                 {68, 51, "Windshear Crag"},
                 {32, 68, "The Charred Vale"},
                 {41, 22, "Stonetalon Peak"},
+                --{0, 0, "Krom'gar Fortress"},
                 {38, 32, "Thal'darah Overlook"},
                 {57, 73, "Webwinder Hollow"},
                 {45, 32, "Cliffwalker Post"},
@@ -1708,6 +1713,7 @@ Localization["enUS"] = {
             achievementID = 6969,
             proxyLocation = {51, 65, "Valley of the Four Winds"},
             waypoints = {
+                --{0, 0, "Winds' Edge"},
                 {56, 36, "Gilded Fan"},
                 {54, 46, "Halfhill"},
                 {31, 30, "Kunzen Village"},
@@ -1734,6 +1740,7 @@ Localization["enUS"] = {
                 {72, 91, "Binan Village"},
                 {55, 91, "Gate of the August Celestials"},
                 {35, 65, "Kota Peak"},
+                --{0, 0, "Mount Neverest"},
                 {49, 40, "Peak of Serenity"},
                 {68, 48, "Temple of the White Tiger"},
                 {57, 47, "Valley of Emperors"},
@@ -1809,6 +1816,7 @@ Localization["enUS"] = {
             waypoints = {
                 {30.4, 42.3, "Ambervale"},
                 {19.5, 45.2, "Falanaar"},
+                --{0, 0, "The Grand Pomenade"},
                 {38.1, 22.9, "Moon Guard Stronghold"},
                 {37.0, 45.9, "Ruins of Elun'eth"},
                 {46.2, 36.5, "Tel'anor"},
@@ -1865,4 +1873,34 @@ Localization["enUS"] = {
             },
         },
     }, -- Legion
+    -- Continents dictionary --
+    ["Continents"] = {
+        ["Eastern Kingdoms"] = "Eastern Kingdoms",
+        ["Outland"] = "Outland",
+        ["Cataclysm"] = "Cataclysm", -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
+        ["Draenor"] = "Draenor",
+        ["Battle for Azeroth"] = "Battle for Azeroth", -- Zandalar and Kul Tiras
+        ["Kalimdor"] = "Kalimdor",
+        ["Northrend"] = "Northrend",
+        ["Pandaria"] = "Pandaria",
+        ["Broken Isles"] = "Broken Isles",
+    },
+    -- Zone Overrides dictionary --
+    ["ZoneOverrides"] = {
+        ["Dalaran"] = { continent = "Northrend" },
+        ["Stormshield"] = { continent = "Draenor" },
+        ["Ashran"] = { continent = "Draenor" },
+        ["Deathknell"] = { continent = "Eastern Kingdoms", zone = "Tirisfal Glades" },
+        ["Coldridge Valley"] = { continent = "Eastern Kingdoms", zone = "Dun Morogh" },
+        ["New Tinkertown"] = { continent = "Eastern Kingdoms", zone = "Dun Morogh" },
+        ["Vashj'ir"] = { continent = "Eastern Kingdoms" },
+        ["Abyssal Depths"] = { continent = "Eastern Kingdoms" },
+        ["Shimmering Expanse"] = { continent = "Eastern Kingdoms" },
+        ["Kelp'thar Forest"] = { continent = "Eastern Kingdoms" },
+        ["Tiragarde Sound"] = { continent = "Kul Tiras" },
+        ["Drustvar"] = { continent = "Kul Tiras" },
+        ["Stormsong Valley"] = { continent = "Kul Tiras" },
+        ["The Cape of Stranglethorn"] = { continent = "Eastern Kingdoms" },
+        ["Northern Stranglethorn"] = { continent = "Eastern Kingdoms" }
+    }
 }

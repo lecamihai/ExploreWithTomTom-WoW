@@ -1883,5 +1883,23 @@ Localization["esES"] = {
         ["Northrend"] = "Rasganorte",
         ["Pandaria"] = "Pandaria",
         ["Broken Isles"] = "Islas Quebradas",
-    }
+    },
+    -- Zone Overrides dictionary --
+    ["ZoneOverrides"] = {
+        ["Dalaran"] = { continent = "Rasganorte" },
+        ["Stormshield"] = { continent = "Draenor" },
+        ["Ashran"] = { continent = "Draenor" },
+        ["Deathknell"] = { continent = "Reinos del Este", zone = "Claros de Tirisfal" },
+        ["Coldridge Valley"] = { continent = "Reinos del Este", zone = "Dun Morogh" },
+        ["New Tinkertown"] = { continent = "Reinos del Este", zone = "Dun Morogh" },
+        ["Vashj'ir"] = { continent = "Reinos del Este" },
+        ["Abyssal Depths"] = { continent = "Reinos del Este" },
+        ["Shimmering Expanse"] = { continent = "Reinos del Este" },
+        ["Kelp'thar Forest"] = { continent = "Reinos del Este" },
+        ["Tiragarde Sound"] = { continent = "Kul Tiras" },
+        ["Drustvar"] = { continent = "Kul Tiras" },
+        ["Stormsong Valley"] = { continent = "Kul Tiras" },
+        ["Norte de la Vega de Tuercespina"] = { continent = "Reinos del Este"},
+        ["El Cabo de Tuercespina"] = { continent = "Reinos del Este"}
+    }    
 }

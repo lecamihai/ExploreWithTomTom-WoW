@@ -1883,5 +1883,5 @@ Localization["deDE"] = {
         ["Northrend"] = "Nordends",
         ["Pandaria"] = "Pandaria",
         ["Broken Isles"] = "Verheerten Inseln",
-    }
+    },
 }

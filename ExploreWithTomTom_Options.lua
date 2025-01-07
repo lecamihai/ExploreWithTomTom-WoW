@@ -51,7 +51,7 @@ UIDropDownMenu_Initialize(continentDropdown, function(self, level)
     local info = UIDropDownMenu_CreateInfo()
     for continent in pairs(WaypointData) do
         -- Only process valid continents (keys that aren’t "Continents" or any other special key)
-        if continent ~= "Continents" then
+        if continent ~= "Continents" and continent ~= "ZoneOverrides" then
             info.text = continent
             info.checked = (continent == selectedContinent)
             info.func = function()
@@ -230,7 +230,6 @@ function UpdateZoneStatusContainer(continent, zone)
     scrollChild:Show()
 end
 
-
 -- Add this new function
 function ScheduleNextUpdate()
     if updateTimer then
@@ -298,7 +297,6 @@ for index, continent in ipairs(continentOrder) do
         color .. string.format("%s: %d/%d", continent, completedZones, totalZones) .. "|r"
     )
 end
-
 
 function UpdateContinentStatus()
     local continentOrder = {

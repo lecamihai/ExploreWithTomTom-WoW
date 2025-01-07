@@ -12,7 +12,6 @@ function LoadWaypointData()
     end
 end
 
-
 -- Load the waypoint data
 WaypointData = LoadWaypointData()
 
@@ -51,6 +50,14 @@ function IsZoneDiscovered(achievementID, zoneName)
         -- Additionally, check if the entire achievement is completed
         local _, _, achievementCompleted = GetAchievementInfo(achievementID)
         return achievementCompleted
+end
+
+-- Function to remove waypoints when leaving a zone
+function RemoveAllWaypoints()
+    for desc, uid in pairs(activeWaypoints) do
+        TomTom:RemoveWaypoint(uid)
+    end
+    activeWaypoints = {}  -- Clear the active waypoints table
 end
 
 -- Function to add waypoints for a specific zone and return whether any were added
@@ -116,17 +123,9 @@ function AddWaypointsForZone(continentName, zoneName)
         currentZone = zoneName -- Update current zone tracking
         return true
     else
-        print("|cFFFF0000No undiscovered waypoints found for zone: " .. zoneName .. "|r")
+        print("|cFFFF0000No undiscovered waypoints found in " .. zoneName .. "|r")
         return false
     end
-end
-
--- Function to remove waypoints when leaving a zone
-function RemoveAllWaypoints()
-    for desc, uid in pairs(activeWaypoints) do
-        TomTom:RemoveWaypoint(uid)
-    end
-    activeWaypoints = {}  -- Clear the active waypoints table
 end
 
 function GetContinentMapID(continentName)
@@ -151,7 +150,7 @@ function GetContinentMapID(continentName)
         ["Kalimdor"] = 12,
         ["Norfendre"] = 113,
         ["Pandarie"] = 424,
-        ["Îles Brisées"] = 619,
+        ["îles Brisées"] = 619,
     
         -- RU
         ["Восточные королевства"] = 13,
@@ -250,6 +249,24 @@ function LocalizeContinent(continentKey)
     return continentKey
 end
 
+-- Helper table for zone-specific overrides
+local zoneOverrides = {
+    ["Dalaran"] = { continent = "Northrend" },
+    ["Stormshield"] = { continent = "Draenor" },
+    ["Ashran"] = { continent = "Draenor" },
+    ["Deathknell"] = { continent = "Eastern Kingdoms", zone = "Tirisfal Glades" },
+    ["Coldridge Valley"] = { continent = "Eastern Kingdoms", zone = "Dun Morogh" },
+    ["New Tinkertown"] = { continent = "Eastern Kingdoms", zone = "Dun Morogh" },
+    ["Vashj'ir"] = { continent = "Eastern Kingdoms" },
+    ["Abyssal Depths"] = { continent = "Eastern Kingdoms" },
+    ["Shimmering Expanse"] = { continent = "Eastern Kingdoms" },
+    ["Kelp'thar Forest"] = { continent = "Eastern Kingdoms" },
+    ["Tiragarde Sound"] = { continent = "Kul Tiras" },
+    ["Drustvar"] = { continent = "Kul Tiras" },
+    ["Stormsong Valley"] = { continent = "Kul Tiras" },
+}
+
+-- Refactored HandleZoneSelection function
 function HandleZoneSelection(continentName, zoneName)
     -- Clear all waypoints to start fresh
     TomTom:ClearAllWaypoints()
@@ -266,36 +283,22 @@ function HandleZoneSelection(continentName, zoneName)
     local parentMapInfo = mapInfo and C_Map.GetMapInfo(mapInfo.parentMapID)
     local currentContinent = parentMapInfo and parentMapInfo.name or "Unknown"
 
-    -- Handle specific continent-based overrides
-    if GetZoneText() == "Dalaran" and continentName == "Northrend" then
-        currentContinent = "Northrend"
-    elseif GetZoneText() == "Stormshield" or continentName == "Ashran" then
-        currentContinent = "Draenor"
-    elseif GetZoneText() == "Deathknell" then
-        currentContinent = "Eastern Kingdoms"
-        zoneName = "Tirisfal Glades"
-    elseif GetZoneText() == "Sunstrider Isle" then
-        currentContinent = "Eastern Kingdoms"
-        zoneName = "Bois des Chants éternels"
-    elseif GetZoneText() == "Coldridge Valley" or GetZoneText() == "New Tinkertown" then
-        currentContinent = "Eastern Kingdoms"
-        zoneName = "Dun Morogh"
-    elseif continentName == "Eastern Kingdoms" and (zoneName == "Vashj'ir" or zoneName == "Abyssal Depths" or zoneName == "Shimmering Expanse" or zoneName == "Kelp'thar Forest") then
-        if GetZoneText() == "Vashj'ir" or GetZoneText() == "Abyssal Depths" or GetZoneText() == "Shimmering Expanse" or GetZoneText() == "Kelp'thar Forest" then
-            currentContinent = "Eastern Kingdoms"
-        else
-            print("|cFF00FF00You are currently on " .. GetZoneText() .. ". Please go to Vashj'ir and try again.|r")
-            return
-        end
-    elseif continentName == "Kul Tiras" and (zoneName == "Tiragarde Sound" or zoneName == "Drustvar" or zoneName == "Stormsong Valley") then
-        currentContinent = "Kul Tiras"
-    elseif continentName == "Eastern Kingdoms" and (zoneName == "Northern Stranglethorn" or zoneName == "The Cape of Stranglethorn") then
-        if GetZoneText() == "Northern Stranglethorn" or GetZoneText() == "The Cape of Stranglethorn" then
-            currentContinent = "Eastern Kingdoms"
-        else
-            print("|cFF00FF00You are currently on " .. GetZoneText() .. ". Please go to Stranglethorn Vale and try again.|r")
-            return
-        end
+    -- Access zone-specific overrides from Localization
+    local locale = GetLocale() or "enUS" -- Use "enUS" as fallback
+    local zoneOverrides = Localization[locale] and Localization[locale]["ZoneOverrides"]
+
+    if not zoneOverrides then
+        print("|cFFFF0000Error: ZoneOverrides not found in Localization for locale: " .. locale .. "|r")
+        return
+    end
+
+    local zoneOverride = zoneOverrides[GetZoneText()]
+    if zoneOverride then
+        --Debug print("|cFFFFA500Applying override: " .. GetZoneText() .. " -> Continent: " .. (zoneOverride.continent or "nil") .. ", Zone: " .. (zoneOverride.zone or "nil") .. "|r")
+        currentContinent = zoneOverride.continent or currentContinent
+        zoneName = zoneOverride.zone or zoneName
+    else
+        --Debug print("|cFFFF0000No override found for: " .. GetZoneText() .. "|r")
     end
 
     -- Check if the current continent matches the selected continent
@@ -307,12 +310,10 @@ function HandleZoneSelection(continentName, zoneName)
     -- Handle zone selection
     local newZone = GetZoneText()
     if newZone == zoneName then
-        --print("|cFFFFA500Zone match found. Adding waypoints for: " .. zoneName .. "|r")
         AddWaypointsForZone(continentName, zoneName)
     else
-        --print("|cFFFFA500Zone mismatch. Current Zone: " .. newZone .. ". Queueing proxy for: " .. zoneName .. "|r")
         local proxyUid = AddProxyWaypoint(continentName, zoneName)
-        queuedZone = zoneName -- Queue the zone for later
+        queuedZone = zoneName
         selectedContinent = continentName
         currentProxy = proxyUid
     end
@@ -400,7 +401,6 @@ function OnZoneChange(event)
 
     currentZone = newZone
 end
-
 
 -- Function to remove only zone waypoints
 function RemoveZoneWaypoints()

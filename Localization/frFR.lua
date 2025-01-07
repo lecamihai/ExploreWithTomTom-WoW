@@ -1,18 +1,16 @@
--- frFR.lua
-
 Localization = Localization or {}
 
 Localization["frFR"] = {
     ["Royaumes de l’Est"] = {
-        ["la forêt d'Elwynn"] = {
+        ["La forêt d'Elwynn"] = {
             achievementID = 776,
-            proxyLocation = {0, 0, "la forêt d'Elwynn"},
+            proxyLocation = {0, 0, "La forêt d'Elwynn"},
             waypoints = {
                 {0, 0, "Vallée de Comté-du-Nord"},
                 {0, 0, "Comté-de-l’Or"},
                 {0, 0, "Le débarcadère de Jerod"},
                 {0, 0, "Champ de potirons des Saumepuits"},
-                {0, 0, "Tour de la Crête"},
+                {0, 0, "Tour de La Crête"},
                 {0, 0, "Lac du Cairn"},
                 {0, 0, "Garnison du ruisseau de l’Ouest"},
                 {0, 0, "Mine de Fondugouffre"},
@@ -32,7 +30,7 @@ Localization["frFR"] = {
                 {0, 0, "Halte de Guettesang"},
                 {0, 0, "Fin d’Agmond"},
                 {0, 0, "Camp Cagg"},
-                {0, 0, "Vallée de la Poussière"},
+                {0, 0, "Vallée de La Poussière"},
                 {0, 0, "Camp Kosh"},
                 {0, 0, "Nouvelle-Kargath"},
             },
@@ -42,7 +40,7 @@ Localization["frFR"] = {
             proxyLocation = {0, 0, "steppes Ardentes"},
             waypoints = {
                 {0, 0, "Rocher des Cognepeurs"},
-                {0, 0, "Chemin de l’Aile de la terreur"},
+                {0, 0, "Chemin de l’Aile de La terreur"},
                 {0, 0, "Ruines de Thaurissan"},
                 {0, 0, "Bastion Rochenoire"},
                 {0, 0, "Autel des Tempêtes"},
@@ -53,9 +51,9 @@ Localization["frFR"] = {
                 {0, 0, "Mont Rochenoire"},
             },
         },
-        ["bois de la Pénombre"] = {
+        ["Bois de La Pénombre"] = {
             achievementID = 778,
-            proxyLocation = {0, 0, "bois de la Pénombre"},
+            proxyLocation = {0, 0, "Bois de La Pénombre"},
             waypoints = {
                 {0, 0, "La rive Silencieuse"},
                 {0, 0, "Colline-aux-Corbeaux"},
@@ -78,7 +76,7 @@ Localization["frFR"] = {
             waypoints = {
                 {0, 0, "Le Loch"},
                 {0, 0, "Bastion des Mo’grosh"},
-                {0, 0, "Passage de la porte Nord"},
+                {0, 0, "Passage de La porte Nord"},
                 {0, 0, "Excavations de Baguefer"},
                 {0, 0, "Thelsamar"},
                 {0, 0, "Vallée des Rois"},
@@ -98,7 +96,7 @@ Localization["frFR"] = {
                 {0, 0, "Manoir du Foyer froid"},
                 {0, 0, "Antre de Garren"},
                 {0, 0, "Ferme des Balnir"},
-                {0, 0, "Poste de garde de la Croisade"},
+                {0, 0, "Poste de garde de La Croisade"},
                 {0, 0, "Ruines de Lordaeron"},
                 {0, 0, "La Barricade"},
                 {0, 0, "Ferme des Solliden"},
@@ -111,9 +109,9 @@ Localization["frFR"] = {
                 {0, 0, "Domaine Calston"},
             },
         },
-        ["la gorge des Vents brûlants"] = {
+        ["La gorge des Vents brûlants"] = {
             achievementID = 774,
-            proxyLocation = {0, 0, "la gorge des Vents brûlants"},
+            proxyLocation = {0, 0, "La gorge des Vents brûlants"},
             waypoints = {
                 {0, 0, "Crête de Guet-du-Feu"},
                 {0, 0, "Caverne de Noircharbon"},
@@ -131,7 +129,7 @@ Localization["frFR"] = {
             waypoints = {
                 {0, 0, "Tranquillien"},
                 {0, 0, "Brume-d’Or"},
-                {0, 0, "Sanctum de la Lune"},
+                {0, 0, "Sanctum de La Lune"},
                 {0, 0, "Flèche d’Aubétoile"},
                 {0, 0, "Ziggourat Hurlante"},
                 {0, 0, "Zeb’Nowa"},
@@ -213,7 +211,7 @@ Localization["frFR"] = {
                 {0, 0, "Colline des Chagrins"},
                 {0, 0, "La Barricade"},
                 {0, 0, "Ferme de Dalson"},
-                {0, 0, "Camp de bûcherons de la Crête du Nord"},
+                {0, 0, "Camp de bûcherons de La Crête du Nord"},
                 {0, 0, "Cluse des Rougepins"},
                 {0, 0, "La grotte des Pleurs"},
                 {0, 0, "Caer Darrow"},
@@ -290,7 +288,7 @@ Localization["frFR"] = {
                 {0, 0, "Crête Scintillante"},
                 {0, 0, "Les collines de Tundrid"},
                 {0, 0, "Lac du Lit d’Helm"},
-                {0, 0, "Avant-poste de la porte Nord"},
+                {0, 0, "Avant-poste de La porte Nord"},
                 {0, 0, "Lac Glacial"},
             },
         },
@@ -308,7 +306,7 @@ Localization["frFR"] = {
                 {0, 0, "Ferme des Nethander"},
                 {0, 0, "Ruines d’Alterac"},
                 {0, 0, "Creux du Massacre"},
-                {0, 0, "Porte de la Pointe du Midi"},
+                {0, 0, "Porte de La Pointe du Midi"},
                 {0, 0, "Moulin-de-Tarren"},
                 {0, 0, "Champs Fangeux"},
                 {0, 0, "Ferme de Brazie"},
@@ -318,7 +316,7 @@ Localization["frFR"] = {
                 {0, 0, "Donjon de Fort-de-Durn"},
                 {0, 0, "Promontoire de Gavin"},
                 {0, 0, "Rivage Brumeux"},
-                {0, 0, "Île de la Purification"},
+                {0, 0, "Île de La Purification"},
                 {0, 0, "Ruines d’Austrivage"},
                 {0, 0, "Promontoire de Sofera"},
                 {0, 0, "Strahnbrande"},
@@ -338,16 +336,16 @@ Localization["frFR"] = {
                 {0, 0, "Vallée de Galardell"},
                 {0, 0, "Camp Placide"},
                 {0, 0, "Lac Placide"},
-                {0, 0, "Grand-route de la crête du Lac"},
+                {0, 0, "Grand-route de La crête du Lac"},
                 {0, 0, "Scierie d’Alther"},
                 {0, 0, "Vallée des Étripeurs"},
                 {0, 0, "Donjon de Guet-de-Pierre"},
                 {0, 0, "Canyon Vent-de-schiste"},
             },
         },
-        ["bois des Chants éternels"] = {
+        ["Bois des Chants éternels"] = {
             achievementID = 859,
-            proxyLocation = {0, 0, "bois des Chants éternels"},
+            proxyLocation = {0, 0, "Bois des Chants éternels"},
             waypoints = {
                 {0, 0, "Île de Haut-Soleil"},
                 {0, 0, "Sanctum Occidental"},
@@ -376,13 +374,13 @@ Localization["frFR"] = {
                 {0, 0, "Rivage Paisible"},
             },
         },
-        ["la forêt des Pins-Argentés"] = {
+        ["La forêt des Pins-Argentés"] = {
             achievementID = 769,
-            proxyLocation = {0, 0, "la forêt des Pins-Argentés"},
+            proxyLocation = {0, 0, "La forêt des Pins-Argentés"},
             waypoints = {
                 {0, 0, "La Ligne de front"},
                 {0, 0, "Le front des Réprouvés"},
-                {0, 0, "Tête de pont de la Côte Nord"},
+                {0, 0, "Tête de pont de La Côte Nord"},
                 {0, 0, "Champ de Valgan"},
                 {0, 0, "Mine du gouffre d’Elem"},
                 {0, 0, "Moulin-de-l’Ambre"},
@@ -397,9 +395,9 @@ Localization["frFR"] = {
                 {0, 0, "La côte Nord"},
             },
         },
-        ["la Strangleronce septentrionale"] = {
+        ["La Strangleronce septentrionale"] = {
             achievementID = 781,
-            proxyLocation = {0, 0, "la Strangleronce septentrionale"},
+            proxyLocation = {0, 0, "La Strangleronce septentrionale"},
             waypoints = {
                 {0, 0, "Campement Grom’gol"},
                 {0, 0, "Bambala"},
@@ -428,7 +426,7 @@ Localization["frFR"] = {
                 {0, 0, "Pierrêche"},
                 {0, 0, "Stagalbog"},
                 {0, 0, "Brasse-Tourbe"},
-                {0, 0, "Caverne de la Source pure"},
+                {0, 0, "Caverne de La Source pure"},
                 {0, 0, "Le havre Boueux"},
                 {0, 0, "Le bourbier Changeant"},
                 {0, 0, "Bassin des Larmes"},
@@ -437,16 +435,16 @@ Localization["frFR"] = {
                 {0, 0, "Guet de l’Estran"},
             },
         },
-        ["la marche de l'Ouest"] = {
+        ["La marche de l'Ouest"] = {
             achievementID = 802,
-            proxyLocation = {0, 0, "la marche de l'Ouest"},
+            proxyLocation = {0, 0, "La marche de l'Ouest"},
             waypoints = {
                 {0, 0, "Colline des Sentinelles"},
                 {0, 0, "Ferme de potirons des Froncebouille"},
                 {0, 0, "Mine Veine-de-Jango"},
                 {0, 0, "L’acre Mort"},
                 {0, 0, "Ferme des Alexston"},
-                {0, 0, "Les collines de la Dague"},
+                {0, 0, "Les collines de La Dague"},
                 {0, 0, "Les plaines de Poussière"},
                 {0, 0, "Ferme des Saldean"},
                 {0, 0, "La ferme des Jansen"},
@@ -482,7 +480,7 @@ Localization["frFR"] = {
                 {0, 0, "Pestebois"},
                 {0, 0, "Ruines de l’enclave Écarlate"},
                 {0, 0, "La ferme des Marris"},
-                {0, 0, "Tour de garde de la Couronne"},
+                {0, 0, "Tour de garde de La Couronne"},
                 {0, 0, "Comté-de-Darrow"},
                 {0, 0, "La Croisée de Corin"},
                 {0, 0, "Main de Tyr"},
@@ -495,10 +493,10 @@ Localization["frFR"] = {
             },
         },
     }, -- World of Warcraft (Vanilla)
-    ["L’Outreterre"] = {
-        ["la péninsule des Flammes infernales"] = {
+    ["Outreterre"] = {
+        ["La péninsule des Flammes infernales"] = {
             achievementID = 862,
-            proxyLocation = {0, 0, "la péninsule des Flammes infernales"},
+            proxyLocation = {0, 0, "La péninsule des Flammes infernales"},
             waypoints = {
                 {0, 0, "L’escalier du Destin"},
                 {0, 0, "Guet de l’Épervier"},
@@ -513,16 +511,16 @@ Localization["frFR"] = {
                 {0, 0, "Citadelle des Flammes infernales"},
                 {0, 0, "Poste Mag’har"},
                 {0, 0, "Ruines de Sha’naar"},
-                {0, 0, "Le front de la Légion"},
+                {0, 0, "Le front de La Légion"},
                 {0, 0, "Trône de Kil’jaeden"},
                 {0, 0, "Tanière des Haal’esh"},
                 {0, 0, "Crête du Vide"},
                 {0, 0, "Camp de forge : Mageddon"},
             },
         },
-        ["la forêt de Terokkar"] = {
+        ["La forêt de Terokkar"] = {
             achievementID = 867,
-            proxyLocation = {0, 0, "la forêt de Terokkar"},
+            proxyLocation = {0, 0, "La forêt de Terokkar"},
             waypoints = {
                 {0, 0, "Ruines de l’Orbite-Sanglante"},
                 {0, 0, "Fourré Cénarien"},
@@ -553,7 +551,7 @@ Localization["frFR"] = {
             waypoints = {
                 {0, 0, "Point d’ancrage de Bash’ir"},
                 {0, 0, "Bastion de Flèchelame"},
-                {0, 0, "Avant-poste de la Masse-Sanglante"},
+                {0, 0, "Avant-poste de La Masse-Sanglante"},
                 {0, 0, "Cercle de sang"},
                 {0, 0, "Camp de forge : Colère"},
                 {0, 0, "Camp de forge : Courroux"},
@@ -565,9 +563,9 @@ Localization["frFR"] = {
                 {0, 0, "Voile Lashh"},
                 {0, 0, "Le séjour de Vekhaar"},
                 {0, 0, "Goulet des Lames"},
-                {0, 0, "Camp de la Masse-Sanglante"},
+                {0, 0, "Camp de La Masse-Sanglante"},
                 {0, 0, "Landes Brisées"},
-                {0, 0, "Porte de la mort"},
+                {0, 0, "Porte de La mort"},
                 {0, 0, "Camp de forge : Terreur"},
                 {0, 0, "Grishnath"},
                 {0, 0, "La crête Dentelée"},
@@ -579,15 +577,15 @@ Localization["frFR"] = {
                 {0, 0, "Sommet du Vortex"},
             },
         },
-        ["la vallée d'Ombrelune"] = {
+        ["La vallée d'Ombrelune"] = {
             achievementID = 864,
-            proxyLocation = {0, 0, "la vallée d'Ombrelune"},
+            proxyLocation = {0, 0, "La vallée d'Ombrelune"},
             waypoints = {
                 {0, 0, "Halte de Glissentaille"},
-                {0, 0, "Bastion de la Légion"},
+                {0, 0, "Bastion de La Légion"},
                 {0, 0, "Village d’Ombrelune"},
                 {0, 0, "La Forgemort"},
-                {0, 0, "La Cage de la gardienne"},
+                {0, 0, "La Cage de La gardienne"},
                 {0, 0, "Autel de Sha’tar"},
                 {0, 0, "Champs de l’Aile-du-Néant"},
                 {0, 0, "Halte de l’Éclipse"},
@@ -598,7 +596,7 @@ Localization["frFR"] = {
                 {0, 0, "Halte Illidari"},
             },
         },
-        ["marécage de Zangar"] = {
+        ["Marécage de Zangar"] = {
             achievementID = 863,
             proxyLocation = {0, 0, "marécage de Zangar"},
             waypoints = {
@@ -641,7 +639,7 @@ Localization["frFR"] = {
                 {0, 0, "Champs des Esprits"},
                 {0, 0, "Telaar"},
                 {0, 0, "Trône des éléments"},
-                {0, 0, "Ruines de la Lame-Ardente"},
+                {0, 0, "Ruines de La Lame-Ardente"},
                 {0, 0, "Camp de forge : Haine"},
                 {0, 0, "La crête du Crépuscule"},
                 {0, 0, "Ventejonc"},
@@ -665,7 +663,7 @@ Localization["frFR"] = {
                 {0, 0, "Manaforge B’naar"},
                 {0, 0, "Manaforge Duro"},
                 {0, 0, "Manaforge Ultris"},
-                {0, 0, "Donjon de la Tempête"},
+                {0, 0, "Donjon de La Tempête"},
                 {0, 0, "Ruines Arklon"},
                 {0, 0, "Kirin’Var"},
                 {0, 0, "Ruines d’Enkaat"},
@@ -677,7 +675,7 @@ Localization["frFR"] = {
         },
     }, -- The Burning Crusade
     ["Cataclysme"] = {
-        ["d'Hyjal"] = {
+        ["Hyjal"] = {
             achievementID = 4863,
             proxyLocation = {0, 0, "d'Hyjal"},
             waypoints = {
@@ -700,19 +698,19 @@ Localization["frFR"] = {
             waypoints = {
                 {0, 0, "La Chute d’Aile de mort"},
                 {0, 0, "Scories-de-Rochepointe"},
-                {0, 0, "Épave de la Furie de l’orage"},
+                {0, 0, "Épave de La Furie de l’orage"},
                 {0, 0, "Le perchoir Diaphane"},
                 {0, 0, "Les fonds Tremblants"},
                 {0, 0, "Porte des Maîtres"},
                 {0, 0, "Gouffre de Rochepointe"},
                 {0, 0, "Âtrepierre"},
-                {0, 0, "Temple de la Terre"},
+                {0, 0, "Temple de La Terre"},
                 {0, 0, "Trône de Therazane"},
                 {0, 0, "Surplomb du Crépuscule"},
                 {0, 0, "Étendues Cramoisies"},
             },
         },
-        ["hautes-terres du Crépuscule"] = {
+        ["Hautes-terres du Crépuscule"] = {
             achievementID = 4866,
             proxyLocation = {0, 0, "hautes-terres du Crépuscule"},
             waypoints = {
@@ -728,8 +726,8 @@ Localization["frFR"] = {
                 {0, 0, "Le Gosier"},
                 {0, 0, "La Brèche du Crépuscule"},
                 {0, 0, "Rivage du Crépuscule"},
-                {0, 0, "Halte de la Victoire"},
-                {0, 0, "L’antre de la Folie"},
+                {0, 0, "Halte de La Victoire"},
+                {0, 0, "L’antre de La Folie"},
                 {0, 0, "Creuset du carnage"},
                 {0, 0, "Passe des Gueules-de-dragon"},
                 {0, 0, "Ruines de Dunwald"},
@@ -766,13 +764,13 @@ Localization["frFR"] = {
                 {0, 0, "Le gouffre Brûlant"},
                 {0, 0, "Charnier de Ronge-la-mort"},
                 {0, 0, "L’Étreinte"},
-                {0, 0, "Le Destin de la Légion"},
+                {0, 0, "Le Destin de La Légion"},
                 {0, 0, "Crête de Beth’mora"},
                 {0, 0, "Ruines du temple de Thelserai"},
                 {0, 0, "Grotte Chatoyante"},
             },
         },
-        ["d'Uldum"] = {
+        ["Uldum"] = {
             achievementID = 4865,
             proxyLocation = {0, 0, "d'Uldum"},
             waypoints = {
@@ -790,21 +788,21 @@ Localization["frFR"] = {
                 {0, 0, "Berceau des Anciens"},
                 {0, 0, "Cité perdue des Tol’vir"},
                 {0, 0, "Nahom"},
-                {0, 0, "Obélisque de la Lune"},
+                {0, 0, "Obélisque de La Lune"},
                 {0, 0, "Obélisque du Soleil"},
                 {0, 0, "Ramkahen"},
                 {0, 0, "Ruines d’Ammon"},
                 {0, 0, "Terres de Tahret"},
                 {0, 0, "L’accostage Maudit"},
                 {0, 0, "Tombes des Précurseurs"},
-                {0, 0, "Barrage de la Vir’naal"},
+                {0, 0, "Barrage de La Vir’naal"},
             },
         },
     }, -- Cataclysm
     ["Draenor"] = {
-        ["la crête de Givrefeu"] = {
+        ["La crête de Givrefeu"] = {
             achievementID = 8937,
-            proxyLocation = {0, 0, "la crête de Givrefeu"},
+            proxyLocation = {0, 0, "La crête de Givrefeu"},
             waypoints = {
                 {0, 0, "Citadelle de Flèchelame"},
                 {0, 0, "Restes d’Agurak"},
@@ -814,7 +812,7 @@ Localization["frFR"] = {
                 {0, 0, "Magnarok"},
                 {0, 0, "Crâne-de-Lave"},
                 {0, 0, "Wor’gol"},
-                {0, 0, "Bastion de la Masse-Sanglante"},
+                {0, 0, "Bastion de La Masse-Sanglante"},
                 {0, 0, "Trépas-du-Colosse"},
                 {0, 0, "Combe de Givrevent"},
                 {0, 0, "Grom’gar"},
@@ -836,7 +834,7 @@ Localization["frFR"] = {
                 {0, 0, "La marche de Fer"},
                 {0, 0, "Guet des Bêtes"},
                 {0, 0, "Marais Rouge"},
-                {0, 0, "Séjour de la Flore éternelle"},
+                {0, 0, "Séjour de La Flore éternelle"},
                 {0, 0, "Canyon des Gronns"},
                 {0, 0, "Sylve Iyun"},
                 {0, 0, "L’Enchevêtrement"},
@@ -845,7 +843,7 @@ Localization["frFR"] = {
                 {0, 0, "La Fosse"},
             },
         },
-        ["flèches d’Arak"] = {
+        ["Flèches d’Arak"] = {
             achievementID = 8941,
             proxyLocation = {0, 0, "flèches d’Arak"},
             waypoints = {
@@ -868,9 +866,9 @@ Localization["frFR"] = {
                 {0, 0, "Vallée Crin-de-Sang"},
             },
         },
-        ["la vallée d’Ombrelune"] = {
+        ["La vallée d’Ombrelune"] = {
             achievementID = 8938,
-            proxyLocation = {0, 0, "la vallée d’Ombrelune"},
+            proxyLocation = {0, 0, "La vallée d’Ombrelune"},
             waypoints = {
                 {0, 0, "Forteresse de l’Angoisse"},
                 {0, 0, "Élodor"},
@@ -900,7 +898,7 @@ Localization["frFR"] = {
                 {0, 0, "Auchindoun"},
                 {0, 0, "Cloître des Âmes"},
                 {0, 0, "Forteresse de Gordal"},
-                {0, 0, "Le sentier de la Gloire"},
+                {0, 0, "Le sentier de La Gloire"},
                 {0, 0, "Séjour de l’Anachorète"},
                 {0, 0, "Telmor"},
                 {0, 0, "Tuurem"},
@@ -928,27 +926,27 @@ Localization["frFR"] = {
             },
         },
     }, -- Warlords of Draenor
-    ["Battle for Azeroth"] = {
-        ["la rade de Tiragarde"] = {
+    ["Bataille pour Azeroth"] = {
+        ["La rade de Tiragarde"] = {
             achievementID = 12556,
-            proxyLocation = {0, 0, "la rade de Tiragarde"},
+            proxyLocation = {0, 0, "La rade de Tiragarde"},
             waypoints = {
                 {0, 0, "Quai du Trident"},
-                {0, 0, "Crête du bois des Fougères"},
+                {0, 0, "Crête du Bois des Fougères"},
                 {0, 0, "Domaine Norwington"},
                 {0, 0, "Décharge abandonnée"},
                 {0, 0, "Estuaire Gémissant"},
                 {0, 0, "Glacier Déclinant"},
                 {0, 0, "Boralus"},
                 {0, 0, "Port-Liberté"},
-                {0, 0, "Crique de la Malédiction du kraken"},
+                {0, 0, "Crique de La Malédiction du kraken"},
                 {0, 0, "Pavillon Kennings"},
-                {0, 0, "Colline de la Vigie"},
+                {0, 0, "Colline de La Vigie"},
             },
         },
-        ["la vallée Chantorage"] = {
+        ["La vallée Chantorage"] = {
             achievementID = 12558,
-            proxyLocation = {0, 0, "la vallée Chantorage"},
+            proxyLocation = {0, 0, "La vallée Chantorage"},
             waypoints = {
                 {0, 0, "Brennadam"},
                 {0, 0, "Rivage du Marin"},
@@ -1000,9 +998,9 @@ Localization["frFR"] = {
             waypoints = {
                 {0, 0, "Atal’Dazar"},
                 {0, 0, "Porte de Sang"},
-                {0, 0, "Crique de la Perle-Maudite"},
+                {0, 0, "Crique de La Perle-Maudite"},
                 {0, 0, "Terres Sauvages"},
-                {0, 0, "Île de la Défense"},
+                {0, 0, "Île de La Défense"},
                 {0, 0, "Xibala"},
                 {0, 0, "Atal’Gral"},
                 {0, 0, "Dazar’alor"},
@@ -1038,7 +1036,7 @@ Localization["frFR"] = {
             proxyLocation = {0, 0, "Durotar"},
             waypoints = {
                 {0, 0, "Vallée des Épreuves"},
-                {0, 0, "Débord de la Furie-du-Sud"},
+                {0, 0, "Débord de La Furie-du-Sud"},
                 {0, 0, "Îles de l’Écho"},
                 {0, 0, "Tranchecolline"},
                 {0, 0, "Falaises du Tonnerre"},
@@ -1098,7 +1096,7 @@ Localization["frFR"] = {
                 {0, 0, "Le Séjour de l’honneur"},
                 {0, 0, "Fort de Guet-du-Nord"},
                 {0, 0, "Ruines de Taurajo"},
-                {0, 0, "Halte de la Vendetta"},
+                {0, 0, "Halte de La Vendetta"},
                 {0, 0, "La Balafre"},
                 {0, 0, "Veine de Folcrame"},
                 {0, 0, "Colline du Chasseur"},
@@ -1211,7 +1209,7 @@ Localization["frFR"] = {
                 {0, 0, "Porte d’Azshara"},
                 {0, 0, "Plage des Crêtes du sud"},
                 {0, 0, "Lac Mennar"},
-                {0, 0, "Falaises de la Tempête"},
+                {0, 0, "Falaises de La Tempête"},
                 {0, 0, "La grève Fracassée"},
                 {0, 0, "Confins Amers"},
                 {0, 0, "Ruines d’Arkkoran"},
@@ -1226,7 +1224,7 @@ Localization["frFR"] = {
             achievementID = 854,
             proxyLocation = {0, 0, "cratère d'Un'Goro"},
             waypoints = {
-                {0, 0, "Crête de la Fournaise"},
+                {0, 0, "Crête de La Fournaise"},
                 {0, 0, "Camp retranché des Marshal"},
                 {0, 0, "Les jardins Mouvants"},
                 {0, 0, "Sources de Golakka"},
@@ -1235,7 +1233,7 @@ Localization["frFR"] = {
                 {0, 0, "Rocher fongique"},
                 {0, 0, "Tertre Moussu"},
                 {0, 0, "Les confins Hurlants"},
-                {0, 0, "Coteaux de la Terreur"},
+                {0, 0, "Coteaux de La Terreur"},
                 {0, 0, "La Fondrière"},
                 {0, 0, "Fosses de goudron de Lakkari"},
             },
@@ -1267,7 +1265,7 @@ Localization["frFR"] = {
                 {0, 0, "Puits Crin-Sauvage"},
                 {0, 0, "Rocher des Crins-pâles"},
                 {0, 0, "Puits Sabot-d’Hiver"},
-                {0, 0, "La mine de la KapitalRisk"},
+                {0, 0, "La mine de La KapitalRisk"},
                 {0, 0, "Les plaines Dorées"},
                 {0, 0, "Site de fouilles de Bael’Dun"},
                 {0, 0, "Crête des Furies-des-vents"},
@@ -1303,7 +1301,7 @@ Localization["frFR"] = {
                 {0, 0, "Sources de Givrefeu"},
                 {0, 0, "Lac Kel’Theril"},
                 {0, 0, "Mazthoril"},
-                {0, 0, "Fourré de l’Aile de la chouette"},
+                {0, 0, "Fourré de l’Aile de La chouette"},
                 {0, 0, "Village des Tombe-hiver"},
                 {0, 0, "Roc des Sabres-de-Givre"},
                 {0, 0, "Poste des Grumegueules"},
@@ -1359,7 +1357,7 @@ Localization["frFR"] = {
             achievementID = 847,
             proxyLocation = {0, 0, "Serres-Rocheuses"},
             waypoints = {
-                {0, 0, "Vallée de la Balafre"},
+                {0, 0, "Vallée de La Balafre"},
                 {0, 0, "Ruines d’Eldre’thar"},
                 {0, 0, "Terres Exhumées"},
                 {0, 0, "Bastion des Cisailles"},
@@ -1427,7 +1425,7 @@ Localization["frFR"] = {
                 {0, 0, "Village des Mort-bois"},
                 {0, 0, "Clairière de Griffebranche"},
                 {0, 0, "Défilé des Jadefeu"},
-                {0, 0, "Chutes de la Vénéneuse"},
+                {0, 0, "Chutes de La Vénéneuse"},
                 {0, 0, "Ruines de Constellas"},
                 {0, 0, "Sanctuaire d’Émeraude"},
                 {0, 0, "Morlos’Aran"},
@@ -1445,28 +1443,28 @@ Localization["frFR"] = {
         },
     }, -- World of Warcraft (Vanilla)
     ["Norfendre"] = {
-        ["la toundra Boréenne"] = {
+        ["La toundra Boréenne"] = {
             achievementID = 1264,
-            proxyLocation = {0, 0, "la toundra Boréenne"},
+            proxyLocation = {0, 0, "La toundra Boréenne"},
             waypoints = {
                 {0, 0, "Ville-temple d’En’kilah"},
                 {0, 0, "Grève des Courcinglants"},
                 {0, 0, "Point d’accostage de Garrosh"},
                 {0, 0, "Frimarra"},
                 {0, 0, "Escarpement d’Ambre"},
-                {0, 0, "Donjon de la Bravoure"},
+                {0, 0, "Donjon de La Bravoure"},
                 {0, 0, "Les tanières du Trépas"},
                 {0, 0, "Caravane de Mâchoire-d’acier"},
                 {0, 0, "Kaskala"},
-                {0, 0, "Le séjour de la Mort"},
+                {0, 0, "Le séjour de La Mort"},
                 {0, 0, "Avant-poste de Bor’gorok"},
                 {0, 0, "Bastion Chanteguerre"},
                 {0, 0, "Les champs de Geysers"},
             },
         },
-        ["la Désolation des dragons"] = {
+        ["La Désolation des dragons"] = {
             achievementID = 1265,
-            proxyLocation = {0, 0, "la Désolation des dragons"},
+            proxyLocation = {0, 0, "La Désolation des dragons"},
             waypoints = {
                 {0, 0, "Le Repos de Galakrond"},
                 {0, 0, "Sanctuaire draconique Obsidien"},
@@ -1507,9 +1505,9 @@ Localization["frFR"] = {
                 {0, 0, "Kolramas"},
             },
         },
-        ["la forêt du Chant de cristal"] = {
+        ["La forêt du Chant de cristal"] = {
             achievementID = 1457,
-            proxyLocation = {0, 0, "la forêt du Chant de cristal"},
+            proxyLocation = {0, 0, "La forêt du Chant de cristal"},
             waypoints = {
                 {0, 0, "Le front Azur"},
                 {0, 0, "Quartier général de Saccage-Soleil"},
@@ -1521,9 +1519,9 @@ Localization["frFR"] = {
                 {0, 0, "Le fourré Délié"},
             },
         },
-        ["la Couronne de glace"] = {
+        ["La Couronne de glace"] = {
             achievementID = 1270,
-            proxyLocation = {0, 0, "la Couronne de glace"},
+            proxyLocation = {0, 0, "La Couronne de glace"},
             waypoints = {
                 {0, 0, "Le Bombardement"},
                 {0, 0, "Port de l’Assaut"},
@@ -1533,12 +1531,12 @@ Localization["frFR"] = {
                 {0, 0, "La Déflagration"},
                 {0, 0, "Jotunheim"},
                 {0, 0, "Le caveau des Ombres"},
-                {0, 0, "Citadelle de la Couronne de glace"},
+                {0, 0, "Citadelle de La Couronne de glace"},
                 {0, 0, "Le front Brisé"},
-                {0, 0, "Aldur’thar : la Porte de la Désolation"},
+                {0, 0, "Aldur’thar : La Porte de La Désolation"},
                 {0, 0, "Valhalas"},
                 {0, 0, "Ymirheim"},
-                {0, 0, "Corp’rethar : la porte de l’Horreur"},
+                {0, 0, "Corp’rethar : La porte de l’Horreur"},
                 {0, 0, "Fléaulme"},
             },
         },
@@ -1548,14 +1546,14 @@ Localization["frFR"] = {
             waypoints = {
                 {0, 0, "Kamagua"},
                 {0, 0, "Camp Sabot-d’Hiver"},
-                {0, 0, "Accostage de la Vengeance"},
+                {0, 0, "Accostage de La Vengeance"},
                 {0, 0, "Cap du Forban"},
                 {0, 0, "Gjalerbron"},
                 {0, 0, "La piste des Géants"},
                 {0, 0, "Ruines d’Ivald"},
                 {0, 0, "Nouvelle-Agamand"},
                 {0, 0, "La clairière Tordue"},
-                {0, 0, "Donjon de la Garde de l’Ouest"},
+                {0, 0, "Donjon de La Garde de l’Ouest"},
                 {0, 0, "Torvheim"},
                 {0, 0, "Île Calderos"},
                 {0, 0, "Camp des Apothicaires"},
@@ -1573,11 +1571,11 @@ Localization["frFR"] = {
             achievementID = 1266,
             proxyLocation = {0, 0, "Grisonnes"},
             waypoints = {
-                {0, 0, "Bastion de la Conquête"},
+                {0, 0, "Bastion de La Conquête"},
                 {0, 0, "Ruines de Drakil’jin"},
                 {0, 0, "Sources de Granit"},
                 {0, 0, "Sanctuaire du Croc rageur"},
-                {0, 0, "Baie de la KapitalRisk"},
+                {0, 0, "Baie de La KapitalRisk"},
                 {0, 0, "Gîte Ambrepin"},
                 {0, 0, "Camp Oneqwah"},
                 {0, 0, "Donjon de Drak’Tharon"},
@@ -1586,12 +1584,12 @@ Localization["frFR"] = {
                 {0, 0, "Thor Modan"},
                 {0, 0, "Voldrune"},
                 {0, 0, "Chantier d’abattage du Ciel bleu"},
-                {0, 0, "Campement de la brigade de la marche de l’Ouest"},
+                {0, 0, "Campement de La brigade de La marche de l’Ouest"},
             },
         },
-        ["bassin de Sholazar"] = {
+        ["Bassin de Sholazar"] = {
             achievementID = 1268,
-            proxyLocation = {0, 0, "bassin de Sholazar"},
+            proxyLocation = {0, 0, "Bassin de Sholazar"},
             waypoints = {
                 {0, 0, "Le Cœur du fleuve"},
                 {0, 0, "Le pilier Mousselume"},
@@ -1607,7 +1605,7 @@ Localization["frFR"] = {
                 {0, 0, "La saillie de Forgetempête"},
             },
         },
-        ["pics Foudroyés"] = {
+        ["Pics Foudroyés"] = {
             achievementID = 1269,
             proxyLocation = {0, 0, "pics Foudroyés"},
             waypoints = {
@@ -1615,7 +1613,7 @@ Localization["frFR"] = {
                 {0, 0, "Dun Niffelem"},
                 {0, 0, "Valkyrion"},
                 {0, 0, "Champ de mines de Grilledouille"},
-                {0, 0, "Temple de la Vie"},
+                {0, 0, "Temple de La Vie"},
                 {0, 0, "Chute-tonnerre"},
                 {0, 0, "Plaines des Congères"},
                 {0, 0, "Fort du Givre"},
@@ -1631,9 +1629,9 @@ Localization["frFR"] = {
         },
     }, -- Wrath of the Lich King
     ["Pandarie"] = {
-        ["la forêt de Jade"] = {
+        ["La forêt de Jade"] = {
             achievementID = 6351,
-            proxyLocation = {0, 0, "la forêt de Jade"},
+            proxyLocation = {0, 0, "La forêt de Jade"},
             waypoints = {
                 {0, 0, "Monastère de Tian"},
                 {0, 0, "Le pavillon du rêveur"},
@@ -1663,7 +1661,7 @@ Localization["frFR"] = {
                 {0, 0, "Crique de Krasarang"},
                 {0, 0, "Lagon de Nayeli"},
                 {0, 0, "Ruines de Dojan"},
-                {0, 0, "Temple de la Grue rouge"},
+                {0, 0, "Temple de La Grue rouge"},
                 {0, 0, "La jungle Interdite"},
                 {0, 0, "Unga Ingou"},
                 {0, 0, "Berceau de Chi Ji"},
@@ -1688,7 +1686,7 @@ Localization["frFR"] = {
                 {0, 0, "Le marais des Joncs"},
                 {0, 0, "Kri’vess"},
                 {0, 0, "Temple de Niuzao"},
-                {0, 0, "Étau de la haine"},
+                {0, 0, "Étau de La haine"},
                 {0, 0, "Dao Shan’ze"},
                 {0, 0, "Sra’vess"},
             },
@@ -1710,16 +1708,16 @@ Localization["frFR"] = {
                 {0, 0, "Lac Blanc-Pétale"},
             },
         },
-        ["la vallée des Quatre vents"] = {
+        ["La vallée des Quatre vents"] = {
             achievementID = 6969,
-            proxyLocation = {0, 0, "la vallée des Quatre vents"},
+            proxyLocation = {0, 0, "La vallée des Quatre vents"},
             waypoints = {
                 {0, 0, "Arête des Vents"},
                 {0, 0, "Le delta Doré"},
                 {0, 0, "Micolline"},
                 {0, 0, "Kunzen"},
                 {0, 0, "Safari de Nesingwary"},
-                {0, 0, "Bassins de la Pureté"},
+                {0, 0, "Bassins de La Pureté"},
                 {0, 0, "Les champs Soyeux"},
                 {0, 0, "Brasserie Brune d’Orage"},
                 {0, 0, "Élevage Pied de Foudre"},
@@ -1742,7 +1740,7 @@ Localization["frFR"] = {
                 {0, 0, "Porte des Astres vénérables"},
                 {0, 0, "Pic de Kota"},
                 {0, 0, "Mont Sans-Repos"},
-                {0, 0, "Pic de la Sérénité"},
+                {0, 0, "Pic de La Sérénité"},
                 {0, 0, "Temple du Tigre blanc"},
                 {0, 0, "Vallée des Empereurs"},
                 {0, 0, "Retraite de Rameau-de-feu"},
@@ -1750,7 +1748,7 @@ Localization["frFR"] = {
                 {0, 0, "Mogujia"},
                 {0, 0, "Élevage Patte Musquée"},
                 {0, 0, "Monastère des Pandashan"},
-                {0, 0, "La piste de la Toile de jute"},
+                {0, 0, "La piste de La Toile de jute"},
                 {0, 0, "Zouchin"},
             },
         },
@@ -1758,7 +1756,7 @@ Localization["frFR"] = {
             achievementID = 6978,
             proxyLocation = {0, 0, "terres de l’Angoisse"},
             waypoints = {
-                {0, 0, "Cœur de la peur"},
+                {0, 0, "Cœur de La peur"},
                 {0, 0, "Kypari Vor"},
                 {0, 0, "Rikkitun"},
                 {0, 0, "Terrasse de Gurthan"},
@@ -1797,7 +1795,7 @@ Localization["frFR"] = {
             waypoints = {
                 {0, 0, "Terres-de-Sang"},
                 {0, 0, "Guet de Sabot-de-Givre"},
-                {0, 0, "Perchoir du Veilleur de la nuit"},
+                {0, 0, "Perchoir du Veilleur de La nuit"},
                 {0, 0, "Courbe-Rive"},
                 {0, 0, "Crique de l’Épave"},
                 {0, 0, "Guet de Sabot-de-Pierre"},
@@ -1818,7 +1816,7 @@ Localization["frFR"] = {
                 {0, 0, "Val d’Ambre"},
                 {0, 0, "Falanaar"},
                 {0, 0, "La Grande promenade"},
-                {0, 0, "Bastion de la garde de la Lune"},
+                {0, 0, "Bastion de La garde de La Lune"},
                 {0, 0, "Ruines d’Élune’eth"},
                 {0, 0, "Tel’anor"},
                 {0, 0, "Fourré Cramoisi"},
@@ -1859,7 +1857,7 @@ Localization["frFR"] = {
                 {0, 0, "Nastrondir"},
                 {0, 0, "Le Runebois"},
                 {0, 0, "Skold-Ashil"},
-                {0, 0, "Repos de la Serre"},
+                {0, 0, "Repos de La Serre"},
                 {0, 0, "Valdisdall"},
                 {0, 0, "Surplomb Noirbec"},
                 {0, 0, "Dreyrgrot"},
@@ -1868,7 +1866,7 @@ Localization["frFR"] = {
                 {0, 0, "Morheim"},
                 {0, 0, "Rocher du Guetteur"},
                 {0, 0, "Repos du bouclier"},
-                {0, 0, "Confins de la Tempête"},
+                {0, 0, "Confins de La Tempête"},
                 {0, 0, "Port des Mörgestran"},
                 {0, 0, "Les pitons Larmoyants"},
             },
@@ -1883,7 +1881,7 @@ Localization["frFR"] = {
         ["Battle for Azeroth"] = "Bataille pour Azeroth", -- Zandalar and Kul Tiras
         ["Kalimdor"] = "Kalimdor",
         ["Northrend"] = "Norfendre",
-        ["Pandaria"] = "Pandaria",
-        ["Broken Isles"] = "Îles Brisées",
+        ["Pandaria"] = "Pandarie",
+        ["Broken Isles"] = "îles Brisées",
     }
 }
