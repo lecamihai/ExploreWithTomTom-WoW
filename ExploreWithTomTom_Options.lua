@@ -2,7 +2,7 @@
 
 -- Create a new frame with a thin white border and black background
 local exploreFrame = CreateFrame("Frame", "ExploreWithTomTomFrame", UIParent, "ThinBorderTemplate")
-exploreFrame:SetSize(600, 480)  -- Set size of the frame
+exploreFrame:SetSize(600, 520)  -- Set size of the frame
 exploreFrame:SetPoint("CENTER", UIParent, "CENTER")  -- Center the frame
 exploreFrame:SetMovable(true)  -- Make the frame movable
 exploreFrame:EnableMouse(true)
@@ -24,6 +24,23 @@ exploreFrame.title:SetText("Explore with TomTom")
 -- Close button for the new frame
 local closeButton = CreateFrame("Button", nil, exploreFrame, "UIPanelCloseButton")
 closeButton:SetPoint("TOPRIGHT", exploreFrame, "TOPRIGHT", -5, -5)
+
+-- Refresh button for the same frame
+local refreshButton = CreateFrame("Button", nil, exploreFrame, "UIPanelCloseButton")
+refreshButton:SetSize(closeButton:GetWidth(), closeButton:GetHeight()) -- Match the size of the close button
+refreshButton:SetPoint("RIGHT", closeButton, "LEFT", -5, 0) -- Place it to the left of the close button
+refreshButton:SetNormalTexture("Interface\\Buttons\\UI-RefreshButton") -- Optional: Set a refresh icon texture
+refreshButton:SetHighlightTexture("Interface\\Buttons\\UI-RefreshButton") -- Optional: Highlight texture
+
+-- Functionality for the refresh button
+refreshButton:SetScript("OnClick", function()
+    if selectedContinent and selectedZone then
+        UpdateZoneStatusContainer(selectedContinent, selectedZone)
+    elseif selectedContinent then
+        UpdateZoneStatusContainer(selectedContinent)
+    end
+    UpdateContinentStatus()
+end)
 
 -- UI Elements for Continent and Zone Selection
 local continentDropdown, zoneDropdown
@@ -69,9 +86,10 @@ UIDropDownMenu_Initialize(continentDropdown, function(self, level)
 end)
 
 local continentOrder = {
-    "Eastern Kingdoms", "Outland", "Cataclysm",
-    "Draenor", "Battle for Azeroth", "Kalimdor",
-    "Northrend", "Pandaria", "Broken Isles"
+    "Eastern Kingdoms", "Outland", "Draenor",
+    "Kul Tiras", "Zandalar", "Northrend",
+    "Pandaria", "Broken Isles", "Kalimdor",
+    "The Maelstrom"
 }
 
 -- Zone Dropdown
@@ -114,7 +132,7 @@ end)
 -- Add Waypoints Button
 local addButton = CreateFrame("Button", nil, exploreFrame, "UIPanelButtonTemplate")
 addButton:SetPoint("TOPLEFT", zoneDropdown, "BOTTOMLEFT", 25, -20)
-addButton:SetSize(140, 22)
+addButton:SetSize(140, 30)
 addButton:SetText("Add Waypoints")
 addButton:SetScript("OnClick", function()
     if selectedContinent and selectedZone then
@@ -123,6 +141,29 @@ addButton:SetScript("OnClick", function()
         print("Please select a continent and zone.")
     end
 end)
+
+-- Select Closest Waypoint Button
+local closestButton = CreateFrame("Button", nil, exploreFrame, "UIPanelButtonTemplate")
+closestButton:SetPoint("TOPLEFT", addButton, "BOTTOMLEFT", 0, -10)  -- Position below "Add Waypoints"
+closestButton:SetSize(140, 30)
+closestButton:SetText("Closest Waypoint")
+closestButton:SetScript("OnClick", function()
+    -- Command to select the closest waypoint using TomTom
+    if TomTom and TomTom.SetClosestWaypoint then
+        TomTom:SetClosestWaypoint()
+    else
+    end
+end)
+
+-- Remove Waypoints Button
+local removeButton = CreateFrame("Button", nil, exploreFrame, "UIPanelButtonTemplate")
+removeButton:SetPoint("TOPLEFT", closestButton, "BOTTOMLEFT", 0, -10)  -- Position below "Closest Waypoint"
+removeButton:SetSize(140, 30)
+removeButton:SetText("Remove Waypoints")
+removeButton:SetScript("OnClick", function()
+    RemoveAllWaypoints() -- Call your RemoveAllWaypoints function
+end)
+
 
 -- Scroll Frame for Zone Status with a thin border around it
 local scrollFrameContainer = CreateFrame("Frame", nil, exploreFrame, "ThinBorderTemplate")
@@ -249,32 +290,32 @@ end
 
 -- Container for Continent Status at the bottom of the frame with expanded layout
 local continentStatusContainer = CreateFrame("Frame", nil, exploreFrame, "ThinBorderTemplate")
-continentStatusContainer:SetSize(580, 120)  -- Increased height to accommodate three rows
+continentStatusContainer:SetSize(580, 150)  -- Increased height to accommodate three rows
 continentStatusContainer:SetPoint("BOTTOM", exploreFrame, "BOTTOM", 0, 10)
 
 local function CreateContinentStatusTexts(parent, totalContinents)
-    -- Ensure totalContinents is a valid number
     totalContinents = tonumber(totalContinents) or 0
 
     local texts = {}
-    local numColumns = 3  -- Number of columns per row (adjust for better layout with 9 items)
-    local containerPadding = 10  -- Padding inside the container
-    local cellSpacing = 10  -- Spacing between cells
+    local buttons = {}
+    local hoverFrames = {}
+    local numColumns = 3
+    local containerPadding = 10
+    local cellSpacing = 10
     local containerWidth = parent:GetWidth() - 2 * containerPadding
     local cellWidth = (containerWidth - (numColumns - 1) * cellSpacing) / numColumns
-    local cellHeight = 25  -- Fixed height for each text element
+    local cellHeight = 25
 
     for i = 1, totalContinents do
-        -- Calculate the current row and column based on the continent index
-        local col = (i - 1) % numColumns  -- Current column (0-based)
-        local row = math.floor((i - 1) / numColumns)  -- Current row (0-based)
+        local col = (i - 1) % numColumns
+        local row = math.floor((i - 1) / numColumns)
 
         -- Create and position the text
         texts[i] = parent:CreateFontString(nil, "ARTWORK", "GameFontNormal")
         texts[i]:SetWidth(cellWidth)
         texts[i]:SetHeight(cellHeight)
-        texts[i]:SetJustifyH("CENTER")  -- Center-align horizontally
-        texts[i]:SetJustifyV("MIDDLE")  -- Center-align vertically
+        texts[i]:SetJustifyH("CENTER")
+        texts[i]:SetJustifyV("MIDDLE")
         texts[i]:SetPoint(
             "TOPLEFT",
             parent,
@@ -282,6 +323,36 @@ local function CreateContinentStatusTexts(parent, totalContinents)
             containerPadding + col * (cellWidth + cellSpacing),
             -(containerPadding + row * (cellHeight + cellSpacing))
         )
+
+        -- Create an invisible button over the text
+        buttons[i] = CreateFrame("Button", nil, parent)
+        buttons[i]:SetSize(cellWidth, cellHeight)
+        buttons[i]:SetPoint("TOPLEFT", texts[i], "TOPLEFT")
+        buttons[i]:SetScript("OnClick", function()
+            local continent = continentOrder[i]
+            selectedContinent = continent
+            selectedZone = nil
+            UIDropDownMenu_SetText(continentDropdown, continent)
+            UIDropDownMenu_SetText(zoneDropdown, "Select Zone")
+            UpdateZoneStatusContainer(continent)
+            headerText:SetText(continent)
+            ScheduleNextUpdate()
+        end)
+
+        -- Add hover frame for visual feedback
+        hoverFrames[i] = parent:CreateTexture(nil, "BACKGROUND")
+        hoverFrames[i]:SetSize(cellWidth, cellHeight)
+        hoverFrames[i]:SetPoint("TOPLEFT", texts[i], "TOPLEFT")
+        hoverFrames[i]:SetColorTexture(1, 1, 1, 0.2) -- Light white background with transparency
+        hoverFrames[i]:Hide() -- Initially hidden
+
+        -- Add mouseover effects for hover
+        buttons[i]:SetScript("OnEnter", function()
+            hoverFrames[i]:Show()
+        end)
+        buttons[i]:SetScript("OnLeave", function()
+            hoverFrames[i]:Hide()
+        end)
     end
 
     return texts
@@ -300,9 +371,10 @@ end
 
 function UpdateContinentStatus()
     local continentOrder = {
-        "Eastern Kingdoms", "Outland", "Cataclysm",
-        "Draenor", "Battle for Azeroth", "Kalimdor",
-        "Northrend", "Pandaria", "Broken Isles"
+        "Eastern Kingdoms", "Outland", "Draenor",
+        "Kul Tiras", "Zandalar", "Northrend",
+        "Pandaria", "Broken Isles", "Kalimdor",
+        "The Maelstrom"
     }
 
     for index, englishContinentKey in ipairs(continentOrder) do
@@ -343,13 +415,18 @@ function UpdateContinentStatus()
     end
 end
 
--- Modify the SLASH_EXPLOREWITHTOMTOM1 function
+-- SLASH_EXPLOREWITHTOMTOM1 function
 SLASH_EXPLOREWITHTOMTOM1 = "/ewtt"
 SlashCmdList["EXPLOREWITHTOMTOM"] = function(msg)
-    UpdateContinentStatus()  -- Update the continent status when the frame is shown
-    exploreFrame:Show()
-    ScheduleNextUpdate()  -- Start the update cycle
+    if exploreFrame:IsVisible() then
+        exploreFrame:Hide()
+    else
+        UpdateContinentStatus()
+        exploreFrame:Show()
+        ScheduleNextUpdate()
+    end
 end
+
 
 -- Add this new function to stop updates when the frame is closed
 local function OnFrameHide()

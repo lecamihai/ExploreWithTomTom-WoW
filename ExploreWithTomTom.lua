@@ -123,7 +123,7 @@ function AddWaypointsForZone(continentName, zoneName)
         currentZone = zoneName -- Update current zone tracking
         return true
     else
-        print("|cFFFF0000No undiscovered waypoints found in " .. zoneName .. "|r")
+        print("|cFFFF0000No undiscovered waypoints found for zone: " .. zoneName .. "|r")
         return false
     end
 end
@@ -133,108 +133,116 @@ function GetContinentMapID(continentName)
         -- EN
         ["Eastern Kingdoms"] = 13,
         ["Outland"] = 101,
-        ["Cataclysm"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = 572,
-        ["Battle for Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kul Tiras"] = 876,
+        ["Zandalar"] = 875,
         ["Kalimdor"] = 12,
         ["Northrend"] = 113,
         ["Pandaria"] = 424,
         ["Broken Isles"] = 619,
+        ["The Maelstrom"] = 207,
     
         -- FR
         ["Royaumes de l’Est"] = 13,
         ["Outreterre"] = 101,
-        ["Cataclysme"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = 572,
-        ["Bataille pour Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kul Tiras"] = 876,
+        ["Zandalar"] = 875,
         ["Kalimdor"] = 12,
         ["Norfendre"] = 113,
         ["Pandarie"] = 424,
-        ["îles Brisées"] = 619,
+        ["Îles Brisées"] = 619,
+        ["Le Maelström"] = 207,
     
         -- RU
         ["Восточные королевства"] = 13,
         ["Запределье"] = 101,
-        ["Катаклизм"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Дренор"] = 572,
-        ["Битва за Азерот"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Кул-Тирас"] = 876,
+        ["Зандалар"] = 875,
         ["Калимдор"] = 12,
         ["Нордскол"] = 113,
         ["Пандария"] = 424,
         ["Расколотые острова"] = 619,
+        ["Водоворот"] = 207,
     
         -- DE
-        ["Östlichen Königreiche"] = 13,
+        ["Die Östlichen Königreiche"] = 13,
         ["Scherbenwelt"] = 101,
-        ["Kataklysmus"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = 572,
-        ["Schlacht um Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kul Tiras"] = 876,
+        ["Zandalar"] = 875,
         ["Kalimdor"] = 12,
         ["Nordends"] = 113,
         ["Pandaria"] = 424,
         ["Verheerten Inseln"] = 619,
+        ["Der Mahlstrom"] = 207,
     
         -- ES (EU)
         ["Reinos del Este"] = 13,
         ["Terrallende"] = 101,
-        ["Cataclismo"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = 572,
-        ["Batalla por Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kul Tiras"] = 876,
+        ["Zandalar"] = 875,
         ["Kalimdor"] = 12,
         ["Rasganorte"] = 113,
         ["Pandaria"] = 424,
         ["Islas Quebradas"] = 619,
+        ["La Vorágine"] = 207,
     
         -- IT
         ["Regni Orientali"] = 13,
         ["Terre Esterne"] = 101,
-        ["Cataclisma"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = 572,
-        ["Battaglia per Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kul Tiras"] = 876,
+        ["Zandalar"] = 875,
         ["Kalimdor"] = 12,
         ["Nordania"] = 113,
         ["Pandaria"] = 424,
         ["Isole Disperse"] = 619,
+        ["Il Maelstrom"] = 207,
     
         -- PT
         ["Reinos do Leste"] = 13,
         ["Terralém"] = 101,
-        ["Cataclismo"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["Draenor"] = 572,
-        ["Batalha por Azeroth"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["Kul Tiras"] = 876,
+        ["Zandalar"] = 875,
         ["Kalimdor"] = 12,
         ["Nortúndria"] = 113,
         ["Pandária"] = 424,
         ["Ilhas Partidas"] = 619,
+        ["O Maelstrom"] = 207,
     
         -- KO
         ["동부 왕국"] = 13,
         ["아웃랜드"] = 101,
-        ["대격변"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["드레노어"] = 572,
-        ["격전의 아제로스"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["쿨 티라스"] = 876,
+        ["잔달라"] = 875,
         ["칼림도어"] = 12,
         ["노스렌드"] = 113,
         ["판다리아"] = 424,
         ["부서진 섬"] = 619,
+        ["소용돌이"] = 207,
     
         -- ZH-CN
         ["东部王国"] = 13,
         ["外域"] = 101,
-        ["大灾变"] = {198,249,207,241,203}, -- Hyjal, Uldum, Deepholm, Twillight Highlands, Vashj'ir
         ["德拉诺"] = 572,
-        ["艾泽拉斯之战"] = {875, 876}, -- Zandalar and Kul Tiras
+        ["库尔提拉斯"] = 876,
+        ["赞达拉"] = 875,
         ["卡利姆多"] = 12,
         ["诺森德"] = 113,
         ["潘达利亚"] = 424,
         ["破碎群岛"] = 619,
+        ["大漩涡"] = 207,
     }
-    
     
     local mapID = continentMapIDs[continentName]
     return mapID
-    
 end
+
 
 function LocalizeContinent(continentKey)
     local locale = GetLocale()
@@ -248,23 +256,6 @@ function LocalizeContinent(continentKey)
     -- Fallback to English key if no translation
     return continentKey
 end
-
--- Helper table for zone-specific overrides
-local zoneOverrides = {
-    ["Dalaran"] = { continent = "Northrend" },
-    ["Stormshield"] = { continent = "Draenor" },
-    ["Ashran"] = { continent = "Draenor" },
-    ["Deathknell"] = { continent = "Eastern Kingdoms", zone = "Tirisfal Glades" },
-    ["Coldridge Valley"] = { continent = "Eastern Kingdoms", zone = "Dun Morogh" },
-    ["New Tinkertown"] = { continent = "Eastern Kingdoms", zone = "Dun Morogh" },
-    ["Vashj'ir"] = { continent = "Eastern Kingdoms" },
-    ["Abyssal Depths"] = { continent = "Eastern Kingdoms" },
-    ["Shimmering Expanse"] = { continent = "Eastern Kingdoms" },
-    ["Kelp'thar Forest"] = { continent = "Eastern Kingdoms" },
-    ["Tiragarde Sound"] = { continent = "Kul Tiras" },
-    ["Drustvar"] = { continent = "Kul Tiras" },
-    ["Stormsong Valley"] = { continent = "Kul Tiras" },
-}
 
 -- Refactored HandleZoneSelection function
 function HandleZoneSelection(continentName, zoneName)
@@ -294,11 +285,11 @@ function HandleZoneSelection(continentName, zoneName)
 
     local zoneOverride = zoneOverrides[GetZoneText()]
     if zoneOverride then
-        --Debug print("|cFFFFA500Applying override: " .. GetZoneText() .. " -> Continent: " .. (zoneOverride.continent or "nil") .. ", Zone: " .. (zoneOverride.zone or "nil") .. "|r")
+        --print("|cFFFFA500Applying override: " .. GetZoneText() .. " -> Continent: " .. (zoneOverride.continent or "nil") .. ", Zone: " .. (zoneOverride.zone or "nil") .. "|r")
         currentContinent = zoneOverride.continent or currentContinent
         zoneName = zoneOverride.zone or zoneName
     else
-        --Debug print("|cFFFF0000No override found for: " .. GetZoneText() .. "|r")
+        --print("|cFFFF0000No override found for: " .. GetZoneText() .. "|r")
     end
 
     -- Check if the current continent matches the selected continent
