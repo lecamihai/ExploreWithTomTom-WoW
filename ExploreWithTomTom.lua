@@ -1,126 +1,154 @@
 -- ExploreWithTomTom.lua
 
--- Import the waypoint data
+--------------------------
+-- IMPORT & INITIALIZATION
+--------------------------
+
+-- Function to load waypoint data based on the user's locale
 function LoadWaypointData()
-    local locale = GetLocale() -- Get the user's locale (e.g., "enUS", "frFR")
+    local locale = GetLocale() -- Retrieves the user's locale (e.g., "enUS", "frFR")
 
     if Localization and Localization[locale] then
-        return Localization[locale] -- Load localization for the current locale
+        return Localization[locale] -- Returns localization data for the current locale
     else
         print("|cFFFF0000Localization for " .. locale .. " not found. Falling back to enUS.|r")
-        return Localization["enUS"] -- Fallback to enUS
+        return Localization["enUS"] -- Fallback to English localization
     end
 end
 
--- Load the waypoint data
+-- Load the waypoint data into the global WaypointData table
 WaypointData = LoadWaypointData()
 
-local activeWaypoints = {}
-local queuedZone = nil
-local currentZone = nil
-local currentProxy = nil
+-- Initialize variables to manage waypoints and zone states
+local activeWaypoints = {} -- Table to keep track of active waypoints
+local queuedZone = nil      -- Zone queued for waypoint addition
+local currentZone = nil     -- Currently active zone
+local currentProxy = nil    -- Current proxy waypoint UID
 
--- Function to check if a zone is already discovered
+--------------------------
+-- UTILITY FUNCTIONS FOR ZONE DISCOVERY AND WAYPOINT REMOVAL
+--------------------------
+
+-- Function to check if a specific zone has been discovered/completed
 function IsZoneDiscovered(achievementID, zoneName)
-        -- Special handling for Isle of Quel'Danas
-        if achievementID == 868 then
-            -- First, check if the achievement is completed (account-wide)
-            local _, _, achievementCompleted = GetAchievementInfo(achievementID)
-            if achievementCompleted then
-                return true
-            end
-            
-            -- If not completed, check if the current character has explored the zone
-            local isleQuelDanasMapID = 122  -- Map ID for Isle of Quel'Danas
-            local exploredMapTextures = C_MapExplorationInfo.GetExploredMapTextures(isleQuelDanasMapID)
-            return exploredMapTextures ~= nil and #exploredMapTextures > 0
-        end
-
-        -- Existing logic for other zones
-        local numCriteria = GetAchievementNumCriteria(achievementID)
-        local trimmedZoneName = strtrim(zoneName):lower()
-
-        for i = 1, numCriteria do
-            local criteriaString, _, completed = GetAchievementCriteriaInfo(achievementID, i)
-            if strtrim(criteriaString):lower() == trimmedZoneName then
-                return completed
-            end
-        end
-
-        -- Additionally, check if the entire achievement is completed
+    -- Special handling for Isle of Quel'Danas (achievementID 868)
+    if achievementID == 868 then
+        -- Check if the achievement is completed account-wide
         local _, _, achievementCompleted = GetAchievementInfo(achievementID)
-        return achievementCompleted
+        if achievementCompleted then
+            return true
+        end
+        
+        -- If not completed, check if the current character has explored the zone
+        local isleQuelDanasMapID = 122  -- Map ID for Isle of Quel'Danas
+        local exploredMapTextures = C_MapExplorationInfo.GetExploredMapTextures(isleQuelDanasMapID)
+        return exploredMapTextures ~= nil and #exploredMapTextures > 0
+    end
+
+    -- General logic for other zones based on achievement criteria
+    local numCriteria = GetAchievementNumCriteria(achievementID)
+    local trimmedZoneName = strtrim(zoneName):lower()
+
+    for i = 1, numCriteria do
+        local criteriaString, _, completed = GetAchievementCriteriaInfo(achievementID, i)
+        if strtrim(criteriaString):lower() == trimmedZoneName then
+            return completed
+        end
+    end
+
+    -- Fallback: Check if the entire achievement is completed
+    local _, _, achievementCompleted = GetAchievementInfo(achievementID)
+    return achievementCompleted
 end
 
--- Function to remove waypoints when leaving a zone
+-- Function to remove all active waypoints
 function RemoveAllWaypoints()
     for desc, uid in pairs(activeWaypoints) do
         TomTom:RemoveWaypoint(uid)
     end
-    activeWaypoints = {}  -- Clear the active waypoints table
+    activeWaypoints = {}  -- Reset the active waypoints table
 end
 
--- Function to add waypoints for a specific zone and return whether any were added
+-- Function to remove only zone-specific waypoints, keeping proxy waypoints intact
+function RemoveZoneWaypoints()
+    for desc, uid in pairs(activeWaypoints) do
+        if desc ~= "proxy" then  -- Exclude proxy waypoints
+            TomTom:RemoveWaypoint(uid)
+            activeWaypoints[desc] = nil
+        end
+    end
+end
+
+--------------------------
+-- WAYPOINT MANAGEMENT
+--------------------------
+
+-- Function to add waypoints for a specific continent and zone
 function AddWaypointsForZone(continentName, zoneName)
-    -- Clear existing waypoints to avoid duplication
+    -- Clear existing waypoints to prevent duplication
     RemoveAllWaypoints()
 
-    -- Access waypoint data for the specified continent and zone
+    -- Retrieve waypoint data for the specified continent
     local continentInfo = WaypointData[continentName]
     if not continentInfo then
         print("|cFFFF0000Continent not found: " .. (continentName or "unknown") .. "|r")
         return false
     end
 
+    -- Retrieve waypoint data for the specified zone within the continent
     local zoneInfo = continentInfo[zoneName]
     if not zoneInfo then
         print("|cFFFF0000Zone not found: " .. (zoneName or "unknown") .. "|r")
         return false
     end
 
-    -- Validate the player's current map position
+    -- Get the player's current map ID to place waypoints correctly
     local mapID = C_Map.GetBestMapForUnit("player")
     if not mapID then
         print("|cFFFF0000Failed to retrieve player's current map ID.|r")
         return false
     end
 
-    local waypointsAdded = false
+    local waypointsAdded = false -- Flag to track if any waypoints were added
 
-    -- Iterate through waypoints for the zone
+    -- Iterate through all waypoints defined for the zone
     for _, waypoint in ipairs(zoneInfo.waypoints) do
         local x, y, description = unpack(waypoint)
-        local normalizedX = tonumber(x) / 100
-        local normalizedY = tonumber(y) / 100
+        local normalizedX = tonumber(x) / 100 -- Normalize X coordinate
+        local normalizedY = tonumber(y) / 100 -- Normalize Y coordinate
 
-        -- Skip waypoints that are already discovered
+        -- Skip waypoints that have already been discovered
         if not IsZoneDiscovered(zoneInfo.achievementID, description) then
             local uid = TomTom:AddWaypoint(mapID, normalizedX, normalizedY, { title = description })
             if uid then
                 activeWaypoints[description] = uid
                 waypointsAdded = true
 
-                -- Monitor discovery status for the waypoint
+                -- Continuously monitor the discovery status of the waypoint
                 local ticker = C_Timer.NewTicker(0.1, function(self)
                     if IsZoneDiscovered(zoneInfo.achievementID, description) then
-                        -- Remove the waypoint if discovered
+                        -- Remove the waypoint once it's discovered
                         TomTom:RemoveWaypoint(uid)
                         activeWaypoints[description] = nil
-                        self:Cancel() -- Stop monitoring
-                        --print("|cFF00FF00Waypoint discovered and removed: " .. description .. "|r")
+                        self:Cancel() -- Stop the ticker
+                        -- Optionally, uncomment the next line for debugging
+                        -- print("|cFF00FF00Waypoint discovered and removed: " .. description .. "|r")
                     end
                 end)
             else
-                --print("|cFFFF0000Failed to add waypoint: " .. description .. "|r")
+                -- Optionally, uncomment the next line for debugging
+                -- print("|cFFFF0000Failed to add waypoint: " .. description .. "|r")
             end
         else
-            --print("|cFF00FF00Waypoint already discovered: " .. description .. "|r")
+            -- Optionally, uncomment the next line for debugging
+            -- print("|cFF00FF00Waypoint already discovered: " .. description .. "|r")
         end
     end
 
     if waypointsAdded then
-        --print("|cFF00FF00Waypoints added for zone: " .. zoneName .. "|r")
-        currentZone = zoneName -- Update current zone tracking
+        -- Optionally, uncomment the next line for debugging
+        -- print("|cFF00FF00Waypoints added for zone: " .. zoneName .. "|r")
+        currentZone = zoneName -- Update the current zone tracker
         return true
     else
         print("|cFFFF0000No undiscovered waypoints found for zone: " .. zoneName .. "|r")
@@ -128,9 +156,72 @@ function AddWaypointsForZone(continentName, zoneName)
     end
 end
 
+-- Function to add a proxy waypoint near the target zone on the world map
+function AddProxyWaypoint(continentName, zoneName)
+    -- Ensure waypoint data exists for the specified continent
+    local continentInfo = WaypointData[continentName]
+    if not continentInfo then
+        print("|cFFFF0000Continent not found in WaypointData: " .. (continentName or "unknown") .. "|r")
+        return
+    end
+
+    -- Ensure waypoint data exists for the specified zone within the continent
+    local zoneInfo = continentInfo[zoneName]
+    if not zoneInfo then
+        print("|cFFFF0000Zone not found in WaypointData: " .. (zoneName or "unknown") .. " for continent: " .. continentName .. "|r")
+        return
+    end
+
+    -- Retrieve the proxy location data for the zone
+    local proxyLocation = zoneInfo.proxyLocation
+    if not proxyLocation then
+        print("|cFFFF0000Proxy location not defined for zone: " .. zoneName .. "|r")
+        return
+    end
+
+    -- Get the map ID for the continent to place the proxy waypoint
+    local continentMapID = GetContinentMapID(continentName)
+    if not continentMapID then
+        print("|cFFFF0000Continent Map ID not found for: " .. continentName .. "|r")
+        return
+    end
+
+    -- Remove existing proxy waypoint if present to avoid duplicates
+    if currentProxy and activeWaypoints[zoneName] then
+        TomTom:RemoveWaypoint(currentProxy)
+        activeWaypoints[zoneName] = nil
+        currentProxy = nil
+    end
+
+    -- Extract and normalize proxy location coordinates
+    local x, y, desc = unpack(proxyLocation)
+    x = tonumber(x) / 100 -- Normalize X coordinate
+    y = tonumber(y) / 100 -- Normalize Y coordinate
+
+    if x and y then
+        -- Add the proxy waypoint using TomTom's API
+        local uid = TomTom:AddWaypoint(continentMapID, x, y, { title = "Head to " .. zoneName })
+        if uid then
+            activeWaypoints[zoneName] = uid
+            currentProxy = uid
+            print("|cFF00FF00Proxy waypoint added for zone: " .. zoneName .. " at (" .. x * 100 .. ", " .. y * 100 .. ").|r")
+            return uid
+        else
+            print("|cFFFF0000Failed to add proxy waypoint for zone: " .. zoneName .. "|r")
+        end
+    else
+        print("|cFFFF0000Invalid proxy location for zone: " .. zoneName .. "|r")
+    end
+end
+
+--------------------------
+-- MAP ID & LOCALIZATION
+--------------------------
+
+-- Function to retrieve the map ID for a given continent name, supporting multiple locales
 function GetContinentMapID(continentName)
     local continentMapIDs = {
-        -- EN
+        -- English (EN)
         ["Eastern Kingdoms"] = 13,
         ["Outland"] = 101,
         ["Draenor"] = 572,
@@ -142,7 +233,7 @@ function GetContinentMapID(continentName)
         ["Broken Isles"] = 619,
         ["The Maelstrom"] = 207,
     
-        -- FR
+        -- French (FR)
         ["Royaumes de l’Est"] = 13,
         ["Outreterre"] = 101,
         ["Draenor"] = 572,
@@ -154,7 +245,7 @@ function GetContinentMapID(continentName)
         ["Îles Brisées"] = 619,
         ["Le Maelström"] = 207,
     
-        -- RU
+        -- Russian (RU)
         ["Восточные королевства"] = 13,
         ["Запределье"] = 101,
         ["Дренор"] = 572,
@@ -166,7 +257,7 @@ function GetContinentMapID(continentName)
         ["Расколотые острова"] = 619,
         ["Водоворот"] = 207,
     
-        -- DE
+        -- German (DE)
         ["Die Östlichen Königreiche"] = 13,
         ["Scherbenwelt"] = 101,
         ["Draenor"] = 572,
@@ -178,7 +269,7 @@ function GetContinentMapID(continentName)
         ["Verheerten Inseln"] = 619,
         ["Der Mahlstrom"] = 207,
     
-        -- ES (EU)
+        -- Spanish (ES-EU)
         ["Reinos del Este"] = 13,
         ["Terrallende"] = 101,
         ["Draenor"] = 572,
@@ -190,7 +281,7 @@ function GetContinentMapID(continentName)
         ["Islas Quebradas"] = 619,
         ["La Vorágine"] = 207,
     
-        -- IT
+        -- Italian (IT)
         ["Regni Orientali"] = 13,
         ["Terre Esterne"] = 101,
         ["Draenor"] = 572,
@@ -202,7 +293,7 @@ function GetContinentMapID(continentName)
         ["Isole Disperse"] = 619,
         ["Il Maelstrom"] = 207,
     
-        -- PT
+        -- Portuguese (PT)
         ["Reinos do Leste"] = 13,
         ["Terralém"] = 101,
         ["Draenor"] = 572,
@@ -214,7 +305,7 @@ function GetContinentMapID(continentName)
         ["Ilhas Partidas"] = 619,
         ["O Maelstrom"] = 207,
     
-        -- KO
+        -- Korean (KO)
         ["동부 왕국"] = 13,
         ["아웃랜드"] = 101,
         ["드레노어"] = 572,
@@ -226,7 +317,7 @@ function GetContinentMapID(continentName)
         ["부서진 섬"] = 619,
         ["소용돌이"] = 207,
     
-        -- ZH-CN
+        -- Simplified Chinese (ZH-CN)
         ["东部王国"] = 13,
         ["外域"] = 101,
         ["德拉诺"] = 572,
@@ -243,7 +334,7 @@ function GetContinentMapID(continentName)
     return mapID
 end
 
-
+-- Function to localize continent names based on the user's locale
 function LocalizeContinent(continentKey)
     local locale = GetLocale()
     if Localization 
@@ -253,29 +344,33 @@ function LocalizeContinent(continentKey)
 
         return Localization[locale]["Continents"][continentKey]
     end
-    -- Fallback to English key if no translation
+    -- Fallback to the original continent key if no translation is available
     return continentKey
 end
 
--- Refactored HandleZoneSelection function
+--------------------------
+-- ZONE SELECTION HANDLER
+--------------------------
+
+-- Function to handle zone selection and manage waypoints accordingly
 function HandleZoneSelection(continentName, zoneName)
-    -- Clear all waypoints to start fresh
+    -- Clear all existing waypoints to start fresh
     TomTom:ClearAllWaypoints()
 
-    -- Clear any existing proxy waypoint
+    -- Remove any existing proxy waypoint
     if currentProxy then
         TomTom:RemoveWaypoint(currentProxy)
         currentProxy = nil
     end
 
-    -- Get the current map ID and parent map ID
+    -- Retrieve the player's current map information
     local mapID = C_Map.GetBestMapForUnit("player")
     local mapInfo = C_Map.GetMapInfo(mapID)
     local parentMapInfo = mapInfo and C_Map.GetMapInfo(mapInfo.parentMapID)
     local currentContinent = parentMapInfo and parentMapInfo.name or "Unknown"
 
-    -- Access zone-specific overrides from Localization
-    local locale = GetLocale() or "enUS" -- Use "enUS" as fallback
+    -- Access zone-specific overrides from localization data
+    local locale = GetLocale() or "enUS" -- Default to "enUS" if locale is unavailable
     local zoneOverrides = Localization[locale] and Localization[locale]["ZoneOverrides"]
 
     if not zoneOverrides then
@@ -283,26 +378,27 @@ function HandleZoneSelection(continentName, zoneName)
         return
     end
 
+    -- Check if the current zone has any overrides
     local zoneOverride = zoneOverrides[GetZoneText()]
     if zoneOverride then
-        --print("|cFFFFA500Applying override: " .. GetZoneText() .. " -> Continent: " .. (zoneOverride.continent or "nil") .. ", Zone: " .. (zoneOverride.zone or "nil") .. "|r")
+        -- Apply overrides to continent and zone names if available
         currentContinent = zoneOverride.continent or currentContinent
         zoneName = zoneOverride.zone or zoneName
-    else
-        --print("|cFFFF0000No override found for: " .. GetZoneText() .. "|r")
     end
 
-    -- Check if the current continent matches the selected continent
+    -- Verify if the player is on the correct continent
     if currentContinent ~= continentName then
         print("|cFF00FF00You are currently on " .. currentContinent .. ". Please go to " .. continentName .. " and try again.|r")
         return
     end
 
-    -- Handle zone selection
+    -- Determine if the player is already in the target zone
     local newZone = GetZoneText()
     if newZone == zoneName then
+        -- If in the target zone, add waypoints directly
         AddWaypointsForZone(continentName, zoneName)
     else
+        -- If not, add a proxy waypoint and queue the zone for later
         local proxyUid = AddProxyWaypoint(continentName, zoneName)
         queuedZone = zoneName
         selectedContinent = continentName
@@ -310,112 +406,53 @@ function HandleZoneSelection(continentName, zoneName)
     end
 end
 
--- Function to add a proxy waypoint on the world map near the zone
-function AddProxyWaypoint(continentName, zoneName)
-    -- Ensure WaypointData is used consistently
-    local continentInfo = WaypointData[continentName]
-    if not continentInfo then
-        print("|cFFFF0000Continent not found in WaypointData: " .. (continentName or "unknown") .. "|r")
-        return
-    end
+--------------------------
+-- EVENT HANDLING
+--------------------------
 
-    local zoneInfo = continentInfo[zoneName]
-    if not zoneInfo then
-        print("|cFFFF0000Zone not found in WaypointData: " .. (zoneName or "unknown") .. " for continent: " .. continentName .. "|r")
-        return
-    end
-
-    local proxyLocation = zoneInfo.proxyLocation
-    if not proxyLocation then
-        print("|cFFFF0000Proxy location not defined for zone: " .. zoneName .. "|r")
-        return
-    end
-
-    local continentMapID = GetContinentMapID(continentName)
-    if not continentMapID then
-        print("|cFFFF0000Continent Map ID not found for: " .. continentName .. "|r")
-        return
-    end
-
-    -- Clear existing proxy waypoint if present
-    if currentProxy and activeWaypoints[zoneName] then
-        TomTom:RemoveWaypoint(currentProxy)
-        activeWaypoints[zoneName] = nil
-        currentProxy = nil
-    end
-
-    -- Add the proxy waypoint
-    local x, y, desc = unpack(proxyLocation)
-    x = tonumber(x) / 100 -- Convert to decimal
-    y = tonumber(y) / 100 -- Convert to decimal
-
-    if x and y then
-        local uid = TomTom:AddWaypoint(continentMapID, x, y, { title = "Head to " .. zoneName })
-        if uid then
-            activeWaypoints[zoneName] = uid
-            currentProxy = uid
-            print("|cFF00FF00Proxy waypoint added for zone: " .. zoneName .. " at (" .. x * 100 .. ", " .. y * 100 .. ").|r")
-            return uid
-        else
-            print("|cFFFF0000Failed to add proxy waypoint for zone: " .. zoneName .. "|r")
-        end
-    else
-        print("|cFFFF0000Invalid proxy location for zone: " .. zoneName .. "|r")
-    end
-end
-
-local removeWaypointsTimer = nil
-
+-- Function to handle zone change events and update waypoints if necessary
 function OnZoneChange(event)
     local newZone = GetZoneText()
 
-    -- Debug message to confirm zone detection
-    --print("|cFFFFA500Entering zone: " .. newZone .. "|r")
+    -- Uncomment the next line for debugging zone changes
+    -- print("|cFFFFA500Entering zone: " .. newZone .. "|r")
 
-    -- If the new zone matches the queued zone, add waypoints
+    -- Check if the new zone matches the queued zone for waypoint addition
     if queuedZone and queuedZone == newZone then
         local waypointsAdded = AddWaypointsForZone(selectedContinent, newZone)
         queuedZone = nil
 
-        -- Remove proxy waypoint if it exists
+        -- Remove the proxy waypoint once waypoints are added
         if currentProxy then
             TomTom:RemoveWaypoint(currentProxy)
             currentProxy = nil
         end
 
+        -- Optionally, set the closest waypoint as the current target
         if waypointsAdded then
             TomTom:SetClosestWaypoint(true)
         end
-    else
-        --print("|cFFFF0000No matching zone found for waypoints.|r")
     end
 
+    -- Update the current zone tracker
     currentZone = newZone
 end
 
--- Function to remove only zone waypoints
-function RemoveZoneWaypoints()
-    for desc, uid in pairs(activeWaypoints) do
-        if desc ~= "proxy" then  -- Keep the proxy waypoint
-            TomTom:RemoveWaypoint(uid)
-            activeWaypoints[desc] = nil
-        end
-    end
-end
-
--- Event Registration for Login Delay
+-- Event frame to handle player login and subsequent zone change events
 local loginFrame = CreateFrame("Frame")
 loginFrame:RegisterEvent("PLAYER_LOGIN")
 loginFrame:SetScript("OnEvent", function(self, event)
+    -- Delay event registration by 2 seconds to ensure all data is loaded
     C_Timer.After(2, function()
         local frame = CreateFrame("Frame")
+        -- Register events related to zone changes and achievement updates
         frame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
         frame:RegisterEvent("ZONE_CHANGED")
         frame:RegisterEvent("ZONE_CHANGED_INDOORS")
         frame:RegisterEvent("CRITERIA_UPDATE")
         frame:SetScript("OnEvent", OnZoneChange)
 
-        -- Set initial current zone
+        -- Initialize the current zone tracker
         currentZone = GetZoneText()
     end)
 end)

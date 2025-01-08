@@ -1,5 +1,9 @@
 -- ExploreWithTomTom_Options.lua
 
+-----------------------------
+-- MAIN FRAME & BACKGROUND --
+-----------------------------
+
 -- Create a new frame with a thin white border and black background
 local exploreFrame = CreateFrame("Frame", "ExploreWithTomTomFrame", UIParent, "ThinBorderTemplate")
 exploreFrame:SetSize(600, 520)  -- Set size of the frame
@@ -16,37 +20,32 @@ local backgroundTexture = exploreFrame:CreateTexture(nil, "BACKGROUND")
 backgroundTexture:SetAllPoints(exploreFrame)
 backgroundTexture:SetColorTexture(0, 0, 0, 0.8)
 
+---------------------------------
+-- TITLE & CLOSE/REFRESH BUTTONS --
+---------------------------------
+
 -- Title text for the new frame
 exploreFrame.title = exploreFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightLarge")
 exploreFrame.title:SetPoint("TOP", exploreFrame, "TOP", 0, -10)
 exploreFrame.title:SetText("Explore with TomTom")
 
--- Close button for the new frame
+-- Close button (X) for the new frame
 local closeButton = CreateFrame("Button", nil, exploreFrame, "UIPanelCloseButton")
 closeButton:SetPoint("TOPRIGHT", exploreFrame, "TOPRIGHT", -5, -5)
 
--- Refresh button for the same frame
-local refreshButton = CreateFrame("Button", nil, exploreFrame, "UIPanelCloseButton")
-refreshButton:SetSize(closeButton:GetWidth(), closeButton:GetHeight()) -- Match the size of the close button
-refreshButton:SetPoint("RIGHT", closeButton, "LEFT", -5, 0) -- Place it to the left of the close button
-refreshButton:SetNormalTexture("Interface\\Buttons\\UI-RefreshButton") -- Optional: Set a refresh icon texture
-refreshButton:SetHighlightTexture("Interface\\Buttons\\UI-RefreshButton") -- Optional: Highlight texture
+--------------
+-- VARIABLES --
+--------------
 
--- Functionality for the refresh button
-refreshButton:SetScript("OnClick", function()
-    if selectedContinent and selectedZone then
-        UpdateZoneStatusContainer(selectedContinent, selectedZone)
-    elseif selectedContinent then
-        UpdateZoneStatusContainer(selectedContinent)
-    end
-    UpdateContinentStatus()
-end)
-
--- UI Elements for Continent and Zone Selection
 local continentDropdown, zoneDropdown
 local selectedContinent, selectedZone
+local updateTimer = nil   -- We'll use this to schedule delayed updates
+local fontStringPool = {} -- Reusable font strings for the scroll container
 
--- Dynamic Header
+---------------------------------
+-- DYNAMIC HEADER (TOP SECTION) --
+---------------------------------
+
 local headerContainer = CreateFrame("Frame", nil, exploreFrame)
 headerContainer:SetSize(410, 100)
 headerContainer:SetPoint("TOP", -50, -50)
@@ -55,7 +54,10 @@ local headerText = headerContainer:CreateFontString(nil, "ARTWORK", "GameFontNor
 headerText:SetPoint("TOP", headerContainer, "TOP", 100, 15)
 headerText:SetText("Select a Zone")
 
--- Continent Dropdown
+-------------------------
+-- CONTINENT DROPDOWN  --
+-------------------------
+
 local continentLabel = exploreFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 continentLabel:SetPoint("TOPLEFT", headerContainer, "TOPLEFT", 5, 0)
 continentLabel:SetText("Select Continent")
@@ -85,6 +87,10 @@ UIDropDownMenu_Initialize(continentDropdown, function(self, level)
     end
 end)
 
+-------------------
+-- CONTINENT ORDER --
+-------------------
+
 local continentOrder = {
     "Eastern Kingdoms", "Outland", "Draenor",
     "Kul Tiras", "Zandalar", "Northrend",
@@ -92,7 +98,10 @@ local continentOrder = {
     "The Maelstrom"
 }
 
--- Zone Dropdown
+---------------------
+-- ZONE DROPDOWN   --
+---------------------
+
 local zoneLabel = exploreFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 zoneLabel:SetPoint("TOPLEFT", continentDropdown, "BOTTOMLEFT", 16, -20)
 zoneLabel:SetText("Select Zone")
@@ -129,6 +138,10 @@ UIDropDownMenu_Initialize(zoneDropdown, function(self, level)
     end
 end)
 
+---------------------------------
+-- BUTTONS BELOW ZONE DROPDOWN --
+---------------------------------
+
 -- Add Waypoints Button
 local addButton = CreateFrame("Button", nil, exploreFrame, "UIPanelButtonTemplate")
 addButton:SetPoint("TOPLEFT", zoneDropdown, "BOTTOMLEFT", 25, -20)
@@ -148,10 +161,10 @@ closestButton:SetPoint("TOPLEFT", addButton, "BOTTOMLEFT", 0, -10)  -- Position 
 closestButton:SetSize(140, 30)
 closestButton:SetText("Closest Waypoint")
 closestButton:SetScript("OnClick", function()
-    -- Command to select the closest waypoint using TomTom
     if TomTom and TomTom.SetClosestWaypoint then
         TomTom:SetClosestWaypoint()
     else
+        print("TomTom not found or doesn't support SetClosestWaypoint.")
     end
 end)
 
@@ -164,8 +177,10 @@ removeButton:SetScript("OnClick", function()
     RemoveAllWaypoints() -- Call your RemoveAllWaypoints function
 end)
 
+-------------------------------------------------------
+-- SCROLL FRAME (RIGHT CONTAINER) FOR ZONE STATUS INFO --
+-------------------------------------------------------
 
--- Scroll Frame for Zone Status with a thin border around it
 local scrollFrameContainer = CreateFrame("Frame", nil, exploreFrame, "ThinBorderTemplate")
 scrollFrameContainer:SetSize(290, 280)
 scrollFrameContainer:SetPoint("TOPLEFT", addButton, "BOTTOMLEFT", 200, 150)
@@ -178,49 +193,103 @@ local scrollChild = CreateFrame("Frame")
 scrollChild:SetSize(290, 250)
 scrollFrame:SetScrollChild(scrollChild)
 
-local fontStringPool = {}  -- Initialize the font string pool as an empty table
+-- "Loading!" text inside the right container (zone status container)
+local loadingText = scrollFrameContainer:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+loadingText:SetPoint("CENTER", scrollFrameContainer, "CENTER")
+loadingText:SetText("|cFF00FF00Loading!|r") -- Green-colored text
+loadingText:Hide() -- Initially hidden
 
--- Add this near the top of the file
-local updateTimer = nil
 
--- Modify the UpdateZoneStatusContainer function
+------------------------------------
+-- REFRESH BUTTON (TOP RIGHT AREA) --
+------------------------------------
+
+local refreshButton = CreateFrame("Button", nil, exploreFrame, "UIPanelButtonTemplate")
+
+-- Set the button size to match other buttons
+refreshButton:SetSize(24, 24) -- Button size remains consistent with the close button
+refreshButton:SetPoint("RIGHT", closeButton, "LEFT", -5, 0)
+
+-- Add the normal texture for the button
+local normalTexture = refreshButton:CreateTexture(nil, "ARTWORK")
+normalTexture:SetTexture("Interface\\Buttons\\UI-RefreshButton")
+normalTexture:SetPoint("CENTER", refreshButton, "CENTER") -- Center the texture in the button
+normalTexture:SetSize(16, 16) -- Make the texture smaller than the button
+refreshButton:SetNormalTexture(normalTexture)
+
+-- Add the highlight texture for the button
+local highlightTexture = refreshButton:CreateTexture(nil, "HIGHLIGHT")
+highlightTexture:SetTexture("Interface\\Buttons\\UI-RefreshButton")
+highlightTexture:SetPoint("CENTER", refreshButton, "CENTER") -- Center the texture in the button
+highlightTexture:SetSize(16, 16) -- Match the smaller texture size
+refreshButton:SetHighlightTexture(highlightTexture)
+
+
+-- When clicked, display the loading text and hide the continent text
+refreshButton:SetScript("OnClick", function()
+    -- Step 1: Show the "Loading!" text and hide the scroll content
+    loadingText:Show()
+    scrollChild:Hide() -- Immediately hide existing content
+    
+    -- Step 2: Perform the refresh process (delayed to simulate "Loading!" display)
+    C_Timer.After(0.5, function()
+        if selectedContinent and selectedZone then
+            UpdateZoneStatusContainer(selectedContinent, selectedZone)
+        elseif selectedContinent then
+            UpdateZoneStatusContainer(selectedContinent)
+        end
+        UpdateContinentStatus()
+
+        -- Step 3: Hide "Loading!" text and show the refreshed content
+        loadingText:Hide()
+        scrollChild:Show()
+    end)
+end)
+
+-----------------------------------------------------
+-- FUNCTION: UPDATE ZONE STATUS CONTAINER (RIGHT) --
+-----------------------------------------------------
+
 function UpdateZoneStatusContainer(continent, zone)
     -- Reset scroll position
     scrollFrame:SetVerticalScroll(0)
 
-    -- Remove old scrollChild and create a new one
-    if scrollChild then
-        scrollChild:Hide()
-        scrollChild:SetHeight(1)  -- Reset height
-    end
-
-    scrollChild:SetSize(350, 1)  -- Reset size; width matches scrollFrame
+    -- Hide old scrollChild content and reset size
+    scrollChild:Hide()
+    scrollChild:SetHeight(1)
+    scrollChild:SetSize(350, 1)  -- width matches scrollFrame
 
     -- Clear previous font strings
     for _, fontString in ipairs(fontStringPool) do
         fontString:Hide()
     end
 
-    -- Create a table to store zones/waypoints with their completion status
+    -- Build a table of zone or waypoint statuses
     local zoneStatus = {}
-    
     if zone then
-        -- If a zone is selected, show the waypoints within that zone
+        -- Show waypoints in the selected zone
         local waypoints = WaypointData[continent][zone].waypoints
-        for i, waypoint in ipairs(waypoints) do
-            local pointName = waypoint[3]  -- Retrieving the name of the waypoint
+        for _, waypoint in ipairs(waypoints) do
+            local pointName = waypoint[3]  -- name of the waypoint
             local numTotal = 1
-            local numCompleted = IsZoneDiscovered(WaypointData[continent][zone].achievementID, pointName) and 1 or 0
+            local numCompleted = IsZoneDiscovered(
+                WaypointData[continent][zone].achievementID,
+                pointName
+            ) and 1 or 0
             
-            table.insert(zoneStatus, {zoneName = pointName, numCompleted = numCompleted, numTotal = numTotal})
+            table.insert(zoneStatus, {
+                zoneName = pointName,
+                numCompleted = numCompleted,
+                numTotal = numTotal
+            })
         end
 
-        -- Sort alphabetically by zoneName (waypoints)
+        -- Sort by the waypoint name
         table.sort(zoneStatus, function(a, b)
             return a.zoneName:lower() < b.zoneName:lower()
         end)
     else
-        -- If only a continent is selected, show the zones within that continent
+        -- Show zones within the selected continent
         for zoneName, zoneInfo in pairs(WaypointData[continent]) do
             local numTotal = #zoneInfo.waypoints
             local numCompleted = 0
@@ -231,22 +300,26 @@ function UpdateZoneStatusContainer(continent, zone)
                 end
             end
 
-            table.insert(zoneStatus, {zoneName = zoneName, numCompleted = numCompleted, numTotal = numTotal})
+            table.insert(zoneStatus, {
+                zoneName = zoneName,
+                numCompleted = numCompleted,
+                numTotal = numTotal
+            })
         end
 
-        -- Sort alphabetically by zoneName (zones)
+        -- Sort by the zone name
         table.sort(zoneStatus, function(a, b)
             return a.zoneName:lower() < b.zoneName:lower()
         end)
     end
 
-    -- Add new content based on sorted data
+    -- Display each zone/waypoint in the scroll container
     local yOffset = -10
-    for i, zone in ipairs(zoneStatus) do
-        -- Determine the color (green for completed, yellow for not completed)
-        local color = (zone.numCompleted == zone.numTotal) and "|cFF00FF00" or "|cFFFFFF00"
+    for i, entry in ipairs(zoneStatus) do
+        -- Completed in green, incomplete in yellow
+        local color = (entry.numCompleted == entry.numTotal) and "|cFF00FF00" or "|cFFFFFF00"
 
-        -- Reuse or create a new FontString
+        -- Reuse or create a new FontString from the pool
         local zoneStatusText = fontStringPool[i]
         if not zoneStatusText then
             zoneStatusText = scrollChild:CreateFontString(nil, "ARTWORK", "GameFontNormal")
@@ -254,28 +327,36 @@ function UpdateZoneStatusContainer(continent, zone)
         end
         
         zoneStatusText:SetPoint("TOPLEFT", 16, yOffset)
-        zoneStatusText:SetText(color .. string.format("%s: %d/%d", zone.zoneName, zone.numCompleted, zone.numTotal) .. "|r")
+        zoneStatusText:SetText(color .. string.format("%s: %d/%d", 
+            entry.zoneName, entry.numCompleted, entry.numTotal) .. "|r")
         zoneStatusText:Show()
 
+        -- Move the offset down
         yOffset = yOffset - 20
         scrollChild:SetHeight(scrollChild:GetHeight() + 20)
     end
 
-    -- Ensure only the required number of FontStrings are visible
+    -- Hide any extra font strings beyond our current zoneStatus count
     for i = #zoneStatus + 1, #fontStringPool do
         fontStringPool[i]:Hide()
     end
 
-    -- Adjust scroll child height to fit content
+    -- Adjust scrollChild height to fit everything
     scrollChild:SetHeight(math.abs(yOffset) + 10)
     scrollChild:Show()
 end
 
--- Add this new function
+--------------------------------
+-- FUNCTION: SCHEDULE NEXT UPDATE
+--------------------------------
+
 function ScheduleNextUpdate()
+    -- Cancel any existing timer
     if updateTimer then
         updateTimer:Cancel()
     end
+
+    -- Start a new timer (2 seconds) to update status
     updateTimer = C_Timer.NewTimer(2, function()
         if exploreFrame:IsVisible() then
             if selectedContinent and selectedZone then
@@ -288,7 +369,10 @@ function ScheduleNextUpdate()
     end)
 end
 
--- Container for Continent Status at the bottom of the frame with expanded layout
+----------------------------------------------------
+-- BOTTOM STATUS CONTAINER (CONTINENTS COMPLETION) --
+----------------------------------------------------
+
 local continentStatusContainer = CreateFrame("Frame", nil, exploreFrame, "ThinBorderTemplate")
 continentStatusContainer:SetSize(580, 150)  -- Increased height to accommodate three rows
 continentStatusContainer:SetPoint("BOTTOM", exploreFrame, "BOTTOM", 0, 10)
@@ -328,15 +412,23 @@ local function CreateContinentStatusTexts(parent, totalContinents)
         buttons[i] = CreateFrame("Button", nil, parent)
         buttons[i]:SetSize(cellWidth, cellHeight)
         buttons[i]:SetPoint("TOPLEFT", texts[i], "TOPLEFT")
+
+        -- OnClick logic with fallback to English if localization fails
         buttons[i]:SetScript("OnClick", function()
-            local continent = continentOrder[i]
-            selectedContinent = continent
-            selectedZone = nil
-            UIDropDownMenu_SetText(continentDropdown, continent)
-            UIDropDownMenu_SetText(zoneDropdown, "Select Zone")
-            UpdateZoneStatusContainer(continent)
-            headerText:SetText(continent)
-            ScheduleNextUpdate()
+            local localizedContinentKey = LocalizeContinent(continentOrder[i])
+            local continent = WaypointData[localizedContinentKey] and localizedContinentKey or continentOrder[i]
+
+            if WaypointData[continent] then
+                selectedContinent = continent
+                selectedZone = nil
+                UIDropDownMenu_SetText(continentDropdown, localizedContinentKey or continentOrder[i])
+                UIDropDownMenu_SetText(zoneDropdown, "Select Zone")
+                UpdateZoneStatusContainer(continent)
+                headerText:SetText(continent)
+                ScheduleNextUpdate()
+            else
+                print("Error: Continent data not found for " .. (localizedContinentKey or continentOrder[i]))
+            end
         end)
 
         -- Add hover frame for visual feedback
@@ -344,15 +436,11 @@ local function CreateContinentStatusTexts(parent, totalContinents)
         hoverFrames[i]:SetSize(cellWidth, cellHeight)
         hoverFrames[i]:SetPoint("TOPLEFT", texts[i], "TOPLEFT")
         hoverFrames[i]:SetColorTexture(1, 1, 1, 0.2) -- Light white background with transparency
-        hoverFrames[i]:Hide() -- Initially hidden
+        hoverFrames[i]:Hide()
 
-        -- Add mouseover effects for hover
-        buttons[i]:SetScript("OnEnter", function()
-            hoverFrames[i]:Show()
-        end)
-        buttons[i]:SetScript("OnLeave", function()
-            hoverFrames[i]:Hide()
-        end)
+        -- Mouseover effects
+        buttons[i]:SetScript("OnEnter", function() hoverFrames[i]:Show() end)
+        buttons[i]:SetScript("OnLeave", function() hoverFrames[i]:Hide() end)
     end
 
     return texts
@@ -360,14 +448,42 @@ end
 
 local continentStatusTexts = CreateContinentStatusTexts(continentStatusContainer, #continentOrder)
 
+-------------------------------------------
+-- OPTIONAL: INITIALIZE BOTTOM CONTINENTS --
+-------------------------------------------
+
+-- For an initial display, we can quickly run through them:
 for index, continent in ipairs(continentOrder) do
     local zones = WaypointData[continent]
-    -- ...
-    local color = ...
+    local totalZones = 0
+    local completedZones = 0
+
+    if zones then
+        for zoneName, zoneInfo in pairs(zones) do
+            totalZones = totalZones + 1
+            local numCompleted = 0
+
+            for _, waypoint in ipairs(zoneInfo.waypoints) do
+                if IsZoneDiscovered(zoneInfo.achievementID, waypoint[3]) then
+                    numCompleted = numCompleted + 1
+                end
+            end
+
+            if numCompleted == #zoneInfo.waypoints then
+                completedZones = completedZones + 1
+            end
+        end
+    end
+
+    local color = (completedZones == totalZones and totalZones > 0) and "|cFF00FF00" or "|cFFFFFF00"
     continentStatusTexts[index]:SetText(
         color .. string.format("%s: %d/%d", continent, completedZones, totalZones) .. "|r"
     )
 end
+
+----------------------------
+-- FUNCTION: UPDATE STATUS --
+----------------------------
 
 function UpdateContinentStatus()
     local continentOrder = {
@@ -378,7 +494,7 @@ function UpdateContinentStatus()
     }
 
     for index, englishContinentKey in ipairs(continentOrder) do
-        -- 1) Get the localized name of the continent (for display and for indexing WaypointData).
+        -- 1) Get the localized name
         local localizedContinentKey = LocalizeContinent(englishContinentKey)
         
         -- 2) Lookup zone data using that localized key
@@ -403,19 +519,22 @@ function UpdateContinentStatus()
                 end
             end
             
-            local color = (completedZones == totalZones) and "|cFF00FF00" or "|cFFFFFF00"
+            local color = (completedZones == totalZones and totalZones > 0) and "|cFF00FF00" or "|cFFFFFF00"
             continentStatusTexts[index]:SetText(
                 color .. string.format("%s: %d/%d", localizedContinentKey, completedZones, totalZones) .. "|r"
             )
             continentStatusTexts[index]:Show()
         else
-            -- Hide if we have no data for that continent (possibly not in that locale yet)
+            -- Hide if we have no data for that continent
             continentStatusTexts[index]:Hide()
         end
     end
 end
 
--- SLASH_EXPLOREWITHTOMTOM1 function
+-------------------------
+-- SLASH COMMAND SETUP --
+-------------------------
+
 SLASH_EXPLOREWITHTOMTOM1 = "/ewtt"
 SlashCmdList["EXPLOREWITHTOMTOM"] = function(msg)
     if exploreFrame:IsVisible() then
@@ -427,8 +546,10 @@ SlashCmdList["EXPLOREWITHTOMTOM"] = function(msg)
     end
 end
 
+------------------------------
+-- STOP UPDATES WHEN CLOSED --
+------------------------------
 
--- Add this new function to stop updates when the frame is closed
 local function OnFrameHide()
     if updateTimer then
         updateTimer:Cancel()
@@ -436,5 +557,4 @@ local function OnFrameHide()
     end
 end
 
--- Set the OnHide script so that updates stop when the frame is closed
 exploreFrame:SetScript("OnHide", OnFrameHide)
