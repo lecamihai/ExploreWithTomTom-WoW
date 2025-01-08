@@ -119,7 +119,11 @@ function AddWaypointsForZone(continentName, zoneName)
 
         -- Skip waypoints that have already been discovered
         if not IsZoneDiscovered(zoneInfo.achievementID, description) then
-            local uid = TomTom:AddWaypoint(mapID, normalizedX, normalizedY, { title = description })
+            local uid = TomTom:AddWaypoint(mapID, normalizedX, normalizedY, {
+                title = description,
+                from = "Explore with TomTom", -- Add custom "From" field
+                callbacks = TomTom:DefaultCallbacks({}),
+            })
             if uid then
                 activeWaypoints[description] = uid
                 waypointsAdded = true
@@ -131,23 +135,13 @@ function AddWaypointsForZone(continentName, zoneName)
                         TomTom:RemoveWaypoint(uid)
                         activeWaypoints[description] = nil
                         self:Cancel() -- Stop the ticker
-                        -- Optionally, uncomment the next line for debugging
-                        -- print("|cFF00FF00Waypoint discovered and removed: " .. description .. "|r")
                     end
                 end)
-            else
-                -- Optionally, uncomment the next line for debugging
-                -- print("|cFFFF0000Failed to add waypoint: " .. description .. "|r")
             end
-        else
-            -- Optionally, uncomment the next line for debugging
-            -- print("|cFF00FF00Waypoint already discovered: " .. description .. "|r")
         end
     end
 
     if waypointsAdded then
-        -- Optionally, uncomment the next line for debugging
-        -- print("|cFF00FF00Waypoints added for zone: " .. zoneName .. "|r")
         currentZone = zoneName -- Update the current zone tracker
         return true
     else
@@ -200,7 +194,10 @@ function AddProxyWaypoint(continentName, zoneName)
 
     if x and y then
         -- Add the proxy waypoint using TomTom's API
-        local uid = TomTom:AddWaypoint(continentMapID, x, y, { title = "Head to " .. zoneName })
+        local uid = TomTom:AddWaypoint(continentMapID, x, y, {
+            title = "Head to " .. zoneName,
+            from = "Explore with TomTom", -- Add custom "From" field
+        })
         if uid then
             activeWaypoints[zoneName] = uid
             currentProxy = uid
