@@ -3,7 +3,7 @@
 ## Notes: Adds custom waypoints for exploration achievements.
 ## Author: L3ca
 ## Dependencies: TomTom
-## Version: 1.0
+## Version: 2.0
 ## IconTexture: Interface\AddOns\ExploreWithTomTom\Icons\ewtt_addon_icon
 
 Localization\enUS.lua
@@ -11,8 +11,6 @@ Localization\frFR.lua
 Localization\ruRU.lua
 Localization\esES.lua
 Localization\deDE.lua
-Localization\itIT.lua
-Localization\ptBR.lua
 
 ExploreWithTomTom.lua
 ExploreWithTomTom_Options.lua

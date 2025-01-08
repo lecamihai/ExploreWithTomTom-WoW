@@ -91,21 +91,21 @@ function AddWaypointsForZone(continentName, zoneName)
     -- Retrieve waypoint data for the specified continent
     local continentInfo = WaypointData[continentName]
     if not continentInfo then
-        print("|cFFFF0000Continent not found: " .. (continentName or "unknown") .. "|r")
+        --print("|cFFFF0000Continent not found: " .. (continentName or "unknown") .. "|r")
         return false
     end
 
     -- Retrieve waypoint data for the specified zone within the continent
     local zoneInfo = continentInfo[zoneName]
     if not zoneInfo then
-        print("|cFFFF0000Zone not found: " .. (zoneName or "unknown") .. "|r")
+        --print("|cFFFF0000Zone not found: " .. (zoneName or "unknown") .. "|r")
         return false
     end
 
     -- Get the player's current map ID to place waypoints correctly
     local mapID = C_Map.GetBestMapForUnit("player")
     if not mapID then
-        print("|cFFFF0000Failed to retrieve player's current map ID.|r")
+        --print("|cFFFF0000Failed to retrieve player's current map ID.|r")
         return false
     end
 
@@ -155,28 +155,28 @@ function AddProxyWaypoint(continentName, zoneName)
     -- Ensure waypoint data exists for the specified continent
     local continentInfo = WaypointData[continentName]
     if not continentInfo then
-        print("|cFFFF0000Continent not found in WaypointData: " .. (continentName or "unknown") .. "|r")
+        --print("|cFFFF0000Continent not found in WaypointData: " .. (continentName or "unknown") .. "|r")
         return
     end
 
     -- Ensure waypoint data exists for the specified zone within the continent
     local zoneInfo = continentInfo[zoneName]
     if not zoneInfo then
-        print("|cFFFF0000Zone not found in WaypointData: " .. (zoneName or "unknown") .. " for continent: " .. continentName .. "|r")
+        --print("|cFFFF0000Zone not found in WaypointData: " .. (zoneName or "unknown") .. " for continent: " .. continentName .. "|r")
         return
     end
 
     -- Retrieve the proxy location data for the zone
     local proxyLocation = zoneInfo.proxyLocation
     if not proxyLocation then
-        print("|cFFFF0000Proxy location not defined for zone: " .. zoneName .. "|r")
+        --print("|cFFFF0000Proxy location not defined for zone: " .. zoneName .. "|r")
         return
     end
 
     -- Get the map ID for the continent to place the proxy waypoint
     local continentMapID = GetContinentMapID(continentName)
     if not continentMapID then
-        print("|cFFFF0000Continent Map ID not found for: " .. continentName .. "|r")
+        --print("|cFFFF0000Continent Map ID not found for: " .. continentName .. "|r")
         return
     end
 
@@ -204,10 +204,10 @@ function AddProxyWaypoint(continentName, zoneName)
             print("|cFF00FF00Proxy waypoint added for zone: " .. zoneName .. " at (" .. x * 100 .. ", " .. y * 100 .. ").|r")
             return uid
         else
-            print("|cFFFF0000Failed to add proxy waypoint for zone: " .. zoneName .. "|r")
+            --print("|cFFFF0000Failed to add proxy waypoint for zone: " .. zoneName .. "|r")
         end
     else
-        print("|cFFFF0000Invalid proxy location for zone: " .. zoneName .. "|r")
+        --print("|cFFFF0000Invalid proxy location for zone: " .. zoneName .. "|r")
     end
 end
 
@@ -371,7 +371,7 @@ function HandleZoneSelection(continentName, zoneName)
     local zoneOverrides = Localization[locale] and Localization[locale]["ZoneOverrides"]
 
     if not zoneOverrides then
-        print("|cFFFF0000Error: ZoneOverrides not found in Localization for locale: " .. locale .. "|r")
+        --print("|cFFFF0000Error: ZoneOverrides not found in Localization for locale: " .. locale .. "|r")
         return
     end
 

@@ -164,7 +164,7 @@ closestButton:SetScript("OnClick", function()
     if TomTom and TomTom.SetClosestWaypoint then
         TomTom:SetClosestWaypoint()
     else
-        print("TomTom not found or doesn't support SetClosestWaypoint.")
+        --print("TomTom not found or doesn't support SetClosestWaypoint.")
     end
 end)
 
@@ -193,10 +193,10 @@ local scrollChild = CreateFrame("Frame")
 scrollChild:SetSize(290, 250)
 scrollFrame:SetScrollChild(scrollChild)
 
--- "Loading!" text inside the right container (zone status container)
+-- "Loading..." text inside the right container (zone status container)
 local loadingText = scrollFrameContainer:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 loadingText:SetPoint("CENTER", scrollFrameContainer, "CENTER")
-loadingText:SetText("|cFF00FF00Loading!|r") -- Green-colored text
+loadingText:SetText("|cFF00FF00Loading...|r") -- Green-colored text
 loadingText:Hide() -- Initially hidden
 
 
@@ -227,11 +227,11 @@ refreshButton:SetHighlightTexture(highlightTexture)
 
 -- When clicked, display the loading text and hide the continent text
 refreshButton:SetScript("OnClick", function()
-    -- Step 1: Show the "Loading!" text and hide the scroll content
+    -- Step 1: Show the "Loading..." text and hide the scroll content
     loadingText:Show()
     scrollChild:Hide() -- Immediately hide existing content
     
-    -- Step 2: Perform the refresh process (delayed to simulate "Loading!" display)
+    -- Step 2: Perform the refresh process (delayed to simulate "Loading..." display)
     C_Timer.After(0.5, function()
         if selectedContinent and selectedZone then
             UpdateZoneStatusContainer(selectedContinent, selectedZone)
@@ -240,7 +240,7 @@ refreshButton:SetScript("OnClick", function()
         end
         UpdateContinentStatus()
 
-        -- Step 3: Hide "Loading!" text and show the refreshed content
+        -- Step 3: Hide "Loading..." text and show the refreshed content
         loadingText:Hide()
         scrollChild:Show()
     end)
@@ -427,7 +427,7 @@ local function CreateContinentStatusTexts(parent, totalContinents)
                 headerText:SetText(continent)
                 ScheduleNextUpdate()
             else
-                print("Error: Continent data not found for " .. (localizedContinentKey or continentOrder[i]))
+                --print("Error: Continent data not found for " .. (localizedContinentKey or continentOrder[i]))
             end
         end)
 
