@@ -1,16 +1,21 @@
-## Interface: 100207, 110000, 110002
+## Interface Version: 100207, 110000, 110002
 ## Title: Explore with TomTom
-## Notes: Adds custom waypoints for exploration achievements.
+## Notes: Integrates with TomTom to add custom waypoints, helping players complete exploration achievements in various zones.
 ## Author: L3ca
 ## Dependencies: TomTom
 ## Version: 2.0
 ## IconTexture: Interface\AddOns\ExploreWithTomTom\Icons\ewtt_addon_icon
 
+## Localization Files:
 Localization\enUS.lua
-Localization\frFR.lua
-Localization\ruRU.lua
 Localization\esES.lua
 Localization\deDE.lua
+Localization\frFR.lua
+Localization\itIT.lua
+Localization\ruRU.lua
 
+Localization\ptBR.lua
+
+## Addon Files:
 ExploreWithTomTom.lua
 ExploreWithTomTom_Options.lua

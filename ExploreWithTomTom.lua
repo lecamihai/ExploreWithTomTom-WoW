@@ -288,7 +288,7 @@ function GetContinentMapID(continentName)
         ["Nordania"] = 113,
         ["Pandaria"] = 424,
         ["Isole Disperse"] = 619,
-        ["Il Maelstrom"] = 207,
+        ["Maelstrom"] = 207,
     
         -- Portuguese (PT)
         ["Reinos do Leste"] = 13,
