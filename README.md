@@ -6,4 +6,4 @@
 
 [![CurseForge](https://cf.way2muchnoise.eu/title/1108150.svg)](https://www.curseforge.com/wow/addons/explore-with-tomtom)  ![CurseForge](https://cf.way2muchnoise.eu/1089837.svg)
 
-[Download on CurseForge](https://www.curseforge.com/valheim/mods/beyond-the-pen)
+[Download on CurseForge](https://www.curseforge.com/wow/addons/explore-with-tomtom)
