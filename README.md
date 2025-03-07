@@ -4,6 +4,6 @@
 
 **ExploreWithTomTom** Helper for getting the universal explorer achievement in wow using TomTom
 
-[![CurseForge](https://cf.way2muchnoise.eu/title/1108150.svg)](https://www.curseforge.com/wow/addons/explore-with-tomtom)  ![CurseForge](https://cf.way2muchnoise.eu/1089837.svg)
+[![CurseForge](https://cf.way2muchnoise.eu/title/1108150.svg)](https://www.curseforge.com/wow/addons/explore-with-tomtom)  [![CurseForge](https://cf.way2muchnoise.eu/1089837.svg)](https://www.curseforge.com/wow/addons/explore-with-tomtom)
 
 [Download on CurseForge](https://www.curseforge.com/wow/addons/explore-with-tomtom)
